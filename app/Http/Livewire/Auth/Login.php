@@ -7,6 +7,12 @@ use App\Models\User;
 
 class Login extends Component
 {
+    /**
+     * $rules, un variable special ?
+     * fonction mount, login,  quand les appeller ?
+     * 
+     * 
+     */
     public $email = '';
     public $password = '';
     public $remember_me = false;
@@ -17,6 +23,11 @@ class Login extends Component
     ];
 
     public function mount() {
+        /**
+         * fonction auth, que fait?
+         * fonction redirect, a detailler?
+         * Component->fill(), a voir?
+         */
         if(auth()->user()){
             redirect('/dashboard');
         }
@@ -24,6 +35,12 @@ class Login extends Component
     }
 
     public function login() {
+        /**
+         * Component->validate() ??
+         * attempt, itended ??
+         * Component->addError() a detailler ??
+         * 
+         */
         $credentials = $this->validate();
         if(auth()->attempt(['email' => $this->email, 'password' => $this->password], $this->remember_me)) {
             $user = User::where(["email" => $this->email])->first();

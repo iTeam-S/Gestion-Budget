@@ -10,33 +10,23 @@ use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Notifications\Notifiable;
 
 
+// ??
 class User extends Authenticatable
 {
+
+    // ??
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-
+    // un variable $pecial ?
     protected $guarded = [];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    // un variable special ?
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+    // un variable special ?
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
