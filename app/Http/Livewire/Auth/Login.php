@@ -61,13 +61,7 @@ class Login extends Component
 
 
     public function login() {
-        /**
-         * attempt, itended ??
-         * Component->addError() a detailler ??
-         * 
-         */
-
-
+        
         /**
          * $this->validate() verifie que chaque des clés de la variables $rules respecte la(les) 
          * restrictions de sa valeur associée

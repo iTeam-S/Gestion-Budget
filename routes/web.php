@@ -28,10 +28,13 @@ Route::get('/login', Login::class)->name('login');
 
 Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-password');
  
-// la methode middleware ??
-Route::get('/reset-password/{id}',ResetPassword::class)->name('reset-password')->middleware('signed');
 
-// à revoir la methode group ??
+Route::get('/reset-password/{id}',ResetPassword::class)->name('reset-password')->middleware('signed');
+/**
+ * Avant de se rediriger vers les pages reserve aux authentifie, il faut passer d'abord par des
+ * middleware
+ */
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/billing', Billing::class)->name('billing');

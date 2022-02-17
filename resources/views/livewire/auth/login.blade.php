@@ -5,20 +5,28 @@
                 <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
                     <div class="card card-plain mt-8">
                         <div class="card-header pb-0 text-left bg-transparent">
+
+
+                            {{-- La syntaxe {{ __('chaine')}} permet au ce chaine d'etre traduisable au cas ou --}}
                             <h3 class="font-weight-bolder text-info text-gradient">{{ __('Gestion-Budget') }}</h3>
                         </div>
+
                         <div class="card-body">
                             <form wire:submit.prevent="login" action="#" method="POST" role="form text-left">
                                 <div class="mb-3">
-                                    <label for="email">{{ __('Email') }}</label>
+                                    <label for="email">{{ __('email') }}</label>
                                     <div class="@error('email')border border-danger rounded-3 @enderror">
                                         <input wire:model="email" id="email" type="email" class="form-control"
-                                            placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                                        placeholder="email" aria-label="email" aria-describedby="email-addon">
+                                        {{-- 
+                                        par wire:model les type-hint dans cette input seront affecte dans la 
+                                        variable email --}}
+
                                     </div>
                                     @error('email') <div class="text-danger">{{ $message }}</div> @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="password">{{ __('Mot de passe') }}</label>
+                                    <label for="password">{{ __('mot de passe') }}</label>
                                     <div class="@error('password')border border-danger rounded-3 @enderror">
                                         <input wire:model="password" id="password" type="password" class="form-control"
                                             placeholder="Password" aria-label="Password"
