@@ -1,12 +1,12 @@
 <div class="main-content">
-    <div class="alert alert-secondary mx-4" role="alert">
+    <!-- <div class="alert alert-secondary mx-4" role="alert">
         <span class="text-white"><strong>Add, Edit, Delete features are not functional!</strong> This is a
             <strong>PRO</strong> feature!
             Click <strong><a href="https://demos.creative-tim.com/soft-ui-dashboard-laravel-pro/dashboard-default" target="_blank"
                     class="text-white">here</a></strong>
             to see the PRO
             product!</span>
-    </div>
+    </div> -->
 
     <div class="row">
         <div class="col-12">
@@ -16,7 +16,7 @@
                         <div>
                             <h5 class="mb-0">All Users</h5>
                         </div>
-                        <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; New User</a>
+                        <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Créer</a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
