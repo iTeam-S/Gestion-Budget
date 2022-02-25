@@ -14,7 +14,7 @@
             </nav>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 d-flex justify-content-end" id="navbar">
                 <div class="nav-item d-flex align-self-end">
-                    <a href="https://www.creative-tim.com/product/soft-ui-dashboard-laravel" target="_blank"
+                    <!-- <a href="https://www.creative-tim.com/product/soft-ui-dashboard-laravel" target="_blank"
                         class="btn btn-primary active mb-0 text-white" role="button" aria-pressed="true">
                         Download
                     </a>
@@ -23,7 +23,7 @@
                     <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" placeholder="Type here...">
-                    </div>
+                    </div> -->
                 </div>
                 <ul class="navbar-nav justify-content-end">
                     <li class="nav-item d-flex align-items-center">
