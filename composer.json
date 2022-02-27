@@ -13,7 +13,8 @@
         "laravel/tinker": "^2.5",
         "league/flysystem": "1.1.4",
         "livewire/livewire": "^2.4",
-        "symfony/http-kernel": "5.4"
+        "symfony/http-kernel": "5.4",
+        "tcg/voyager": "^1.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
