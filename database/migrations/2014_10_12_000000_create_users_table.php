@@ -19,11 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('phone')->nullable();
-            $table->string('location')->nullable();
-            $table->text('about')->nullable();
+
+            # rememberToken est nécessaire pour laravel quand il s'agit de regler un mot de passe oublié
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('groupe_id')->references('id')->on('groupe');
         });
     }
 
