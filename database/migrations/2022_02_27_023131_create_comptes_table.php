@@ -13,9 +13,11 @@ class CreateComptesTable extends Migration
      */
     public function up()
     {
-        Schema::create('comptes', function (Blueprint $table) {
+        Schema::create('compte', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('code');
+            $table->string('name');
+            $table->text('description');
         });
     }
 

@@ -13,9 +13,14 @@ class CreateGroupesTable extends Migration
      */
     public function up()
     {
-        Schema::create('groupes', function (Blueprint $table) {
+        Schema::create('groupe', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->text('role');
+            $table->unsignedBigInteger('permission_id');
+            $table->foreign('permission_id')->references('id')->on('permission')
+                    ->onDelete('restrict')
+                    ->onUpdate('restrict');
         });
     }
 

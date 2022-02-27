@@ -13,8 +13,16 @@ class CreateJournalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('journals', function (Blueprint $table) {
+        Schema::create('journal', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->unsignedBigInteger('ecriture_id');
+            $table->foreign('ecriture_id')->references('id')->on('ecriture')
+                    ->onDelete('restrict')
+                    ->onUpdate('restrict');
+
+            # 3 chiffres entier et 0 chiffres apres virgule
+            $table->double('row', 3, 0);
             $table->timestamps();
         });
     }

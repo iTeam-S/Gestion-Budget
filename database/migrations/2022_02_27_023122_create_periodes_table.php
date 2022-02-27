@@ -13,9 +13,11 @@ class CreatePeriodesTable extends Migration
      */
     public function up()
     {
-        Schema::create('periodes', function (Blueprint $table) {
+        Schema::create('periode', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->timestamp('date_debut')->useCurrent();
+            $table->timestamp('date_fin')->useCurrent();
+            $table->double('user_id', 3, 0);
         });
     }
 

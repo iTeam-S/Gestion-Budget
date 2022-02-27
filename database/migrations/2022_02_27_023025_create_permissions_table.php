@@ -13,9 +13,20 @@ class CreatePermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('permissions', function (Blueprint $table) {
+        Schema::create('permission', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+
+            # A partir d'ici les attributs sont de types selection | enum en mysql
+            # Enum est un type de donnée propre à mysql qui permet de definir des valeurs prédefinie et de
+            # ne pas pouvoir contenir que l'une de ses valeurs
+            # les valeurs prédefinies ici sont fictifs
+            # J'aurai pensé à un type boolean
+            $table->enum('compte_p', ['oui', 'non']);
+            $table->enum('ecriture_p', ['oui', 'non']);
+            $table->enum('journal_p', ['oui', 'non']);
+            $table->enum('periode', ['oui', 'non']);
+            $table->enum('dashboard', ['oui', 'non']);
+            $table->enum('user_p', ['oui', 'non']);
         });
     }
 

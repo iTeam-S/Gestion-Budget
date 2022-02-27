@@ -13,8 +13,28 @@ class CreateEcrituresTable extends Migration
      */
     public function up()
     {
-        Schema::create('ecritures', function (Blueprint $table) {
+        Schema::create('ecriture', function (Blueprint $table) {
             $table->id();
+            $table->float('somme');
+            $table->text('motif');
+            $table->string('piece_jointe');
+            $table->unsignedBigInteger('compte_id');
+            $table->unsignedBigInteger('journal_id');
+            $table->unsignedBigInteger('periode_id');
+            $table->foreign('compte_id')->references('id')->on('compte')
+                    ->onDelete('restrict')
+                    ->onUpdate('restrict');
+
+            $table->foreign('journal_id')->references('id')->on('journal')
+                    ->onDelete('restrict')
+                    ->onUpdate('restrict');
+                    
+            $table->foreign('periode_id')->references('id')->on('periode')
+                    ->onDelete('restrict')
+                    ->onUpdate('restrict');
+
+            
+            # timestamps cree la table created_at pour savoir la date de creation
             $table->timestamps();
         });
     }

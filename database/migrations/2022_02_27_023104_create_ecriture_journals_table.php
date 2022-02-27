@@ -13,8 +13,16 @@ class CreateEcritureJournalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ecriture_journals', function (Blueprint $table) {
+        Schema::create('ecriture_journal', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('journal_id');
+            $table->unsignedBigInteger('ecriture_id');
+            $table->foreign('journal_id')->references('id')->on('journal')
+                    ->onDelete('restrict')
+                    ->onUpdate('restrict');
+            $table->foreign('ecriture_id')->references('id')->on('ecriture')
+                    ->onDelete('restrict')
+                    ->onUpdate('restrict');
             $table->timestamps();
         });
     }
