@@ -21,12 +21,12 @@ class CreatePermissionsTable extends Migration
             # ne pas pouvoir contenir que l'une de ses valeurs
             # les valeurs prédefinies ici sont fictifs
             # J'aurai pensé à un type boolean
-            $table->enum('compte_p', ['oui', 'non']);
-            $table->enum('ecriture_p', ['oui', 'non']);
-            $table->enum('journal_p', ['oui', 'non']);
-            $table->enum('periode', ['oui', 'non']);
-            $table->enum('dashboard', ['oui', 'non']);
-            $table->enum('user_p', ['oui', 'non']);
+            $table->enum('compte_p', ['none', 'read', 'write','readAndWrite']);
+            $table->enum('ecriture_p', ['none', 'read', 'write','readAndWrite']);
+            $table->enum('journal_p', ['none', 'read', 'write','readAndWrite']);
+            $table->enum('periode', ['none', 'read', 'write','readAndWrite']);
+            $table->enum('dashboard', ['none', 'read', 'write','readAndWrite']);
+            $table->enum('user_p', ['none', 'read', 'write','readAndWrite']);
         });
     }
 
