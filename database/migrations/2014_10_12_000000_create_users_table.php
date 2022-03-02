@@ -20,9 +20,19 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->unsignedBigInteger('groupe_id');
+            /*
+            La creation des tables par migration se fait en fichier par fichier par ordre de creation des fichiers,
+            alors lors de la lecture de du fichier create_users_table(cette fichier): le table user detient un foreign_key groupe_id du table groupe,
+            or que le table groupe n'est pas encore crée le fichier chargé de créer la table groupe est plus récent que le fichier chargé de créer la
+            table users.
+            Ce qu'il faut faire pour que laravel ne leve pas une exception c'est de creer les tables sans foreign_key et creer en fin un/des fichiers 
+            qui modifier la table à ajouter les contraintes 
+             
             $table->foreign('groupe_id')->references('id')->on('groupe')
                     ->onDelete('restrict')
                     ->onUpdate('restrict');
+            
+            */
 
 
             # rememberToken est nécessaire pour laravel quand il s'agit de regler un mot de passe oublié
