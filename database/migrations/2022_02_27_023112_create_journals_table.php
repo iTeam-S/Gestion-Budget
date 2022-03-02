@@ -16,10 +16,7 @@ class CreateJournalsTable extends Migration
         Schema::create('journal', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('ecriture_id');
-            $table->foreign('ecriture_id')->references('id')->on('ecriture')
-                    ->onDelete('restrict')
-                    ->onUpdate('restrict');
+            $table->unsignedBigInteger('ecriture_id'); # foreign_key de l'id du table ecriture
 
             # 3 chiffres entier et 0 chiffres apres virgule
             $table->double('row', 3, 0);

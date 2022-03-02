@@ -17,10 +17,7 @@ class CreateGroupesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('role');
-            $table->unsignedBigInteger('permission_id');
-            $table->foreign('permission_id')->references('id')->on('permission')
-                    ->onDelete('restrict')
-                    ->onUpdate('restrict');
+            $table->unsignedBigInteger('permission_id'); # foreign_key de l'id du table permission
         });
     }
 
