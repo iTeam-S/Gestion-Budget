@@ -17,10 +17,8 @@ class CreatePermissionsTable extends Migration
             $table->id();
 
             # A partir d'ici les attributs sont de types selection | enum en mysql
-            # Enum est un type de donnée propre à mysql qui permet de definir des valeurs prédefinie et de
-            # ne pas pouvoir contenir que l'une de ses valeurs
-            # les valeurs prédefinies ici sont fictifs
-            # J'aurai pensé à un type boolean
+            # Enum est un type de donnée propre à mysql qui permet de definir des valeurs prédefinie
+            # faire à ce que l'attribut de type Enum ne vas pouvoir contenir que l'une de ses valeurs
             $table->enum('compte_p', ['none', 'read', 'write','readAndWrite']);
             $table->enum('ecriture_p', ['none', 'read', 'write','readAndWrite']);
             $table->enum('journal_p', ['none', 'read', 'write','readAndWrite']);

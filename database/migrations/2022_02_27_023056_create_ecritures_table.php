@@ -46,6 +46,6 @@ class CreateEcrituresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ecritures');
+        Schema::dropIfExists('ecriture');
     }
 }
