@@ -12,4 +12,16 @@ use Illuminate\Database\Eloquent\Model;
 class Ecriture extends Model
 {
     use HasFactory;
+
+    public function users(){
+        return $this->belongsTo('App\User');
+    }
+
+    public function comptes(){
+        return $this->belongsTo('App\Compte');
+    }
+
+    public function journal(){
+        return $this->hasOne('App\Journal');
+    }
 }

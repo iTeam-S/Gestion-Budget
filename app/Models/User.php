@@ -40,4 +40,13 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    # contraintes
+    public function groupe(){
+        return $this->hasOne('App\Groupe');
+    }
+
+    public function ecritures(){
+        return $this->hasMany('App\Ecriture');
+    }
 }

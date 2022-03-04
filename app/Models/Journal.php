@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Journal extends Model
 {
     use HasFactory;
+
+    public function ecritures(){
+        return $this->belongsTo('App\Ecriture');
+    }
 }

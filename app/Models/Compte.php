@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Compte extends Model
 {
     use HasFactory;
+
+    public function ecritures(){
+        return $this->hasMany('App\Ecriture');
+    }
 }
