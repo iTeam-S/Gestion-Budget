@@ -45,6 +45,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/rtl', Rtl::class)->name('rtl');
     Route::get('/laravel-user-profile', UserProfile::class)->name('user-profile');
     Route::get('/laravel-user-management', UserManagement::class)->name('user-management');
+    Route::group(['prefix' => 'admin'], function () {
+        Voyager::routes();
+    });
 });
 
 

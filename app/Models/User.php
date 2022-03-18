@@ -10,12 +10,7 @@ use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Notifications\Notifiable;
 
 
-<<<<<<< HEAD
 class User extends \TCG\Voyager\Models\User
-=======
-// ??
-class User extends Authenticatable
->>>>>>> 3a55f8115f5dcc0ddd770112e4534a0778efeaf9
 {
 
     // ??
