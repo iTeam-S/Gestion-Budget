@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Permission extends Model
+class Utilisateur extends Model
 {
     use HasFactory;
-
-    public function groupes(){
-        return $this->belongsTo('App\Groupe');
-    }
 }

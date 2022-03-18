@@ -10,33 +10,27 @@ use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Notifications\Notifiable;
 
 
+<<<<<<< HEAD
 class User extends \TCG\Voyager\Models\User
+=======
+// ??
+class User extends Authenticatable
+>>>>>>> 3a55f8115f5dcc0ddd770112e4534a0778efeaf9
 {
+
+    // ??
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-
+    // un variable $pecial ?
     protected $guarded = [];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    // un variable special ?
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+    // un variable special ?
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

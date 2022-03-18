@@ -10,7 +10,7 @@ Gestion de Budget et Finance de la communauté
 
 2. Copier '.env.example' dans  '.env'
 
-3. Lancer ces commandes:
+3. Lancer ces commandes:<br/>
          php artisan key:generate<br/>
          php artisan migrate --seed<br/>
          php artisan storage:link
