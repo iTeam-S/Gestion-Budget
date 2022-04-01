@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
-use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,10 +15,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create([
-            'name' => 'admin',
-            'email' => 'admin@softui.com',
-            'password' => Hash::make('secret')
+        DB::statement('delete from users');
+        DB::statement('delete from `'.env("DB_DATABASE").'`.groups;');
+        DB::statement('delete from permissions;');
+        DB::statement('delete from accounts;');
+        DB::statement('delete from journals');
+
+
+
+
+        $this->call([
+            PermissionSeeder::class,
+            GroupSeeder::class,
+            UserSeeder::class,
+            AccountSeeder::class,
+            JournalSeeder::class,
+
         ]);
     }
 }

@@ -1,20 +1,35 @@
-# i-Coins
-Gestion de Budget et Finance de la communauté
+# Installation
 
-## Installation
-1. Lancer dans le terminal  'composer install'
+etape 1
+> composer update
 
-   Si il y a l'exception : '[RuntimeException] vendor does not exist', lancer ces commandes:<br/>
-   sudo cd ../ && chown -R {user} i-Coins/<br/>
-   N.B: la commande 'whoami' return {user} au cas où
+etape 2
+> - copier le fichier ".env.example" dans une autre fichier
+> - renommer la copie en ".env"
+> - faire la configuration de la base des données dans le fichier .env
 
-2. Copier '.env.example' dans  '.env'
-
-3. Lancer ces commandes:<br/>
-         php artisan key:generate<br/>
-         php artisan migrate --seed<br/>
-         php artisan storage:link
-         
+etape 3
+> - php artisan key:generate
+> - php migrate
+> - php artisan migrate --seed
+> - php artisan storage:link
 
 ## Lancement
-php artisan serve
+
+> php artisan serve
+
+### Recommendation
+
+> - Faire des enregistrements(insertion de données) dans la table writings(1 ou 2 ligne suffit)<br>
+> - Afin d'exploiter les résultats
+
+#### Authentification
+
+nom d'utilisateur
+
+> admin@iteams.mg<br>
+> lead@iteams.mg<br>
+> utilisateur@iteams.mg<br>
+
+mot de passe(la même pour tous les comptes)
+> secret

@@ -1,0 +1,27 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import '~jquery-ui/themes/base/all.css';
+
+$text-sm: 13px;
+$text-lg: 18px;
+$eye-size: 15px;
+.text-sm{
+    font-size: $text-sm;
+}
+
+.text-lg{
+    font-size: $text-lg;
+}
+
+.voir-plus{
+    width: $eye-size;
+    height: $eye-size;
+}
+

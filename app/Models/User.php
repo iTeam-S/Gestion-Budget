@@ -2,40 +2,50 @@
 
 namespace App\Models;
 
+use App\Models\Group;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-use Illuminate\Contracts\Auth\CanResetPassword;
-use Illuminate\Notifications\Notifiable;
-
-
-class User extends \TCG\Voyager\Models\User
+class User extends Authenticatable
 {
+    use HasApiTokens, HasFactory, Notifiable;
 
-    // ??
-    use HasFactory, Notifiable;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'group_id'
+    ];
 
-    // un variable $pecial ?
-    protected $guarded = [];
-
-    // un variable special ?
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    // un variable special ?
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    # contraintes
-    public function groupe(){
-        return $this->hasOne('App\Groupe');
-    }
+    public function group(){
 
-    public function ecritures(){
-        return $this->hasMany('App\Ecriture');
+        return $this->belongsTo(Group::class);
     }
 }
