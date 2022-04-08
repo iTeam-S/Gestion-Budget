@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Writing extends Model
 {
-    use HasFactory;
+    use HasFactory, softDeletes;
 
     public function journal(){
 
