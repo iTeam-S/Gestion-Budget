@@ -10,7 +10,7 @@ etape 2
 
 etape 3
 > - php artisan key:generate
-> - php migrate
+> - php artisan migrate
 > - php artisan migrate --seed
 > - php artisan storage:link
 
