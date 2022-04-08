@@ -3,10 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>iTeam-$ | gestion budget</title>
+        @yield('title')
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
     </head>
+
     <body>
         <div class="container">
             <a href="{{ url('/home') }}">Login</a>

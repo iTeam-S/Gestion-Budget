@@ -17,7 +17,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                @if($entrees->count() > 0)
+                                @if($entrees != null && $entrees->count() > 0)
                                     <table class="table">
                                         <thead class="thead-dark">
                                             <tr>
@@ -38,7 +38,7 @@
                                                 </th>
                                             </tr>
                                         </thead>
-                                    
+
                                         <tbody>
                                             @foreach($entrees as $entry)
                                                 <tr>
@@ -46,7 +46,7 @@
                                                     <td>{{ $entry->motif }}</td>
                                                     <td>{{ $account->name }}</td>
                                                     <td>{{ $account->code }}</td>
-                                                
+
                                                     <td>
                                                         <span>
                                                             @php echo $bool = isset($entry->attachment) ? 'oui': 'non' @endphp
@@ -61,7 +61,7 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                    
+
                                         </tbody>
                                     </table>
                                 @else
@@ -69,9 +69,9 @@
                                 @endif
                                 {{--
                                 afficher seulement au moment du clic
-                                
+
                                 @forelse ($entrees as $entry)
-                                    
+
                                     @livewire('writing', [
                                         'amount' => $entry->amount,
                                         'motif' => $entry->motif,
@@ -80,7 +80,7 @@
                                     ])
                                 @empty
                                     <p>vide</p>
-                                @endforelse 
+                                @endforelse
                                 --}}
                             </div>
                         </div>

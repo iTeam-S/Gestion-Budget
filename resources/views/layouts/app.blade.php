@@ -14,16 +14,20 @@
 <body>
     <div id="app">
         @include('includes.navbar')
-        <main class="py-4">
+        <main class="p-4">
             @yield('content')
 
             {{-- Si un composant livewire se rend dans cette fichier --}}
-            @php if(isset($slot)): @endphp
-                {{ $slot }}
+            @php
+                if(isset($slot)):
+                    echo $slot;
+                endif;
 
-            @php endif; @endphp
+            @endphp
+
         </main>
     </div>
+
     @livewireScripts
 </body>
 </html>

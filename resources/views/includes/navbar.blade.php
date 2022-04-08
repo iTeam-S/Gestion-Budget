@@ -13,52 +13,41 @@
 
             {{-- partie navbar droite --}}
             <ul class="navbar-nav ms-auto">
-                
-                @guest
-                {{--Si l'authentification n'est pas encore verifié --}}
 
-                    @if (Route::has('login'))
-                    {{-- si le route a une route nommé login --}}
+                @auth
+                    <li class="nav-item"><a href="#" class="nav-link">Journals</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Statistique</a></li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">connexion</a>
-                        </li>
+                    {{-- le système de notification est propre aux admin et lead --}}
+                    @if(Auth::user()->group->name != "utilisateur")
+
+                        <li class="nav-item"><a href="#" class="nav-link">Notifications</a></li>
                     @endif
 
-                    {{--
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">s'enregistrer</a>
-                        </li>
-                    @endif
-                    --}}
-
-                @else
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Journals</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Statistique</a>
-                    </li>
-
+                    {{-- dropdown responsive --}}
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                        role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" v-pre>
+
                             {{ Auth::user()->name }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+
                                 {{ __('Logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
+                                @csrf {{-- obligatoire --}}
                             </form>
+
                         </div>
                     </li>
-                @endguest
+                    {{-- fin dropdown responsive --}}
+                @endauth
             </ul>
         </div>
     </div>

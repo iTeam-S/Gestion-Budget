@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Account;
 use Livewire\Component;
 use App\Http\Livewire\Writing;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 class Journal extends Component
@@ -13,13 +14,23 @@ class Journal extends Component
     protected $outgoings;
     protected $accounts;
 
+    # la fonction mount est le constructeur de classe
     public function mount(Int $id){
-        if(!empty(\App\Models\Journal::find($id))):
-            // if the writing type is 1, select all entree writings
-            $this->entrees = \App\Models\Journal::find($id)->writings()->where('type', '=' , 1);
+        /* Commentaires:
+        (1) les écritures ayant comme valeur 1 l'attribut type sont des écritures entrant
+        (2) les écritures ayant comme valeur 0 l'attribut type sont des écritures sortant
 
-            // else select all outgoings
-            $this->outgoings = \App\Models\Journal::find($id)->writings()->where('type', '=' , 0);
+        */
+
+
+        if(!empty(\App\Models\Journal::find($id))):
+
+            # (1)
+            $this->entrees = \App\Models\Journal::find($id)->writings()->where('type', '=' , 1)->get();
+
+
+            # (2)
+            $this->outgoings = \App\Models\Journal::find($id)->writings()->where('type', '=' , 0)->get();
             $this->accounts = Account::find($id);
         else:
 
@@ -30,12 +41,18 @@ class Journal extends Component
 
     public function addEntry(){
 
+        /*
         if(Route::has('entry.create')):
-            
+
             redirect()->route('entry.create');
         else:
             abort(403);
-        endif;
+        endif;*/
+
+        if(Auth::user()->group->name == "admin"){
+
+            return Auth::user()->notify(new validateWriting(Auth::user()));
+        }
     }
 
     public function showEntry($id){
@@ -53,10 +70,10 @@ class Journal extends Component
 
     public function render()
     {
-    
+
         return view('livewire.journal', [
-            'entrees' => $this->entrees->get(),
-            'outgoings' => $this->outgoings->get(),
+            'entrees' => $this->entrees,
+            'outgoings' => $this->outgoings,
             'account' => $this->accounts,
 
         ]);
