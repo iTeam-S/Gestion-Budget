@@ -8,27 +8,25 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Route;
 
 
-class Statistic extends Component
+class JournalsList extends Component
 {
-   
 
-    public function journalIndex($id){
 
-        if(Route::has('journals.index')):
+    public function goToJournal($id){
 
-            return redirect()->route('journals.index', [
-                'id' => $id,
-            ]);
+        if(Route::has('journal.index')):
+
+            return redirect()->route('journal.index', compact('id'));
         else:
 
-            abort(403, 'Unauthorized action.');
+            abort(403, 'Action refusée.');
         endif;
     }
 
     public function showEntry($entry, $account){
 
         dd($entry);
-        
+
         if(Route::has('writing.show')):
             return redirect()->to('writing.show', [
                 'entry' => $entry,
@@ -43,9 +41,8 @@ class Statistic extends Component
     public function render()
     {
 
-        return view('livewire.statistic', [
+        return view('livewire.journals-list', [
             'journals' => Journal::all(),
-            'capital' => Writing::sum('amount'),
         ]);
     }
 }
