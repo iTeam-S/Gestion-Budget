@@ -25,3 +25,10 @@ $eye-size: 15px;
     height: $eye-size;
 }
 
+
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
+}

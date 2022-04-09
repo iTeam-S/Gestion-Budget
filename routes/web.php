@@ -15,5 +15,6 @@ Route::get('/', function(){return view('welcome');});
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); // (1)
 Route::get('/journals/{id}', App\Http\Livewire\Journal::class)->name('journal.index'); // (2)
+Route::get('/writing/create/', App\Http\Livewire\CreateWriting::class)->name('writing.create');
 Route::get('/writing/{id}', App\Http\Livewire\Writing::class)->name('writing.show'); // (3)
-Route::get('/writing/create', App\Http\Livewire\CreateWriting::class)->name('entry.create');
+Route::get('/notifications', App\Http\Livewire\Notifications::class)->name('notifications');

@@ -2,23 +2,23 @@
 
 namespace App\Notifications;
 
+use App\Models\Writing;
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
 class indexedWriting extends Notification
 {
     use Queueable;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected $writing;
+
+
+    public function __construct(Writing $writing)
     {
-        //
+
+        $this->writing = $writing;
     }
 
     /**
@@ -29,7 +29,7 @@ class indexedWriting extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database']; // broadcasténa rehefa aveo
     }
 
     /**
@@ -55,7 +55,7 @@ class indexedWriting extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'writing' => $this->writing,
         ];
     }
 }
