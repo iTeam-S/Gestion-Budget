@@ -41,18 +41,19 @@ class Journal extends Component
 
     public function addEntry(){
 
-        /*
+        
         if(Route::has('entry.create')):
 
             redirect()->route('entry.create');
         else:
             abort(403);
-        endif;*/
+        endif;
 
+        /*
         if(Auth::user()->group->name == "admin"){
 
             return Auth::user()->notify(new validateWriting(Auth::user()));
-        }
+        }*/
     }
 
     public function showEntry($id){

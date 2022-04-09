@@ -8,6 +8,7 @@
     </head>
 
     <body>
+        </div>
         <div class="container">
             <a href="{{ url('/home') }}">Login</a>
         </div>

@@ -6,7 +6,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="row justify-content-between">
-                                    <div class="col-3 d-flex align-items-center">Entrées</div>
+                                    <div class="col-3 d-flex align-items-center"> <h3>Entrées</h3> </div>
                                     <div class="col-3 d-flex justify-content-end">
                                         <button type="button" class="btn btn-success"
                                         wire:click="addEntry">
@@ -21,8 +21,11 @@
                                     <table class="table">
                                         <thead class="thead-dark">
                                             <tr>
-                                                <th scope="col">
-                                                    <span class="text-center">Ecriture</span>
+                                            <th scope="col">
+                                                    <span class="text-center">Date</span>
+                                                </th>
+                                            <th scope="col">
+                                                    <span class="text-center">Montant</span>
                                                 </th>
                                                 <th scope="col">
                                                     <span class="text-center">Motif</span>
@@ -42,6 +45,7 @@
                                         <tbody>
                                             @foreach($entrees as $entry)
                                                 <tr>
+                                                    <td></td>
                                                     <td>{{ number_format($entry->amount, 2, ',', ' ')  }}</td>
                                                     <td>{{ $entry->motif }}</td>
                                                     <td>{{ $account->name }}</td>
@@ -94,7 +98,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="row justify-content-between">
-                                    <div class="col-3 d-flex align-items-center">Sorties</div>
+                                    <div class="col-3 d-flex align-items-center"> <h3>Sorties</h3> </div>
                                     <div class="col-3 d-flex justify-content-end">
                                         <button type="button" class="btn btn-success">Ajouter</button>
                                     </div>

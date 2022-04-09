@@ -13,6 +13,8 @@ class Writing extends Component
 
     public function mount($id){
         $this->writing = \App\Models\Writing::find($id);
+
+        dd($this->writing);
         $this->account = Account::find($this->writing->account_id);
 
     }
