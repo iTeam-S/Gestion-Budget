@@ -7,13 +7,18 @@ use Illuminate\Support\Facades\Auth;
 
 class Notifications extends Component
 {
+    protected $unreads;
+
+    // constructeur
+    public function mount(){
+
+        $this->unreads = Auth::user()->unreadNotifications()->get();
+    }
     public function render()
     {
-        $unread = Auth::user()->notifications();
 
-        dd($unread);
-
-
-        return view('livewire.notifications', compact('unread'));
+        return view('livewire.notifications', [
+            'unreads' => $this->unreads
+        ]);
     }
 }
