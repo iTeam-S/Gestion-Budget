@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use App\Models\Group;
 use App\Models\Account;
 use App\Models\Journal;
 use App\Models\Writing;
@@ -52,18 +53,15 @@ class CreateWriting extends Component
 
         elseif(Auth::user()->group->name == "lead"):
 
-            // Notifier tous les utilisateurs qu'un lead veut qu'on valide une écriture
-            # Auth::user()->group->notify(new indexedWriting($))
-            $admins = User::where('group_id', '=', Auth::user()->group->id)->get();
+            // Notifier tous les admins qu'un lead veut qu'on valide une écriture
+            // il faut trouvé un moyen de générer automatiquement l'id du groupe admin
+            $admins = Auth::user()->where("group_id", "=", 57)->get();
+
 
             foreach($admins as $admin){
 
-                $admin->notify(new indexedWriting($writing));
+                $admin->notify(new indexedWriting(User::find(Auth::user()->id), $writing));
             }
-
-            dd($admins);
-
-
         endif;
     }
 

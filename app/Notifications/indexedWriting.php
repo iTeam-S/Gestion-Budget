@@ -13,11 +13,13 @@ class indexedWriting extends Notification
     use Queueable;
 
     protected $writing;
+    protected $lead;
 
 
-    public function __construct(Writing $writing)
+    public function __construct( $lead, Writing $writing)
     {
 
+        $this->lead = $lead;
         $this->writing = $writing;
     }
 
@@ -55,6 +57,7 @@ class indexedWriting extends Notification
     public function toArray($notifiable)
     {
         return [
+            'lead_id' => $this->lead->id,
             'writing' => $this->writing,
         ];
     }
