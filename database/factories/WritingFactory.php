@@ -16,15 +16,13 @@ class WritingFactory extends Factory
     public function definition()
     {
         return [
-            'amount' => $this->faker->randomFloat(2 , 1000.00, 900000.00),
-            'attachment' => 'NULL',
+            'amount' => $this->faker->randomFloat(2, 1.00, 999999.00),
             'motif' => $this->faker->paragraph(),
-            'account_id' => 1,
-            'journal_id' => 1,
+            'attachment' => 'NULL',
+            'account_id' => 3,
+            'journal_id' => $this->faker->numberBetween(9, 12),
             'type' => $this->faker->numberBetween(0, 1),
-            # 0 écriture sortant, 1 écriture entrant
-            'state' => 1,
-
+            'state' => $this->faker->numberBetween(0, 1),
         ];
     }
 }

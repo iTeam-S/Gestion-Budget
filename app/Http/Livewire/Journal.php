@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Http\Livewire\Writing;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Notifications\validateWriting;
 
 class Journal extends Component
 {
@@ -31,7 +32,6 @@ class Journal extends Component
 
             # (2)
             $this->outgoings = \App\Models\Journal::find($id)->writings()->where('type', '=' , 0)->get();
-            $this->accounts = Account::find($id);
         else:
 
             abort(403, 'Unauthorized action.');
@@ -41,19 +41,13 @@ class Journal extends Component
 
     public function addEntry(){
 
-        
-        if(Route::has('entry.create')):
 
-            redirect()->route('entry.create');
+        if(Route::has('writing.create')):
+
+            redirect()->route('writing.create');
         else:
             abort(403);
         endif;
-
-        /*
-        if(Auth::user()->group->name == "admin"){
-
-            return Auth::user()->notify(new validateWriting(Auth::user()));
-        }*/
     }
 
     public function showEntry($id){
@@ -75,7 +69,6 @@ class Journal extends Component
         return view('livewire.journal', [
             'entrees' => $this->entrees,
             'outgoings' => $this->outgoings,
-            'account' => $this->accounts,
 
         ]);
     }

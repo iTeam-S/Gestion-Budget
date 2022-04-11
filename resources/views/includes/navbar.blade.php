@@ -15,13 +15,12 @@
             <ul class="navbar-nav ms-auto">
 
                 @auth
-                    <li class="nav-item"><a href="#" class="nav-link">Journals</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Statistique</a></li>
 
                     {{-- le système de notification est propre aux admin et lead --}}
                     @if(Auth::user()->group->name != "utilisateur")
 
-                        <li class="nav-item"><a href="#" class="nav-link">Notifications</a></li>
+                        <li class="nav-item"><a href="{{ route('notifications') }}" class="nav-link">Notifications</a></li>
                     @endif
 
                     {{-- dropdown responsive --}}

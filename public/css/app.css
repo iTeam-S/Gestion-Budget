@@ -12841,3 +12841,10 @@ textarea.form-control-lg {
   width: 15px;
   height: 15px;
 }
+
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
+}
