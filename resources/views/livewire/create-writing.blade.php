@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header"> <h3>Créer un écriture</h3> </div>
                     <div class="card-body">
-                        <form action="#" wire:submit.prevent='submit'>
+                        <form action="#" wire:submit.prevent='submit' enctype="multipart/form-data">
                             @csrf
                             <!-- Champ montant -->
                             <div class="border">
@@ -49,6 +49,10 @@
 
                             <!-- fin Champ journals -->
 
+                            <div class="drop-zone">
+                                <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                                 <input type="file" name="myFile" class="drop-zone__input">
+                             </div>
 
                             <!-- submit button -->
                             <div class="d-flex justify-content-center pt-3">
@@ -59,6 +63,7 @@
 
                             <!-- submit button -->
                         </form>
+
                     </div>
                 </div>
             </div>

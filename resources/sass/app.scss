@@ -9,9 +9,14 @@
 
 @import '~jquery-ui/themes/base/all.css';
 
+
+/* variables */
 $text-sm: 13px;
 $text-lg: 18px;
 $eye-size: 15px;
+$input-image-width: 200px;
+$input-image-height: 200px;
+
 .text-sm{
     font-size: $text-sm;
 }
@@ -25,10 +30,44 @@ $eye-size: 15px;
     height: $eye-size;
 }
 
+.drop-zone{
+    max-width: $input-image-width;
+    height: $input-image-height;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ccc;
+    font-weight: 500;
+    font-size: 20px;
+    cursor: pointer;
+    border: 4px dashed #009578;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
 
-.box__dragndrop,
-.box__uploading,
-.box__success,
-.box__error {
-  display: none;
+.drop-zone--over {
+    border-style: solid;
+}
+
+.drop-zone__input {
+    display: none;
+}
+
+.drop-zone__thumb{
+    background-color: gray;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.drop-zone__thumb::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 0;
+    color: #fff;
+    background: rgba($color: #000000, $alpha: 0.75);
 }
