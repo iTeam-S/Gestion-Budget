@@ -1,0 +1,52 @@
+.journal{
+    background: $color-secondary;
+
+    &__title{
+        border-radius: 5px;
+    }
+
+    &__button{
+        font-size: 13px;
+    }
+
+    &__writings{
+        background-color: white;
+        height: 338px;
+        width: 100%;
+
+        #form{
+
+            input, textarea {
+                width: 100%;
+                margin-bottom: 10px;
+                border: none;
+                outline: none;
+                padding: 10px;
+                font-size: 13px;
+                text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+                border: 1px solid rgba(0,0,0,0.3);
+                border-radius: 4px;
+                box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+                -webkit-transition: box-shadow .5s ease;
+                -moz-transition: box-shadow .5s ease;
+                -o-transition: box-shadow .5s ease;
+                -ms-transition: box-shadow .5s ease;
+                transition: box-shadow .5s ease;
+            }
+
+            input:focus, textarea:focus{ box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
+
+        }
+    }
+
+    &__writing{
+        border: 1px solid $color-secondary;
+        border-radius: 10px;
+    }
+
+
+
+    &__edition{
+        border-left: 1px solid $color-secondary;
+    }
+}
