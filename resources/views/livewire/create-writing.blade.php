@@ -1,66 +1,80 @@
 <div>
     <div class="container">
-        <div class="row justify-content-between">
+        <div class="row justify-content-around">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header"> <h3>Créer un écriture</h3> </div>
+                    <div class="card-header">
+                        <p>NOUVELLE ECRITURE</p>
+                    </div>
                     <div class="card-body">
                         <form action="#" wire:submit.prevent='submit' enctype="multipart/form-data">
                             @csrf
-                            <!-- Champ montant -->
-                            <div class="border">
-                                <label for="amount">Montant</label>
-                                <input type="text" wire:model="amount" id="amount">
-                            </div>
-                            <div class="row py-2">
-                                <div class="col-6">
-                                    <label for="amount"><h5><strong>Date</strong></h5></label>
-                                    <input class="w-100" type="date" name="date" id="date">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="w-100">
+                                    <p><label for="amount">MONTANT</label></p>
+                                    <input type="text" class="w-100" id="amount" required
+                                    wire:model="amount">
                                 </div>
-
-                                <div class="col-6">
-                                    <label for="account"><h5><strong>Justificatif</strong></h5></label>
-                                    <input class="w-100" type="file" name="justification" id="fustification" multiple>
+                                <div>
+                                    <p><label for="motif">MOTIF</label></p>
+                                    <textarea class="w-100" id="motif" cols="30" rows="5" required
+                                    wire:model="motif"></textarea>
                                 </div>
                             </div>
 
-                            <!-- fin Champ montant -->
-
-                            <!-- Champ motif -->
-                            <div>
-                                <label for="motif">Motif</label><br/>
-                                <textarea class="w-100" wire:model="motif" id="motif" cols="30" rows="5"></textarea>
+                            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                                <div class="drop-zone">
+                                    <span class="p-1 drop-zone__prompt">Drop file here or click to upload</span>
+                                     <input type="file" name="myFile" class="drop-zone__input" required
+                                     wire:model="attachment">
+                                </div>
                             </div>
+                        </div>
 
-                            <!-- fin Champ motif -->
+                             <div class="row">
+                                 <div class="col-lg-4">
+                                    <p>COMPTE</p>
+                                    <!-- account -->
+                                    <select wire:model="account" required>
+                                        <option value="">Choisir un compte</option>
+                                        @foreach ($accounts as $account)
+                                            <option value="{{ $account->name }}" required>{{ $account->name }}</option>
+
+                                        @endforeach
+                                    </select>
 
 
-                            <!-- Champ selection compte -->
-                            <div class="border">
-                                <label for="account">Compte</label>
-                                <input type="text" wire:model="account" id="account">
-                            </div>
+                                 </div>
 
-                            <!-- fin Champ selection compte -->
+                                 <div class="col-lg-4">
+                                    <p>JOURNAL</p>
+                                    <select wire:model='journal' required>
+                                        <option value="">Choisir un journal</option>
+                                        @foreach ($journals as $journal)
+                                                <option value={{ $journal->id }} required>{{ $journal->name }}</option>
 
-                            <!-- Champ journals -->
-                            {{-- passé automatiquement donc à hider --}}
-                            <input type="hidden" wire:model='journal' value="{{ 1 }}" />
+                                        @endforeach
+                                    </select>
 
-                            <!-- fin Champ journals -->
+                                 </div>
 
-                            <div class="drop-zone">
-                                <span class="drop-zone__prompt">Drop file here or click to upload</span>
-                                 <input type="file" name="myFile" class="drop-zone__input">
+                                 <div class="col-lg-4">
+                                    <p>TYPE D' ECRITURE</p>
+                                    <select wire:model="type" required>
+                                        <option value="">Choisir un type</option>
+                                            <option value="1" >entrant</option>
+                                            <option value="0">sortant</option>
+
+                                    </select>
+
+                                 </div>
                              </div>
 
                             <!-- submit button -->
-                            <div class="d-flex justify-content-center pt-3">
-                                <button type="submit" class="btn btn-success">
-                                    Ajouter
-                                </button>
+                            <div class="d-flex justify-content-center m-5">
+                                <button type="submit" class="btn btn-success">Ajouter</button>
                             </div>
-
                             <!-- submit button -->
                         </form>
 

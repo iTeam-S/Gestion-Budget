@@ -2,6 +2,8 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JournalController;
 
 /* Commentaires:
 
@@ -11,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 
 */
 
-Route::get('/', function(){return view('welcome');});
+Route::get('/', function(){return view('auth.login');})->name("login");
+
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); // (1)
-Route::get('/journals/{id}', App\Http\Livewire\Journal::class)->name('journal.index'); // (2)
+
+Route::get('/home', [HomeController::class, 'index'])->name('home'); // (1)
+Route::get('/journal/{id}/', [JournalController::class, "index"])->name('journal.index'); // (2)
+Route::get('/journal/detail/{id}', [JournalController::class, "detailEcriture"])->name('journal.index.detail'); // (2)
 Route::get('/writing/create/', App\Http\Livewire\CreateWriting::class)->name('writing.create');
 Route::get('/writing/{id}', App\Http\Livewire\Writing::class)->name('writing.show'); // (3)
 Route::get('/notifications', App\Http\Livewire\Notifications::class)->name('notifications');

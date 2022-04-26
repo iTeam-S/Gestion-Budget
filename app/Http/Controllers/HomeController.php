@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Journal;
+use App\Models\Writing;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,16 +15,24 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
+     *
      */
-    public function index()
-    {
-        return view('home');
+    public function index(){
+
+        $capital = Writing::sum('amount');
+        $journals= Journal::all();
+
+        return view('home', [
+            "capital"=> $capital,
+            "journals"=> $journals,
+        ]);
     }
+
 }

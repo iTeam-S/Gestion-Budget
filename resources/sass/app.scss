@@ -7,6 +7,18 @@
 @import '~jquery-ui/themes/base/all.css';
 
 @import 'utils/variable';
+@import 'utils/mixin';
+@import 'pages/login';
+@import 'layouts/header';
+@import 'components/search-input';
+@import 'components/login-form';
+@import 'components/writing';
+@import "base/base";
+@import "components/lightbox";
+@import "pages/journal";
+@import "components/drapNdrop";
+@import "components/search";
+@import "layouts/navbar";
 
 
 /* variables */

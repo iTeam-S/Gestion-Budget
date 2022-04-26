@@ -10,41 +10,57 @@ use App\Models\Writing;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\indexedWriting;
+use Livewire\WithFileUploads;
 
 class CreateWriting extends Component
 {
+    use WithFileUploads;
+
 
     protected $fillable = [
         'amount',
         'motif',
         'account',
         'journal',
+        'type',
         'attachment',
     ];
 
     public $amount;
     public $motif;
+    public $attachment;
     public $account;
     public $journal;
-    public $attachment;
+    public $type;
 
 
     public function submit(){
+
+        $this->validate([
+            'attachment' => 'image',
+        ]);
+
 
         $writing = new Writing;
 
         # les attributs de l'écriture
         $writing->amount = $this->amount;
         $writing->motif = $this->motif;
-        $writing->account_id = $this->account;
-        $writing->type = 1;
-        $writing->state = 0;
-        $writing->journal_id = Journal::all()->first();
-        $writing->journal_id = $writing->journal_id->id;
-        $writing->attachment = "NULL";
+        $writing->account = $this->account;
+        $writing->type = $this->type;
+
+        if(Auth::user()->group->name == "lead"):
+            $writing->state = 0;
+        elseif (Auth::user()->group->name == "administrateur"):
+            $writing->state = 1;
+        endif;
+
+        $writing->journal = $this->journal;
+        $writing->attachment = $this->attachment;
         # ---------------------------------------------
         # ---------------------------------------------
 
+        dd($writing->attachment);
 
         if(Auth::user()->group->name == "administrateur"):
 
@@ -95,7 +111,12 @@ class CreateWriting extends Component
 
     public function render()
     {
+        $accounts = Account::all();
+        $journals = Journal::all();
 
-        return view('livewire.create-writing');
+        return view('livewire.create-writing', [
+            'accounts' => $accounts,
+            'journals' => $journals,
+        ]);
     }
 }
