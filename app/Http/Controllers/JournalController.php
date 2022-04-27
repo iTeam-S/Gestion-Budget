@@ -42,4 +42,10 @@ class JournalController extends Controller
             ]): abort(404, "Not found.");
     }
 
+    public function getAll(){
+
+        $journals= Journal::all();
+        return view("journals", compact("journals"));
+    }
+
 }

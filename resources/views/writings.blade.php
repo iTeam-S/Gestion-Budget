@@ -1,12 +1,3 @@
-
-@extends("layouts.app")
-
-
-@section("content")
-
-
-
-
 <div class="row justify-content-around">
     <div class="journal col-lg-5 border  h-100 m-3">
         <div class="d-flex justify-content-between align-items-center m-2">
@@ -91,27 +82,3 @@
         </div>
     </div>
 </div>
-
-@endsection
-
-@section("script")
-<script>
-
-    $(document).ready(function(){
-
-
-        $(document).on("click", "#detail-8", function(){
-
-            // avoir la page details
-            $.get("http://localhost:8000/journal/detail/8", function(data){
-
-                $(".writings.writings--r").html(data);
-                window.history.pushState({}, '' , "/journal/detail/8")
-
-            })
-        })
-    });
-
-</script>
-
-@endsection

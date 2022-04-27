@@ -7,4 +7,3 @@ import { drop } from "lodash";
 
 window.$ = window.jQuery = $;
 
-

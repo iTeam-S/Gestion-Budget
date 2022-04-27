@@ -93,58 +93,9 @@
 </div>
 
 --}}
-
-
-<div id="menu-container">
-    <div id="menu-wrapper">
-       <div id="hamburger-menu"><span></span><span></span><span></span></div>
-       <!-- hamburger-menu -->
-    </div>
-
-    <div>
-
-</div>
-    {{--
-    <!-- menu-wrapper
-    <ul class="menu-list accordion">
-       <li id="nav1" class="toggle accordion-toggle">
-          <span class="icon-plus"></span>
-          <a class="menu-link" href="#">Menu1</a>
-       </li>
-       <!-- accordion-toggle -->
-       <ul class="menu-submenu accordion-content">
-          <li><a class="head" href="#">Submenu1</a></li>
-          <li><a class="head" href="#">Submenu2</a></li>
-          <li><a class="head" href="#">Submenu3</a></li>
-       </ul>
-       <!-- menu-submenu accordon-content-->
-       <li id="nav2" class="toggle accordion-toggle">
-          <span class="icon-plus"></span>
-          <a class="menu-link" href="#">Menu2</a>
-       </li>
-       <!-- accordion-toggle -->
-       <ul class="menu-submenu accordion-content">
-          <li><a class="head" href="#">Submenu1</a></li>
-          <li><a class="head" href="#">Submenu2</a></li>
-       </ul>
-       <!-- menu-submenu accordon-content-->
-            <li id="nav3" class="toggle accordion-toggle">
-          <span class="icon-plus"></span>
-          <a class="menu-link" href="#">Menu3</a>
-       </li>
-       <!-- accordion-toggle -->
-       <ul class="menu-submenu accordion-content">
-          <li><a class="head" href="#">Submenu1</a></li>
-          <li><a class="head" href="#">Submenu2</a></li>
-          <li><a class="head" href="#">Submenu3</a></li>
-          <li><a class="head" href="#">Submenu4</a></li>
-       </ul>
-       <!-- menu-submenu accordon-content-->
-    </ul> --}}
-    <!-- menu-list accordion-->
- </div>
- <!-- menu-container -->
-
-
-
-
+<nav class="d-none">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+    </svg>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</nav>

@@ -8,6 +8,8 @@
 
 @section('content')
 
+
+
 <p>TABLEAU DE BORD</p>
 
 
@@ -16,21 +18,20 @@
     <p>{{ number_format($capital, 2, ",", " ") }} Ariary</p>
 </div>
 
-
-<div class="border border-dark rounded m-2 p-2">
-    <p>JOURNALS</p>
-    <div>
-        @forelse($journals as $journal)
-            <a class="p-1" id={{ $journal->id }} href="#">
-                {{ $journal->name }}
-            </a>
-        @empty
-
-            <p>Aucun Journal</p>
-        @endforelse
+<div class="m-5 search__container">
+    <div class="search position-relative">
+        <div class="container">
+            <input type="text" placeholder="ecriture">
+            <div class="search"></div>
+        </div>
     </div>
 </div>
 
+<h1>JOURNALS</h1>
+<div id="listeJournals" class="my-5"></div>
+
+<h1>ECRITURE</h1>
+<div id="writing-view" class="my-5"></div>
 @endsection
 
 @section("script")
@@ -44,8 +45,32 @@
         $("#app").html(data)
         window.history.pushState({}, '' , "/journal/9")
         })
-
-
     });
+
+
+    $.get("http://localhost:8000/journals", function(data){
+
+        $("#listeJournals").html(data);
+    })
+
+    $.get("http://localhost:8000/writings", function(data){
+
+        $("#writing-view").html(data);
+    })
+
+
+    $(document).ready(function(){
+        $(document).on("click", "#detail-8", function(){
+
+            // avoir la page details
+            $.get("http://localhost:8000/journal/detail/8", function(data){
+
+                $(".writings.writings--r").html(data);
+                window.history.pushState({}, '' , "/journal/detail/8")
+
+            })
+        })
+    });
+
 </script>
  @endsection

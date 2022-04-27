@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-@import url(https://fonts.googleapis.com/css?family=Inconsolata:700);
 /*!
  * jQuery UI CSS Framework 1.13.1
  * http://jqueryui.com
@@ -13321,10 +13320,9 @@ div[id*=lightbox-] {
   right: 0;
   bottom: 0;
   left: 0;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   background: #dee2e6;
-  border-radius: 50%;
   transition: all 1s;
   z-index: 4;
 }
@@ -13360,7 +13358,6 @@ div[id*=lightbox-] {
   transition: all 0.5s;
 }
 .search__container .search .container input {
-  font-family: "Inconsolata", monospace;
   position: absolute;
   margin: auto;
   top: 0;
@@ -13375,7 +13372,7 @@ div[id*=lightbox-] {
   color: black;
   text-shadow: 0 0 10px #dee2e6;
   padding: 0 80px 0 20px;
-  border-radius: 30px;
+  border-radius: 5px;
   transition: all 1s;
   opacity: 0;
   z-index: 5;
@@ -13426,147 +13423,479 @@ div[id*=lightbox-] {
   font-weight: bolder;
 }
 
-ul {
-  list-style: none;
+@-webkit-keyframes bouge {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
-a {
-  text-decoration: none;
-  color: black;
+@keyframes bouge {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+* {
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
 }
 
-body {
-  font-family: "Dosis", sans-serif;
+.trans {
+  transition: all 0.3s;
 }
 
-#menu-wrapper {
-  overflow: hidden;
-  max-width: 100%;
+.ombre {
+  box-shadow: 0px 10px 94px 0px rgba(0, 0, 0, 0.75);
+}
+
+nav {
+  background-color: #eee;
+  text-align: right;
+}
+
+nav > button {
+  background-color: transparent;
+  border: none;
+  padding: 30px 25px 10px 25px;
+  font-size: 12px;
+  outline: none;
   cursor: pointer;
-  background: black;
 }
 
-#menu-wrapper #hamburger-menu {
-  position: relative;
-  width: 25px;
+nav > button:hover {
+  background-color: rgba(1, 1, 1, 0.05);
+}
+
+button#btn-notification.notif_true > i {
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-name: bouge;
+          animation-name: bouge;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+button#btn-notification > span {
+  background-color: #3988c1;
+  color: white;
+  width: 20px;
   height: 20px;
-  margin: 15px;
+  font-size: 10px;
+  display: table-cell;
+  vertical-align: middle;
+  border-radius: 50%;
+  transform: translateX(15px) translateY(-30px) scale(0);
 }
 
-#menu-wrapper #hamburger-menu span {
-  opacity: 1;
-  left: 0;
-  display: block;
-  width: 100%;
-  height: 2px;
-  border-radius: 10px;
-  color: black;
-  background-color: white;
-  position: absolute;
-  transform: rotate(0deg);
-  transition: 0.4s ease-in-out;
+button#btn-notification.notif_true > span {
+  transform: translateX(15px) translateY(-30px) scale(0.8);
 }
 
-#menu-wrapper #hamburger-menu span:nth-child(1) {
-  top: 0;
+main {
+  height: calc(100vh - 100px);
+  display: table-cell;
+  vertical-align: middle;
+  width: 100vw;
+  text-align: center;
 }
 
-#menu-wrapper #hamburger-menu span:nth-child(2) {
-  top: 9px;
-}
-
-#menu-wrapper #hamburger-menu span:nth-child(3) {
-  top: 18px;
-}
-
-#menu-wrapper #hamburger-menu.open span:nth-child(1) {
-  transform: translateY(9px) rotate(135deg);
-}
-
-#menu-wrapper #hamburger-menu.open span:nth-child(2) {
-  opacity: 0;
-  transform: translateX(-60px);
-}
-
-#menu-wrapper #hamburger-menu.open span:nth-child(3) {
-  transform: translateY(-9px) rotate(-135deg);
-}
-
-#menu-container .menu-list .menu-submenu {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-#menu-container .menu-list {
-  padding-left: 0;
-  display: block;
-  position: absolute;
-  width: 100%;
-  max-width: 450px;
-  background: white;
-  box-shadow: rgba(100, 100, 100, 0.2) 6px 2px 10px;
-  z-index: 999;
-  overflow-y: auto;
-  overflow-x: hidden;
-  left: -100%;
-}
-
-#menu-container .menu-list li.accordion-toggle, #menu-container .menu-list .menu-login {
-  font-size: 16px;
-  padding: 20px;
-  text-transform: uppercase;
-  border-top: 1px solid #dbdcd2;
-}
-
-#menu-container .menu-list li:first-of-type {
-  border-top: 0;
-}
-
-.accordion-toggle, .accordion-content {
+#btn-add-notification {
+  background-color: #cecece;
+  padding: 10px 20px;
+  color: #2b2b2b;
+  border-radius: 20px;
+  border: none;
+  outline: none;
   cursor: pointer;
-  font-size: 16px;
-  position: relative;
-  letter-spacing: 1px;
 }
 
-.accordion-content {
+#btn-add-notification:hover {
+  transform: scale(1.2);
+}
+
+#btn-add-notification:active {
+  transform: scale(0.9);
+}
+
+#notification-container {
+  background-color: #3988c1;
+  width: 400px;
+  top: 0;
+  height: 100vh;
+  overflow: auto;
+}
+
+#notification-container > div {
+  padding: 20px;
+  background-color: rgba(1, 1, 1, 0.2);
+  color: white;
+  margin: 5px;
+  font-size: 12px;
+  position: relative;
+}
+
+#notification-container > div.readed-false {
+  background-color: rgba(1, 1, 1, 0.3);
+}
+
+#notification-container > div.readed-false::after {
+  content: "New";
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 10px;
+  background-color: rgba(1, 1, 1, 0.2);
+}
+
+#globalPage {
+  transform: translateX(0);
+}
+
+body.notif-opened > #globalPage {
+  border: unset;
+}
+
+body.notif-opened #notification-container {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+#close-volet {
+  font-size: 30px;
+  color: white;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+body.notif-opened > div > #close-volet {
+  transform: translateX(0) !important;
+}
+
+#listeJournals {
+  /**
+   * Nestable
+   */
+}
+#listeJournals h1, #listeJournals .h1 {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+}
+#listeJournals menu {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+#listeJournals menu.kanban .viewlist,
+#listeJournals menu.list .viewkanban {
+  display: inline;
+}
+#listeJournals menu.kanban .viewkanban,
+#listeJournals menu.list .viewlist {
   display: none;
 }
-
-.accordion-toggle a:before, .accordion-toggle a:after {
-  content: "";
+#listeJournals .todo--container {
+  max-width: 100%;
+  top: 88px;
+  margin: 0 auto;
+  display: block;
+}
+#listeJournals ol {
+  transition: border-color 2s ease, all 0.1s ease;
+}
+#listeJournals ol.list {
+  padding-top: 2em;
+  padding-left: 15px;
+  max-width: 650px;
+  margin: 0 auto;
+}
+#listeJournals ol.list .text {
+  float: right;
+  width: 60%;
+}
+#listeJournals ol.list h3, #listeJournals ol.list .h3,
+#listeJournals ol.list .actions,
+#listeJournals ol.list label {
+  float: left;
+  width: 30%;
+}
+#listeJournals ol.list > li,
+#listeJournals ol.list > h3,
+#listeJournals ol.list > .h3 {
+  max-width: 600px;
+  margin: 0 auto;
+}
+#listeJournals ol.list > h2, #listeJournals ol.list > .h2 {
+  padding-bottom: 6px;
+}
+#listeJournals ol.list.To-do {
+  border-left: 2px solid #FFB300;
+}
+#listeJournals ol.list.Gone {
+  border-left: 2px solid #FF3D00;
+}
+#listeJournals ol.list.progress {
+  border-left: 2px solid #29B6F6;
+}
+#listeJournals ol.list.Done {
+  border-left: 2px solid #8BC34A;
+}
+#listeJournals H2,
+#listeJournals h1,
+#listeJournals .h1,
+#listeJournals button {
+  margin-left: 5px;
+  font-family: "Arbutus Slab", serif;
+}
+#listeJournals h2, #listeJournals .h2 {
+  color: #607D8B;
+}
+#listeJournals h2 .material-icons, #listeJournals .h2 .material-icons {
+  color: #B0BEC5;
+  line-height: 1.5;
+}
+#listeJournals .dd-handle .material-icons {
+  color: #B0BEC5;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 2rem;
+  position: relative;
+  right: 0;
+  color: #607D8B;
+  padding: 5px 16px;
+}
+#listeJournals button > .material-icons {
+  line-height: 0.2;
+  position: relative;
+  top: 7px;
+}
+#listeJournals .dd-item:hover,
+#listeJournals button:hover {
+  color: #00838F;
+  will-change: box-shadow;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -6px rgba(0, 0, 0, 0.2), 2px 5px 3px 0 rgba(0, 0, 0, 0.12);
+}
+#listeJournals button.addbutt {
+  background-color: #EEEEEE;
+  color: #607D8B;
+  width: 100%;
+}
+#listeJournals .list > button.addbutt {
+  max-width: 330px;
+}
+#listeJournals button:active, #listeJournals button:down, #listeJournals button:focus {
+  box-shadow: 0 0 0 0, 0 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(0, 0, 0, 0.12);
+  color: #00838F;
+}
+#listeJournals button {
+  align-items: center;
+  background-color: #EEEEEE;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  color: #607D8B;
+  position: relative;
+  margin: 0;
+  min-width: 44px;
+  padding: 10px 16px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1;
+  overflow: hidden;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+#listeJournals ol.kanban.todo__title {
+  border-top: 5px solid #FFB300;
+}
+#listeJournals ol.kanban.Gone {
+  border-top: 5px solid #FF3D00;
+}
+#listeJournals ol.kanban.progress {
+  border-top: 5px solid #29B6F6;
+}
+#listeJournals ol.kanban.Done {
+  border-top: 5px solid #8BC34A;
+}
+#listeJournals ol.kanban {
+  border-top: 5px solid #78909C;
+  width: 20%;
+  height: auto;
+  margin: 1%;
+  max-width: 250px;
+  min-width: 120px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  flex-direction: column;
+  min-height: 200px;
+  z-index: 1;
+  background: #fff;
+  padding: 1em;
+  border-radius: 2px;
+}
+#listeJournals .dd-item {
+  display: block;
+  position: relative;
+  list-style: none;
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  min-height: 120px;
+  overflow: hidden;
+  z-index: 1;
+  position: relative;
+  background: #fff;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+#listeJournals .title {
+  align-self: flex-end;
+  color: inherit;
+  display: block;
+  display: flex;
+  font-size: 24px;
+  line-height: normal;
+  overflow: hidden;
+  transform-origin: 149px 48px;
+  margin: 0;
+}
+#listeJournals .text {
+  color: grey;
+  border-top: 1px solid;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 18px;
+  overflow: hidden;
+  padding: 16px;
+  width: 90%;
+}
+#listeJournals .actions {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 8px;
+  line-height: normal;
+  width: 100%;
+  color: #B0BEC5;
+  padding: 8px;
+  box-sizing: border-box;
+}
+#listeJournals .dd {
+  position: relative;
+  display: block;
+  list-style: none;
+}
+#listeJournals .dd-list {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#listeJournals .dd-list .dd-list {
+  padding-left: 30px;
+}
+#listeJournals .dd-collapsed .dd-list {
+  display: none;
+}
+#listeJournals .dd-item {
+  display: block;
+  margin: 5px 0;
+  padding: 5px 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  border-radius: 3px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+#listeJournals .dd-item:hover {
+  background: #fff;
+}
+#listeJournals .dd-item > button {
+  display: block;
+  position: relative;
+  cursor: move;
+  float: left;
+  width: 25px;
+  height: 20px;
+  margin: 5px 0;
+  padding: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  font-size: 12px;
+  line-height: 1;
+  text-align: center;
+  font-weight: bold;
+}
+#listeJournals .dd-item > button:before {
+  content: "+";
   display: block;
   position: absolute;
-  top: 50%;
-  right: 30px;
-  width: 15px;
-  height: 2px;
-  margin-top: -1px;
-  background-color: #5a5858;
-  transform-origin: 50% 50%;
-  transition: all 0.3s ease-out;
+  width: 100%;
+  text-align: center;
+  text-indent: 0;
 }
-
-.accordion-toggle a:before {
-  transform: rotate(-90deg);
-  opacity: 1;
-  z-index: 2;
+#listeJournals .dd-item > button[data-action=collapse]:before {
+  content: '<i class="material-icons">filter_none</i>';
 }
-
-.accordion-toggle.active-tab {
-  /*background: yellowgreen;*/
-  transition: all 0.3s ease;
+#listeJournals .dd-placeholder,
+#listeJournals .dd-empty {
+  margin: 5px 0;
+  padding: 0;
+  min-height: 30px;
+  background: #E0E0E0;
+  border: 1px dashed #b6bcbf;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
-
-.accordion-toggle a.active:before {
-  transform: rotate(0deg);
-  background: #fff !important;
+#listeJournals .dd-empty {
+  border: 1px dashed #bbb;
+  min-height: 100px;
+  background-color: #E0E0E0;
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
 }
-
-.accordion-toggle a.active:after {
-  transform: rotate(180deg);
-  background: #dee2e6 !important;
-  opacity: 0;
+#listeJournals .dd-dragel {
+  position: absolute;
+  pointer-events: none;
+  z-index: 9999;
+}
+#listeJournals .dd-dragel > .dd-item .dd-handle {
+  margin-top: 0;
+  cursor: move;
+}
+#listeJournals .dd-dragel .dd-item {
+  box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.5);
+  cursor: move;
 }
 
 /* variables */

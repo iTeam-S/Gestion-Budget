@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JournalController;
+use App\Http\Controllers\WritingController;
 
 /* Commentaires:
 
@@ -18,6 +19,8 @@ Route::get('/', function(){return view('auth.login');})->name("login");
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home'); // (1)
+Route::get('/journals', [JournalController::class, 'getAll'])->name("listeJournals");
+Route::get('/writings', [WritingController::class, 'index'])->name("writingsContainer");
 Route::get('/journal/{id}/', [JournalController::class, "index"])->name('journal.index'); // (2)
 Route::get('/journal/detail/{id}', [JournalController::class, "detailEcriture"])->name('journal.index.detail'); // (2)
 Route::get('/writing/create/', App\Http\Livewire\CreateWriting::class)->name('writing.create');
