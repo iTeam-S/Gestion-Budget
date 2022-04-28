@@ -3,114 +3,81 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link href="//fonts.gstatic.com"                            rel="dns-prefetch">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}"                     rel="stylesheet">
-    @livewireStyles
-    @yield("style")
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <title>iTeam-$ | Gestion budget</title>
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-
-
-<body id="globalBody" style="margin: 0;">
-    <div id="globalPage" class="trans">
-        <nav>
-            <button id="btn-notification" class="trans"><i class="fa fa-bell"></i><span id="span-count-notif" class="trans"></span></button>
-        </nav>
-        <div id="notification-container" class="d-none">
-            <div class="position-relative">
-                <div class="w-100 d-flex justify-content-end">
-                    <button id="close-volet" class="trans">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 20px; height:20px;">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-            <div>Il n'y a rien ici.</div>
-        </div>
-    </div>
-        <main class="d-none">
-            <button id="btn-add-notification" class="trans ombre"></button>
-        </main>
-
-
+<body>
     <div id="app">
-        @yield("wave")
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        @yield("navbar")
-        {{--
-        @if((Route::currentRouteName() != 'login') || (Route::currentRouteName() != 'journal.index.detail'))
-            @include('includes.navbar')
-        @endif
-        --}}
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
 
+                    </ul>
 
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
 
-        <main class="mt-5">
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="py-4">
             @yield('content')
         </main>
     </div>
-</div>
-
-    @livewireScripts
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    @yield("script")
-
-<script>
-
-        var global_test_notif = 'Global test notif';
-        var dom_body = document.querySelector('#globalBody');
-        var dom_button = document.querySelector('#btn-notification');
-        var dom_spanotif = document.querySelector('#span-count-notif');
-        var dom_containernotif = document.querySelector('#notification-container');
-        var dom_addnotif = document.querySelector('#btn-add-notification');
-        var dom_closevolet = document.querySelector('#close-volet');
-
-
-        function addClass(paramCible, paramClass){
-
-            paramCible.classList.add(paramClass);
-        }
-
-        function removeClass(paramCible, paramClass){
-            paramCible.classList.remove(paramClass);
-        }
-
-        function hasClass(paramCible, paramClass){
-            return paramCible.classList.contains(paramClass);
-        }
-
-        function showNotifContainer() {
-            addClass(dom_body, 'notif-opened');
-            addClass(dom_containernotif, "notif-opened");
-            removeClass(dom_containernotif, 'd-none');
-        }
-
-        function hideNotifContainer() {
-
-        }
-
-        dom_closevolet.onclick= function(){
-
-            console.log("console.log");
-            removeClass(dom_body, 'notif-opened');
-            removeClass(dom_containernotif, 'notif-opened');
-            addClass(dom_containernotif, 'd-none');
-        }
-
-        dom_button.onclick = function() {
-            showNotifContainer();
-        }
-
-
-
-
-
-</script>
 </body>
 </html>
