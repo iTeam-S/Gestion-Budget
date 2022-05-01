@@ -1,5 +1,5 @@
 .journal{
-    background: $color-secondary;
+    background: $bg-primary;
 
     &__title{
         border-radius: 5px;
@@ -40,13 +40,13 @@
     }
 
     &__writing{
-        border: 1px solid $color-secondary;
+        border: 1px solid $bg-primary;
         border-radius: 10px;
     }
 
 
 
     &__edition{
-        border-left: 1px solid $color-secondary;
+        border-left: 1px solid $bg-primary;
     }
 }

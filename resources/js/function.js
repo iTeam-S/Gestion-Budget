@@ -86,5 +86,18 @@ function login(user, passwd){
 
 }
 
+/**
+ *
+ * @param {*} id
+ */
+function showDetailsJournals(id){
+    var domainName= window.location.hostname;
+    var port= window.location.port;
 
-export { login }
+    $.get("http://"+domainName+":"+port+"/writings/?j="+id, function(data){
+
+        console.log(data);
+    })
+}
+
+export { login, showDetailsJournals }

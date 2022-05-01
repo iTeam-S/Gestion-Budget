@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\JournalController;
+use App\Http\Controllers\API\WritingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('writings/recent', [WritingController::class, "recent"]);
+Route::get('journals/distinct', [JournalController::class, "distinct"]);
+Route::apiResource('writings', WritingController::class);
+Route::apiResource('journals', JournalController::class);

@@ -2,3 +2,10 @@
     right: 0px;
     top: 0px;
 }
+
+
+@mixin mobile ($size: 640px) {
+    @media screen and (max-width: $size) {
+      @content;
+    }
+  }

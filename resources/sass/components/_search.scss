@@ -1,121 +1,37 @@
+.search--wrap{
+  width: 100%;
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
 
-.search__container{
+  .searchTerm {
+    width: 50%;
+    border: 3px solid $teal;
+    border-right: none;
+    padding: 5px;
+    height: 50px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+  }
 
-    height: 100px;
+  .searchTerm:focus{
+    color: $teal;
+  }
 
-    .search{
+  .searchButton {
+    width: 60px;
+    border: 1px solid $teal;
+    background: $teal;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
 
-        top: 50px;
-
-        .container {
-            position: absolute;
-            margin: auto;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 300px;
-            height: 100px;
-            .search {
-                position: absolute;
-                margin: auto;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                width: 50px;
-                height: 50px;
-                background: #dee2e6;
-                transition: all 1s;
-                z-index: 4;
-                &:hover {
-                cursor: pointer;
-                }
-                &::before {
-                    content: "";
-                    position: absolute;
-                    margin: auto;
-                    top: 22px;
-                    right: 0;
-                    bottom: 0;
-                    left: 22px;
-                    width: 12px;
-                    height: 2px;
-                    background: white;
-                    transform: rotate(45deg);
-                    transition: all .5s;
-                    }
-                    &::after {
-                    content: "";
-                    position: absolute;
-                    margin: auto;
-                    top: -5px;
-                    right: 0;
-                    bottom: 0;
-                    left: -5px;
-                    width: 25px;
-                    height: 25px;
-                    border-radius: 50%;
-                    border: 2px solid white;
-                    transition: all .5s;
-                    }
-                }
-                input {
-                    position: absolute;
-                    margin: auto;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    left: 0;
-                    width: 50px;
-                    height: 50px;
-                    outline: none;
-                    border: none;
-                    // border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-                    background: #dee2e6;
-                    color: black;
-                    text-shadow: 0 0 10px #dee2e6;
-                    padding: 0 80px 0 20px;
-                    border-radius: 5px;
-                    transition: all 1s;
-                    opacity: 0;
-                    z-index: 5;
-                    font-weight: bolder;
-                    letter-spacing: 0.1em;
-                    &:hover {
-                    cursor: pointer;
-                    }
-                    &:focus {
-                    width: 300px;
-                    opacity: 1;
-                    cursor: text;
-                    }
-                    &:focus ~ .search {
-                    right: -250px;
-                    background: #151515;
-                    z-index: 6;
-                    &::before {
-                        top: 0;
-                        left: 0;
-                        width: 25px;
-                    }
-                    &::after {
-                        top: 0;
-                        left: 0;
-                        width: 25px;
-                        height: 2px;
-                        border: none;
-                        background: white;
-                        border-radius: 0%;
-                        transform: rotate(-45deg);
-                    }
-                }
-                &::placeholder {
-                    color: black;
-                    opacity: 0.5;
-                    font-weight: bolder;
-                }
-            }
-        }
-    }
+/*Resize the wrap to see the search bar change!*/
+}
 }

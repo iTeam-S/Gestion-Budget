@@ -15,8 +15,7 @@ class WritingController extends Controller
      */
     public function index(Request $request){
 
-        $id= $request->input("id");
-        $id= $id ?? Journal::all()->first()->id;
+        $id= $request->input("j");
 
         $entrees = Journal::find($id)->writings()->where('type', '=' , 1)->paginate(5);
         $outgoings = Journal::find($id)->writings()->where('type', '=' , 0)->paginate(5);

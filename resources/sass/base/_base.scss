@@ -1,4 +1,33 @@
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Montserrat";
     font-size: 13px;
+    overflow: hidden auto;
+}
+
+
+.component{
+    background-color: $bg-secondary;
+    padding: 5px;
+    display: flex;
+    &__layer{
+      flex: 1;
+      padding: 1rem;
+
+      &--bordered{
+          border: 1px solid #dee2e6;
+      }
+    }
+    &--rounded{
+      border-radius: 5px;
+    }
+    &--bordered{
+        border: 1px solid $teal;
+
+    }
+
+}
+
+.text-ellipsis{
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

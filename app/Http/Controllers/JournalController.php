@@ -15,7 +15,9 @@ class JournalController extends Controller
      * @param int id optional
      *
      */
-    public function index(int $id){
+    public function index(Request $request){
+
+        $id= $request->input("id");
 
         $entrees = Journal::find($id)->writings()
             ->where('type', '=' , 1)->paginate(5);

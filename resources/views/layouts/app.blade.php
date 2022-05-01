@@ -1,83 +1,113 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@yield("head")
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
 <body>
+    @yield("navbar")
+
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        @yield('content')
     </div>
+
+    <script>
+        /**
+        *
+        * @param {*} id
+        */
+        function showDetailsJournals(id){
+            var domainName= window.location.hostname;
+            var port= window.location.port;
+
+            $.get("http://"+domainName+":"+port+"/writings/?j="+id, function(data){
+
+                $("#ligthbox--container").html("");
+                $("#journals--writings").html(data);
+            })
+        }
+
+        function chartJournals(id= null){
+
+        console.log(id);
+        // chartjs entrée sortie d'un journal en particulier
+        (function($) {
+
+            var entrant= [];
+            var sortant= [];
+            var url = "";
+
+            url= id != null ? "http://localhost:8000/api/writings/?q=distinct&j="+id: "http://localhost:8000/api/writings/?q=distinct"
+
+            // recuperation de tout les entrées sorties du journal
+            $.get(url , function(writings){
+
+
+                writings.entrant.forEach(writing => {
+                    let entry= {x: writing.updated_at, y: writing.amount}
+                    entrant.push(entry);
+
+                });
+
+                writings.sortant.forEach(writing => {
+
+                    let outgoing= {x: writing.updated_at, y: writing.amount}
+                    sortant.push(outgoing);
+                });
+
+                console.log(entrant)
+                console.log(sortant)
+
+
+
+                const graphes= document.getElementById('chartWritings');
+                let chart= new Chart(graphes, {
+
+                    data: {
+                        datasets: [
+                            {
+                                type: "line",
+                                label: "les entrées",
+                                data: entrant,
+                                backgroundColor: "#008000",
+                                borderColor: "#008000",
+                            },
+                            {
+                                type: "line",
+                                label: "les sorties",
+                                data: sortant,
+                                backgroundColor: "#FF0000",
+                                borderColor: "#FF0000",
+                            }
+                        ]
+                    },
+                    options: {
+                        animations: {
+                            tension: {
+                                duration: 1000,
+                                easing: 'linear',
+                                from: 1,
+                                to: 0,
+                                loop: true
+                            }
+                        }
+                    }
+                });
+            });
+            // fin statistique en graphe
+
+        })(jQuery)
+
+    }
+
+        function redirect(journal_id){
+        // redirection vers un journals en particulier
+            $.get("http://localhost:8000/journal/?id="+journal_id, function(page){
+
+                chartJournals(journal_id);
+                $("#app").html(page);
+            });
+
+
+        }
+    </script>
+
+    @yield("script")
 </body>
 </html>

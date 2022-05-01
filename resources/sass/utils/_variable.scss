@@ -1,10 +1,20 @@
 // Body
-$body-bg: #f8fafc;
-$color-secondary: #dee2e6;
+$bg-primary: #dee2e6;
+$bg-secondary: #fff;
+$teal: #008080;
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: 'Montserrat';
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+$primary: hsl(222,80%,50%);
+$primary-light: hsl(222,50%,95%);
+
+$secondary: hsl(350,80%,50%);
+
+$red: hsl(10,80%,50%);
+$orange: hsl(50,80%,50%);
+
 
 :root {
     --app-container: #f3f6fd;
@@ -24,4 +34,12 @@ $line-height-base: 1.6;
     --search-area-bg: #fff;
     --star: #1ff1c2e;
     --message-btn: #fff;
+    --text-light: rgba(255,255,255,0.6);
+    --text-lighter: rgba(255,255,255,0.9);
+    --spacing-s: 8px;
+    --spacing-m: 16px;
+    --spacing-l: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 64px;
+    --width-container: 1200px;
   }

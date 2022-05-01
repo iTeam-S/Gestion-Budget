@@ -1,4 +1,4 @@
-div[id*="lightbox-"]{
+div[id*="lightbox"]{
     position: absolute; /* keeps the lightbox window in the current viewport */
     top:0;
     left:0;
@@ -7,6 +7,5 @@ div[id*="lightbox-"]{
     background: url("https://assets.codepen.io/210284/overlay.png") repeat;
     text-align:center;
     justify-content: center;
-
 
 }
