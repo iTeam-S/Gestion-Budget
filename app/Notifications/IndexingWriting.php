@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 
 class IndexingWriting extends Notification
 {
@@ -32,7 +33,7 @@ class IndexingWriting extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'broadcast'];
     }
 
     /**
@@ -61,4 +62,18 @@ class IndexingWriting extends Notification
             "writing"=> $this->writing,
         ];
     }
+
+    /**
+ * Get the broadcastable representation of the notification.
+ *
+ * @param  mixed  $notifiable
+ * @return BroadcastMessage
+ */
+public function toBroadcast($notifiable)
+{
+
+    return (new BroadcastMessage([
+        'writing' => $this->writing,
+    ]));
+}
 }

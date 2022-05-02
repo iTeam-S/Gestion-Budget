@@ -16,4 +16,5 @@ mix.js([
     'resources/js/bootstrap.js',
 ], 'public/js')
     .vue()
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .sourceMaps();

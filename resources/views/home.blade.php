@@ -129,6 +129,17 @@
             </div>
         </div>
     </div>
+
+    <div class="notification">
+        <div>Notification {{ Auth::user()->unreadNotifications->count() }}</div>
+        @foreach(Auth::user()->unreadNotifications as $notification)
+
+            <div>{{ $notification }}</div>
+        @endforeach
+    </div>
+
+
+
 @endsection
 
 @section("script")

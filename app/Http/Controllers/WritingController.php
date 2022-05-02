@@ -47,13 +47,18 @@ class WritingController extends Controller
 
     private function save(Writing $writing){
 
-        $userGroup= Auth::user()->group()->get(['name', 'id']);
-        $userGroupName= $userGroup[0]->name;
-        $userGroupId= $userGroup[0]->id;
+        $usersGroup= Auth::user()->group()->where("id", "=", Auth::user()->group_id)->get(['name', 'id']);
+        $groupName= "";
+        $groupId= 0;
 
-        $userGroupName == "administrateur"? $writing->save(): abort(403, "non autorisé");
+        foreach($usersGroup as $group):
+            $groupName= $group->name;
+            $groupId= $group->id;
+        endforeach;
 
-        $users= User::where("group_id", "!=", $userGroupId)->get();
+        $groupName == "administrateur"? $writing->save(): abort(403, "non autorisé");
+
+        $users= User::where("group_id", "!=", $groupId)->get();
 
         foreach($users as $user){
 
@@ -67,15 +72,18 @@ class WritingController extends Controller
     private function indexing(Writing $writing){
 
         // notifier tous les admin
-        $groupAdmin= Group::where("name", "=", "administrateur")->get(["id"]);
-        $groupAdmin_id= $groupAdmin[0]->id;
-        $admins= User::where("group_id", "=", $groupAdmin_id)->get();
+        $adminGroup= Group::where("name", "=", "administrateur")->get(["id"]);
+
+        $adminGroup_id= $adminGroup[0]->id;
+        $admins= User::where("group_id", "=", $adminGroup_id)->get();
 
 
 
         foreach($admins as $admin){
 
             $admin->notify(new IndexingWriting($writing));
+
+            dd($admin);
         }
 
         dd("admin notifié");
@@ -87,7 +95,6 @@ class WritingController extends Controller
 
 
         $writing= NULL;
-
         $amount= $request->input('amount');
         $account_id= $request->input('account');
         $journal_id= $request->input("journal");
@@ -120,12 +127,13 @@ class WritingController extends Controller
             ]);
         }
 
-        $userGroup= Auth::user()->group()->get(['name']);
-        $userGroupName= $userGroup[0]->name;
-        if($userGroupName == "administrateur"){
+        $groupName= Auth::user()->group()->where("id", "=", Auth::user()->group_id)->get(['name']);
+        $groupName= $groupName[0]->name;
+
+        if($groupName == "administrateur"){
 
             $this->save($writing);
-        }elseif($userGroupName == "lead"){
+        }elseif($groupName == "lead"){
 
 
             $this->indexing($writing);
