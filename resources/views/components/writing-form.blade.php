@@ -10,7 +10,7 @@
 
 
 @section("content")
- <div class="container">
+ <div class="container" id="lightbox">
     <h1 style="font-weight: 700 !important; border-bottom: 1px solid #008080;">Créer une écriture</h1>
     <form id="form-entrant" method="post" action="{{ route("writing.create") }}" class="m-3" enctype="multipart/form-data">
         @csrf

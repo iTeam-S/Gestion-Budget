@@ -19,10 +19,9 @@ class JournalController extends Controller
 
 
         $writings= Journal::find($id)->writings()->orderBy("updated_at", "DESC")->paginate(10);
-
         $entrees = Journal::find($id)->writings()->where('type', '=' , 1)->orderBy("updated_at", "DESC")->paginate(10);
-        $outgoings = Journal::find($id)->writings()
-            ->where('type', '=' , 0)->orderBy("updated_at", "DESC")->paginate(10);
+        $outgoings = Journal::find($id)->writings()->where('type', '=' , 0)->orderBy("updated_at", "DESC")->paginate(10);
+        $accounts= Account::all();
 
 
         // si la route existe
@@ -31,6 +30,7 @@ class JournalController extends Controller
             'entrees'=> $entrees,
             "outgoings"=> $outgoings,
             "writings"=> $writings,
+            "accounts"=> $accounts,
             ]): abort(403, "Action refusée.");
     }
 

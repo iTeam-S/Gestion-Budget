@@ -11490,7 +11490,7 @@ body {
   text-align: center;
 }
 
-div[id*=lightbox] {
+#lightbox {
   position: absolute;
   /* keeps the lightbox window in the current viewport */
   top: 0;
@@ -11498,6 +11498,17 @@ div[id*=lightbox] {
   width: 100%;
   height: 100%;
   background: url("https://assets.codepen.io/210284/overlay.png") repeat;
+  text-align: center;
+  justify-content: center;
+}
+
+#lighbox-create {
+  position: absolute;
+  /* keeps the lightbox window in the current viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   text-align: center;
   justify-content: center;
 }

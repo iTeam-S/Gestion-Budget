@@ -8,22 +8,20 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class validateWriting extends Notification
+class IndexingWriting extends Notification
 {
     use Queueable;
+
+    public $writing;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-
-    public $writing;
-
     public function __construct(Writing $writing)
     {
-        $this->writing = $writing;
-
+        $this->writing= $writing;
     }
 
     /**
@@ -60,7 +58,7 @@ class validateWriting extends Notification
     public function toArray($notifiable)
     {
         return [
-            'name' => $this->writing->id,
+            "writing"=> $this->writing,
         ];
     }
 }

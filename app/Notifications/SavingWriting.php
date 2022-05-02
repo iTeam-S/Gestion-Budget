@@ -8,19 +8,20 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class indexedWriting extends Notification
+class SavingWriting extends Notification
 {
     use Queueable;
 
-    protected $writing;
-    protected $lead;
+    public $writing;
 
-
-    public function __construct( $lead, Writing $writing)
+    /**
+     * Create a new notification instance.
+     *
+     * @return void
+     */
+    public function __construct(Writing $writing)
     {
-
-        $this->lead = $lead;
-        $this->writing = $writing;
+        $this->writing= $writing;
     }
 
     /**
@@ -31,7 +32,7 @@ class indexedWriting extends Notification
      */
     public function via($notifiable)
     {
-        return ['database']; // broadcasténa rehefa aveo
+        return ['database'];
     }
 
     /**
@@ -57,8 +58,7 @@ class indexedWriting extends Notification
     public function toArray($notifiable)
     {
         return [
-            'lead_id' => $this->lead->id,
-            'writing' => $this->writing,
+            "writing"=> $this->writing,
         ];
     }
 }

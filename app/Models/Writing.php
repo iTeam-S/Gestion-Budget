@@ -12,6 +12,16 @@ class Writing extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable= [
+        "amount",
+        "motif",
+        "attachment",
+        "account_id",
+        "journal_id",
+        "type",
+        "state"
+    ];
+
     public function journal(){
 
         return $this->belongsTo(Journal::class);
