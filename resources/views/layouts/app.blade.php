@@ -99,7 +99,7 @@
         function redirect(journal_id){
 
         // redirection vers un journals en particulier
-            $.get("http://localhost:8000/journal/?id="+journal_id, function(page){
+            $.get("http://localhost:8000/journal/"+journal_id, function(page){
 
                 chartJournals(journal_id);
                 $("#app").html(page);
@@ -153,6 +153,17 @@
 
             });
         }
+
+        (function($){
+
+            $("#form-entrant").submit(function(event){
+                event.preventDefault();
+
+                return false;
+            })
+        })(jQuery)
+
+
 
     </script>
 

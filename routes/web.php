@@ -23,8 +23,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/journals', [JournalController::class, 'getAll'])->name("listeJournals");
     Route::get('/writings', [WritingController::class, 'index'])->name("writingsContainer");
+    Route::post('/writing/create/', [WritingController::class, "create"])->name('writing.create');
     Route::get('/writing/create/', [WritingController::class, "getForm"])->name('writing.form');
-    Route::get('/journal/', [JournalController::class, "index"])->name('journal.index'); // (2)
+    Route::get('/journal/{id}', [JournalController::class, "index"])->name('journal.index'); // (2)
     Route::get('/journal/detail/{id}', [JournalController::class, "detailEcriture"])->name('journal.index.detail'); // (2)
     Route::get('/writing/{id}', App\Http\Livewire\Writing::class)->name('writing.show'); // (3)
     Route::get('/notifications', App\Http\Livewire\Notifications::class)->name('notifications');

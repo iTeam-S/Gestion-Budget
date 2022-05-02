@@ -15,20 +15,22 @@ class JournalController extends Controller
      * @param int id optional
      *
      */
-    public function index(Request $request){
+    public function index(int $id){
 
-        $id= $request->input("id");
 
-        $entrees = Journal::find($id)->writings()
-            ->where('type', '=' , 1)->paginate(5);
+        $writings= Journal::find($id)->writings()->orderBy("updated_at", "DESC")->paginate(10);
+
+        $entrees = Journal::find($id)->writings()->where('type', '=' , 1)->orderBy("updated_at", "DESC")->paginate(10);
         $outgoings = Journal::find($id)->writings()
-            ->where('type', '=' , 0)->paginate(5);
+            ->where('type', '=' , 0)->orderBy("updated_at", "DESC")->paginate(10);
+
 
         // si la route existe
         return Route::has('journal.index') ? view("livewire.journal-min", [
             'id'=>$id,
             'entrees'=> $entrees,
-            "outgoings"=> $outgoings
+            "outgoings"=> $outgoings,
+            "writings"=> $writings,
             ]): abort(403, "Action refusée.");
     }
 
