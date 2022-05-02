@@ -379,12 +379,12 @@
 
         &:active {
 
-            transform: translateZ($height/2);
+            transform: translateZ($height);
 
 
             &:before {
 
-                transform: translateZ(-($height/2));
+                transform: translateZ(-($height));
 
                 top: 12px;
 

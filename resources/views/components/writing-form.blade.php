@@ -1,6 +1,3 @@
-@extends("layouts.app")
-
-@section("content")
 
 <form id="form" class="m-3">
     <div class="row align-items-center justify-content-between">
@@ -40,5 +37,5 @@
 </div>
 
 </form>
-@endsection
+
 

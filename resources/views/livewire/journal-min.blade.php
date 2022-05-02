@@ -3,11 +3,12 @@
         <div class="journal col-lg-5 border  h-100 m-3">
             <div class="d-flex justify-content-between align-items-center m-2">
                 <div class="journal__title">ENTRANT</div>
-                <button type="button" class="journal__button btn btn-outline-success">ajouter</button>
+                <button type="button" class="journal__button btn btn-outline-success" onclick="createEntry()">ajouter</button>
             </div>
             <div class="journal__writings">
                 <div class="d-flex justify-content-center">
-                    <div class="writings">
+                    <div class="writings writings--l">
+
                         @forelse ($entrees as $entry)
                             <div class="d-flex justify-content-between journal__writing my-2">
                                 <div id={{ $entry->id }} class="entry d-flex writing">
@@ -28,12 +29,13 @@
                                     </div>
                                 </div>
                                 <div class="journal__edition d-flex align-items-center">
-                                    <button type="button" id="detail-{{$entry->id }}" onclick="detailsEcriture({{$entry->id}})" class="journal__button btn btn-outline-success mx-1">details</button>
+                                    <button type="button" onclick="ajoutEntrant({{$entry->id}})" class="journal__button btn btn-outline-success mx-1">details</button>
                                 </div>
                             </div>
                         @empty
                             <div>vide</div>
                         @endforelse
+
                     </div>
                 </div>
             </div>
@@ -44,7 +46,7 @@
         <div class="journal col-lg-5 border  h-100 m-3">
             <div class="d-flex justify-content-between align-items-center m-2">
                 <div class="journal__title">SORTANT</div>
-                <button type="button" class="journal__button btn btn-outline-success">ajouter</button>
+                <button type="button" class="journal__button btn btn-outline-success" onclick="createOutgoing()">ajouter</button>
             </div>
             <div class="journal__writings">
                 <div class="d-flex justify-content-center">
@@ -69,7 +71,7 @@
                                     </div>
                                 </div>
                                 <div class="journal__edition d-flex align-items-center">
-                                    <button type="button" id="detail-{{$entry->id }}" onclick="detailsEcriture({{$entry->id}})" class="journal__button btn btn-outline-success mx-1">details</button>
+                                    <button type="button" onclick="ajoutSortant({{$entry->id}})" class="journal__button btn btn-outline-success mx-1">details</button>
                                 </div>
                             </div>
                         @empty
@@ -142,20 +144,6 @@
 
 <script>
 
-    $(document).ready(function(){
-
-
-        $(document).on("click", "#detail-8", function(){
-
-            // avoir la page details
-            $.get("http://localhost:8000/journal/detail/8", function(data){
-
-                $(".writings.writings--r").html(data);
-                window.history.pushState({}, '' , "/journal/detail/8")
-
-            })
-        })
-    });
 
     function chartJournals(id){
         // chartjs entrée sortie d'un journal en particulier

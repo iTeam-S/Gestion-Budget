@@ -10,10 +10,10 @@
 
 @section('content')
 
-
+    {{--
     <div style="height: 255px; width: 255px">
         <img src="{{ url(asset("storage/logo.png")) }}" alt="logo" style="width: 100%; height: 100%" />
-    </div>
+    </div> --}}
 
     <div class="p-5 m-5">
         <div class="search--wrap">

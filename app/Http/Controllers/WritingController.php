@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use App\Models\Journal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,5 +28,12 @@ class WritingController extends Controller
             "outgoings"=> $outgoings
             ]): abort(403, "Action refusée.");
 
+    }
+
+    public function getForm(){
+
+        $accounts= Account::all();
+
+        return Route::has('writing.form') ? view("components.writing-form", ["accounts"=> $accounts]): abort(404, "Not found.");
     }
 }

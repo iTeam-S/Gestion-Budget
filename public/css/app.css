@@ -12665,9 +12665,9 @@ body.notif-opened > div > #close-volet {
   transform: translateZ(-55px);
 }
 .button:active {
-  transform: translateZ(20px);
+  transform: translateZ(40px);
 }
 .button:active:before {
-  transform: translateZ(-20px);
+  transform: translateZ(-40px);
   top: 12px;
 }
