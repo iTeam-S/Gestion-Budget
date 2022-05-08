@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,22 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('delete from users');
-        DB::statement('delete from `'.env("DB_DATABASE").'`.groups;');
-        DB::statement('delete from permissions;');
-        DB::statement('delete from accounts;');
-        DB::statement('delete from journals');
-
-
-
-
+        // \App\Models\User::factory(10)->create();
         $this->call([
-            PermissionSeeder::class,
-            GroupSeeder::class,
-            UserSeeder::class,
-            AccountSeeder::class,
-            JournalSeeder::class,
-
+            UserSeeder::class
         ]);
     }
 }

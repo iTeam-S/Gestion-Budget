@@ -1,30 +1,63 @@
 <?php
 
-
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Password;
+use App\Http\Controllers\ResetController;
 use App\Http\Controllers\JournalController;
-use App\Http\Controllers\WritingController;
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\EcritureController;
+use App\Http\Controllers\InfoUserController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ChangePasswordController;
 
-/* Commentaires:
-
-(1) redirection vers la page tableau de bord
-(2) aller à un journal en particulier
-(3) aller à un écriture en particulier
-
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
 */
 
-Route::get('/', [LoginController::class, "showLoginForm"]);
 
-Auth::routes();
+Route::group(['middleware' => 'auth'], function () {
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/journals', [JournalController::class, 'getAll'])->name("listeJournals");
-    Route::get('/writings', [WritingController::class, 'index'])->name("writingsContainer");
-    Route::get('/writing/create/', [WritingController::class, "getForm"])->name('writing.form');
-    Route::post('/writing/create/', [WritingController::class, "create"])->name('writing.create');
-    Route::get('/journal/{id}', [JournalController::class, "index"])->name('journal.index'); // (2)
-    Route::get('/journal/detail/{id}', [JournalController::class, "detailEcriture"])->name('journal.index.detail'); // (2)
+    Route::get('/{uri}', function ($url) {
+
+        return Redirect::to('/');
+
+    })->where(['uri' => 'dashboard']);
+
+    Route::get('/', [HomeController::class, 'home']);
+
+    Route::get('journals/{id}', [JournalController::class, "details"])->name('journals.details');
+	Route::get('journals', [JournalController::class, "index"])->name('journals');
+
+    Route::post('/ecritures/valider', [EcritureController::class, "valider"])->name("ecritures.valider");
+    Route::get('/ecritures', [EcritureController::class, "index"])->name("ecritures");
+
+	Route::get('comptes', function () {
+		return view('comptes');
+	})->name('comptes');
+
+	Route::get('notifications', [NotificationController::class, "index"])->name('notifications');
+
+    Route::get('/logout', [SessionsController::class, 'destroy']);
 });
+
+
+
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/login', [SessionsController::class, 'create']);
+    Route::post('/session', [SessionsController::class, 'store']);
+
+});
+
+Route::get('/login', function () {
+    return view('session/login-session');
+})->name('login');

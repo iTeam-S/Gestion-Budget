@@ -1,0 +1,23 @@
+.form-group {
+  margin-bottom: 1rem;
+}
+
+
+.form-control {
+  border-radius: $input-border-radius;
+  border-top-left-radius: $input-border-radius !important;
+  border-bottom-left-radius: $input-border-radius !important;
+  padding-left: 35px !important;
+  border-left-width: 1px;
+}
+
+.focused {
+  box-shadow: $input-focus-box-shadow;
+  transition: $input-transition;
+
+  .form-control {
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}

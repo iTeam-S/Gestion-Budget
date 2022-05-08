@@ -1,0 +1,77 @@
+:root {
+  --d: 700ms;
+  --e: cubic-bezier(0.19, 1, 0.22, 1);
+  --font-sans: "Rubik", sans-serif;
+  --font-serif: "Cardo", serif;
+}
+
+.btn {
+  background-color: #008080;
+  color: #ffffff;
+}
+
+.kanban__element {
+  width: 90%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.kanban__element details {
+  border-bottom: 1px solid #b5bfd9;
+}
+.kanban__element details[open] {
+  box-shadow: -3px 0 0 #b5bfd9;
+}
+.kanban__element details:first-of-type {
+  border-top: 1px solid #b5bfd9;
+}
+.kanban__element details summary {
+  background-color: #fff;
+  position: relative;
+  cursor: pointer;
+  padding: 1em 0.5em;
+  list-style: none;
+}
+.kanban__element details summary::-webkit-details-marker {
+  display: none;
+}
+.kanban__element details summary:hover {
+  background-color: #f2f5f9;
+}
+.kanban__element details summary div {
+  display: flex;
+  align-items: center;
+}
+.kanban__element details summary h3 {
+  display: flex;
+  flex-direction: column;
+}
+.kanban__element details summary span:first-child {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 10px;
+  background-color: #f3e1e1;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.25em;
+}
+.kanban__element details summary span:last-child {
+  font-weight: 700;
+  margin-left: auto;
+}
+.kanban__element details summary:focus {
+  outline: none;
+}
+
+.loader {
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+}
+.loader__image {
+  height: 100%;
+  width: 100%;
+}

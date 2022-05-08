@@ -13,13 +13,9 @@ class JournalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-
-
-        $journals= Journal::all();
-
-        return response()->json($journals);
-
+    public function index()
+    {
+        //
     }
 
     /**
@@ -28,7 +24,10 @@ class JournalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){}
+    public function store(Request $request)
+    {
+        //
+    }
 
     /**
      * Display the specified resource.
@@ -36,7 +35,10 @@ class JournalController extends Controller
      * @param  \App\Models\Journal  $journal
      * @return \Illuminate\Http\Response
      */
-    public function show(Journal $journal){}
+    public function show(Journal $journal)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.
@@ -45,7 +47,10 @@ class JournalController extends Controller
      * @param  \App\Models\Journal  $journal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Journal $journal){}
+    public function update(Request $request, Journal $journal)
+    {
+        //
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -54,17 +59,7 @@ class JournalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Journal $journal)
-    {}
-
-    /**
-     * retourne tous entrées et sorties de tous les journals si parametre non précisé,
-     * sinon retourne tous les entrées et sorties d'un journal en particulier
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function distinct(Request $request){
-
-
-        return response()->json(["reponse"=> "ok"], 200);
+    {
+        //
     }
 }

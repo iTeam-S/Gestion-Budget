@@ -1,0 +1,134 @@
+#kanban-board{
+
+
+h1 {
+    margin: 0;
+    font-weight: 100;
+  }
+
+  h3 {
+    margin-bottom: 0;
+    font-weight: 400;
+  }
+
+  aside {
+    flex: 1;
+  }
+
+  section {
+    width: 400px;
+  }
+
+  input[type="text"] {
+    margin-top: 5px;
+    width: auto;
+    height: 30px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  button {
+    border: 0;
+    background: 0;
+    cursor: pointer;
+  }
+
+
+  .oi-chevron-top,
+  .oi-chevron-bottom {
+    font-size: 20px;
+    color: white;
+  }
+
+  .oi-x {
+    color: black;
+  }
+
+  .oi-check {
+    color: black;
+    font-size: 25px;
+  }
+
+  .colors {
+    align-items: center;
+  }
+
+  .color {
+    box-sizing: border-box;
+    margin-top: 5px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+
+  .column {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lists {
+    display: flex;
+    justify-content: space-around;
+    flex: 15;
+  }
+
+  .list {
+    align-self: flex-start;
+  }
+
+  .list > header {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+
+  .list-body {
+    height: 100%;
+  }
+
+  .kanban-card {
+    background-color: #2196f3;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin-top: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+  }
+
+  .kanban-card > button {
+    align-self: flex-start;
+  }
+
+  .kanban-card:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+
+  #red {
+    background: #f44336;
+    /* white text */
+  }
+
+  #blue {
+    background: #2196f3;
+    /* black text */
+  }
+
+  #green {
+    background: #4caf50;
+    /* black text */
+  }
+
+  #yellow {
+    background: #ffeb3b;
+    /* black text */
+  }
+
+}

@@ -1,1 +1,18 @@
-@import "bootstrap";
+
+
+// systèmes 7-1
+@import "utils/variable";
+@import "base/base";
+@import "components/kanban";
+@import "components/loader";
+@import "components/dragNdrop";
+@import "pages/login";
+@import "pages/ecritures";
+
+// scss du template
+@import "soft-ui-dashboard/bootstrap/functions";
+@import "soft-ui-dashboard/custom/variables";
+@import "soft-ui-dashboard/variables";
+@import "soft-ui-dashboard/bootstrap/bootstrap";
+@import "soft-ui-dashboard/theme";
+@import "soft-ui-dashboard/custom/styles";

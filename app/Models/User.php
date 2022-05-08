@@ -14,21 +14,15 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
+     * On peut donc remplir ses champs via l'application
+     * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'group_id'
-    ];
+    protected $fillable = ['id','name','email','password','group_id'];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Attribut cachée
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $hidden = [
         'password',
@@ -38,14 +32,16 @@ class User extends Authenticatable
     /**
      * The attributes that should be cast.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function group(){
 
+    public function group(){
         return $this->belongsTo(Group::class);
+
     }
+
 }

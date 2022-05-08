@@ -1,172 +1,116 @@
-@yield("head")
+
+<!DOCTYPE html>
+
+
+<html lang="fr" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ {{--
+    je laisse la d'abord? a etudier
+  @if (env('IS_DEMO'))
+      <x-demo-metas></x-demo-metas>
+  @endif --}}
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/stable/favicon.png">
+  {{-- a renommer favicon.png le logo iteams.png--}}
+  <link rel="icon" type="image/png" href="../assets/img/stable/favicon.png">
+  <title>
+      iTeam-$ | Gestion-Budget - Login
+  </title>
+  <!--     Fonts and icons     -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Neonderthaw&display=swap" rel="stylesheet">  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files a renommer ty aveo fa tsy poins-->
+
+  <link href="{{ asset("css/app.css") }}" rel="stylesheet" />
+</head>
 
 <body>
-    @yield("navbar")
-
-    <div id="app">
-        @yield('content')
-    </div>
-
-    <script>
-        /**
-        *
-        * @param {*} id
-        */
-        function showDetailsJournals(id){
-            var domainName= window.location.hostname;
-            var port= window.location.port;
-
-            $.get("http://"+domainName+":"+port+"/writings/?j="+id, function(data){
-
-                $("#ligthbox--container").html("");
-                $("#journals--writings").html(data);
-            })
-        }
-
-        function chartJournals(id= null){
-
-            console.log(id);
-            // chartjs entrée sortie d'un journal en particulier
-            (function($) {
-
-                var entrant= [];
-                var sortant= [];
-                var url = "";
-
-                url= id != null ? "http://localhost:8000/api/writings/?q=distinct&j="+id: "http://localhost:8000/api/writings/?q=distinct"
-
-                // recuperation de tout les entrées sorties du journal
-                $.get(url , function(writings){
+  @auth
+    @yield('auth')
+  @endauth
+  @guest
+    @yield('guest')
+  @endguest
+    <!--   Core JS Files   -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="../assets/js/plugins/fullcalendar.min.js"></script>
+    <script src="../assets/js/plugins/chartjs.min.js"></script>
 
 
-                    writings.entrant.forEach(writing => {
-                        let entry= {x: writing.updated_at, y: writing.amount}
-                        entrant.push(entry);
-
-                    });
-
-                    writings.sortant.forEach(writing => {
-
-                        let outgoing= {x: writing.updated_at, y: writing.amount}
-                        sortant.push(outgoing);
-                    });
-
-                    console.log(entrant)
-                    console.log(sortant)
-
-
-
-                    const graphes= document.getElementById('chartWritings');
-                    let chart= new Chart(graphes, {
-
-                        data: {
-                            datasets: [
-                                {
-                                    type: "line",
-                                    label: "les entrées",
-                                    data: entrant,
-                                    backgroundColor: "#008000",
-                                    borderColor: "#008000",
-                                },
-                                {
-                                    type: "line",
-                                    label: "les sorties",
-                                    data: sortant,
-                                    backgroundColor: "#FF0000",
-                                    borderColor: "#FF0000",
-                                }
-                            ]
-                        },
-                        options: {
-                            animations: {
-                            tension: {
-                                duration: 1000,
-                                easing: 'linear',
-                                from: 1,
-                                to: 0,
-                                loop: true
-                            }
-                        }
-                    }
-                });
-            });
-            // fin statistique en graphe
-
-        })(jQuery)
-
+  @stack('dashboard')
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+  </script>
 
-        function redirect(journal_id){
-
-        // redirection vers un journals en particulier
-            $.get("http://localhost:8000/journal/"+journal_id, function(page){
-
-                chartJournals(journal_id);
-                $("#app").html(page);
-            });
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 
 
-        }
+      <script>
 
-        function createEntry(){
-
-            $.get("http://localhost:8000/writing/create", function(page){
-
-                console.log(page);
-                $(".writings.writings--l").html(page);
-
-            })
-        }
-
-        function createOutgoing(){
-
-            $.get("http://localhost:8000/writing/create", function(page){
-
-            console.log(page);
-            $(".writings.writings--r").html(page);
-
-})
-
-        }
+function validerEcriture(ecriture){
 
 
-        function ajoutEntrant(ecriture_id){
-            // avoir la page details
-            $.get("http://localhost:8000/journal/detail/"+ecriture_id, function(page){
+    // renvoyer requete ajax post pour valider enregistrer l'écriture et envoyé la notification
+    // chez la personne qui a indexé la notification
 
-                console.log(page)
+    (function($){
 
-                $(".writings.writings--l").html(page);
-                //window.history.pushState({}, '' , "/journal/detail/"+ecriture_id)
+        var hostname= window.location.hostname;
+        var port= window.location.port;
 
-            });
-        }
+        url= "http://"+hostname+":"+port+"/ecritures/valider";
 
-        function ajoutSortant(ecriture_id){
-            // avoir la page details
-            $.get("http://localhost:8000/journal/detail/"+ecriture_id, function(page){
+        $.ajax({
+            url: url,
+            method: "POST",
+            beforeSend: function(){
+                $('.loader').removeClass('hidden')
+            },
+            data:{
+                "_token": "{{ csrf_token() }}",
+                ecriture: ecriture
+            }
+        })
+        .done(function(){
+        })
+        .always(function () {
 
-                console.log(page)
+            $('.loader').addClass('hidden')
 
-                $(".writings.writings--r").html(page);
-                //window.history.pushState({}, '' , "/journal/detail/"+ecriture_id)
+        })
+    })(jQuery)
 
-            });
-        }
+}
 
-        (function($){
+function annulerEcriture(ecriture){
 
-            $("#form-entrant").submit(function(event){
-                event.preventDefault();
+    console.log(ecriture);
+}
 
-                return false;
-            })
-        })(jQuery)
+</script>
 
-
-
-    </script>
-
-    @yield("script")
+  @yield("script")
 </body>
+
 </html>

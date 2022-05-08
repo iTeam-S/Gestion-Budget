@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "MontSerrat";
+    src: url("../../fonts/Montserrat/static/Montserrat-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Alfa Slab One";
+    src: url("../../fonts/AlfaSlabOne-Regular.ttf");
+}
+
+body{
+    font-family: "MontSerrat", sans-serif;
+
+}
+
+.title{
+    font-family: "Alfa Slab One";
+}
+
+.btn{
+    background-color: $color-primary !important;
+    color: $color-tertiary;
+    padding: 5px;
+}
+
