@@ -1,5 +1,8 @@
 require('./bootstrap');
 
+import $ from 'jquery';
+window.$ = window.jQuery = $;
+
 window.isMember= function(username){
 
 }

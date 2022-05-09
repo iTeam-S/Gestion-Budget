@@ -23667,9 +23667,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-transparent {
   background-color: transparent;
 }
-.bg-cover {
-  background-size: cover;
-}
 .p-6 {
   padding: 1.5rem;
 }
