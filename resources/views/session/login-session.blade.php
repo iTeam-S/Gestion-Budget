@@ -32,10 +32,10 @@
                                         @enderror
                                     </div>
                                     <div class="flex flex-row">
-                                        <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-                                        <label class="form-check-label pl-px" for="rememberMe">Se souvenir de moi</label>
+                                        <input class="border-2" type="checkbox" id="remember" value="remember" name="remember">
+                                        <label class="pl-2" for="remember">Se souvenir</label>
                                     </div>
-                                    <div class="">
+                                    <div>
                                         <button type="submit" id="login-btn-submit" class="btn rounded">Se connecter</button>
                                     </div>
                                 </form>
@@ -73,7 +73,7 @@
 
     const loginForm= document.getElementById("login-auth");
 
-    function authenticate(username, password){
+    function authenticate(username, password, rememberMe){
 
 
         let url= "https://api.iteam-s.mg/api/membre/get/"+ username;
@@ -87,12 +87,10 @@
                     }
                 })
                 .done(function(user){
-                    isRegistered(user, password);
+                    isRegistered(user, password, rememberMe);
                 })
                 .fail(function(){
-                    result= {
-                        "exception": "is not a member"
-                    }
+                    result= {"exception": "is not a member"}
 
                 })
                 .always(function () {
@@ -104,7 +102,7 @@
     }
 
 
-    function isRegistered(user, password){
+    function isRegistered(user, password, rememberMe){
         let hostname= window.location.hostname;
         let port= window.location.port;
         let url="http://"+hostname+":"+port+"/api/users/"+user.id;
@@ -117,7 +115,7 @@
                 })
                     .done(function(userInDB){
 
-                        userInDB.exception == "not registered yet" ?addUser(user): login(userInDB, password);
+                        userInDB.exception == "not registered yet" ?addUser(user): login(userInDB, password, rememberMe);
                     })
                     .fail(function(){
                         return objet= {
@@ -154,24 +152,25 @@
     }
 
 
-    function login(user, password){
+    function login(user, password, rememberMe){
         let hostname= window.location.hostname;
         let port= window.location.port;
         let url= "http://"+hostname+":"+port+"/session";
 
         (function($){
 
+            console.log(rememberMe);
             var xhr= $.ajax({
                 url: url,
-                data: {"_token": "{{ csrf_token() }}", email: user.email, password: password},
+                data: {"_token": "{{ csrf_token() }}", email: user.email, password: password, remember: rememberMe},
                 method: "POST"
             }).done(function(page){
 
-                // redirection
+
                 window.location.replace("/dashboard");
                 window.history.pushState({}, "", "/dashboard");
             }).fail(function(xhr, status){
-                console.log(status);
+                console.log("authentication "+status);
             }
 
             )
@@ -184,13 +183,19 @@
     loginForm.addEventListener("submit", (event)=> {
 
         if(!event.preventDefault()) {
-            // loader start
+
 
             let username= event.target.username.value
             let password= event.target.password.value
 
 
-            var guest= authenticate(username, password);
+            /*si l'utilisateur a coché sur se souvenir de moi alors la variable
+            rememberMe est à true, sinon c'est à false */
+
+            let rememberMeElement= document.getElementById("remember");
+            let rememberMe= rememberMeElement.checked ? true: false;
+
+            var guest= authenticate(username, password, rememberMe);
 
             // annule la submittion
             return false;

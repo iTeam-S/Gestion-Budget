@@ -14,8 +14,11 @@ class SessionsController extends Controller
         return view('session.login-session');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+
+        $rememberMe= $request->remember;
+
 
 
         // fin temporaire
@@ -24,9 +27,18 @@ class SessionsController extends Controller
             'password'=>'required'
         ]);
 
-        if(Auth::attempt($attributes))
+        if(Auth::attempt($attributes, $rememberMe == "true"? true: false))
         {
-            session()->regenerate();
+            session()->regenerate(); // ~ session_start() en native
+
+            // nom
+            // groupe
+
+
+
+
+
+
             return redirect('dashboard')->with(['success'=>'You are logged in.']);
         }
         else{
