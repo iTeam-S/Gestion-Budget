@@ -314,7 +314,6 @@ $position-values: (
 // Settings for the `<body>` element.
 
 $body-bg:                   $white !default;
-$body-color:                $font-color !default;
 $body-text-align:           null !default;
 
 
@@ -614,20 +613,16 @@ $table-cell-padding-x-sm:     .25rem !default;
 
 $table-cell-vertical-align:   top !default;
 
-$table-color:                 $body-color !default;
 $table-bg:                    transparent !default;
 
 $table-th-font-weight:        null !default;
 
-$table-striped-color:         $table-color !default;
 $table-striped-bg-factor:     .05 !default;
 $table-striped-bg:            rgba($black, $table-striped-bg-factor) !default;
 
-$table-active-color:          $table-color !default;
 $table-active-bg-factor:      .1 !default;
 $table-active-bg:             rgba($black, $table-active-bg-factor) !default;
 
-$table-hover-color:           $table-color !default;
 $table-hover-bg-factor:       .075 !default;
 $table-hover-bg:              rgba($black, $table-hover-bg-factor) !default;
 
@@ -1116,7 +1111,6 @@ $dropdown-padding-x:                0 !default;
 $dropdown-padding-y:                .5rem !default;
 $dropdown-spacer:                   1.625rem !default;
 $dropdown-font-size:                $font-size-sm !default;
-$dropdown-color:                    $body-color !default;
 $dropdown-bg:                       $white !default;
 $dropdown-border-color:             transparent !default;
 $dropdown-border-radius:            $border-radius-md !default;
@@ -1216,7 +1210,6 @@ $card-group-margin:                 $grid-gutter-width * 0.5 !default;
 // Accordion
 $accordion-padding-y:                     1rem !default;
 $accordion-padding-x:                     1rem !default;
-$accordion-color:                         $body-color !default;
 $accordion-bg:                            transparent !default;
 $accordion-border-width:                  0 !default;
 $accordion-border-color:                  rgba($black, .125) !default;
@@ -1227,7 +1220,6 @@ $accordion-body-padding-x:                $accordion-padding-x !default;
 
 $accordion-button-padding-y:              $accordion-padding-y !default;
 $accordion-button-padding-x:              $accordion-padding-x !default;
-$accordion-button-color:                  $accordion-color !default;
 $accordion-button-bg:                     $accordion-bg !default;
 $accordion-transition:                    $btn-transition, border-radius .15s ease !default;
 $accordion-button-active-bg:              $accordion-bg !default;
@@ -1237,7 +1229,6 @@ $accordion-button-focus-border-color:     $input-focus-border-color !default;
 $accordion-button-focus-box-shadow:       none !default;
 
 $accordion-icon-width:                    1rem !default;
-$accordion-icon-color:                    $accordion-color !default;
 $accordion-icon-active-color:             $accordion-button-active-color !default;
 $accordion-icon-transition:               transform .2s ease-in-out !default;
 $accordion-icon-transform:                rotate(180deg) !default;
@@ -1428,7 +1419,6 @@ $list-group-disabled-bg:            $list-group-bg !default;
 $list-group-action-color:           $gray-700 !default;
 $list-group-action-hover-color:     $list-group-action-color !default;
 
-$list-group-action-active-color:    $body-color !default;
 $list-group-action-active-bg:       $gray-200 !default;
 
 

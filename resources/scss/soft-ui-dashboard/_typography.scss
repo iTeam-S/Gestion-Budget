@@ -2,10 +2,7 @@ html *{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-body {
-  font-weight: $font-weight-normal;
-  line-height: $p-line-height;
-}
+
 
 h1, .h1 {
   font-size: $h1-font-size;

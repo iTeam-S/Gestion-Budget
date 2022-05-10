@@ -15,6 +15,7 @@ body{
 
 .title{
     font-family: "Alfa Slab One";
+    color: $color-primary;
 }
 
 .btn{
@@ -23,3 +24,7 @@ body{
     padding: 5px;
 }
 
+
+input:focus{
+    outline: none;
+}

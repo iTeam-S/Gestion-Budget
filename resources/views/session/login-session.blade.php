@@ -15,18 +15,18 @@
 
                         <div class="flex justify-end mt-3.5">
                             <div class="flex border-2 rounded-md">
-                                <form role="form" method="POST" id="login-auth" class="p-2" action="/session">
+                                <form role="form" method="POST" id="login-auth" class="p-2" action="/session" autocomplete="new-password">
                                     @csrf
                                     <label>Identifiant</label>
                                     <div class="mb-3">
-                                        <input type="text" class="form-control border-2 h-14 rounded-md" name="username" id="username" placeholder="prenom usuel">
+                                        <input type="text" class="border-2 h-14 rounded-md" name="username" id="username" placeholder="prenom usuel"/>
                                         @error('username')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <label>Mot de passe</label>
                                     <div class="mb-3">
-                                        <input type="password" class="form-control border-2 h-14 rounded-md" name="password" id="password" placeholder="secret" aria-label="Password" aria-describedby="password-addon">
+                                        <input type="password" class="border-2 h-14 rounded-md" name="password" id="password" />
                                         @error('password')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
@@ -40,8 +40,10 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="loader hidden">
-                                <img class="loader__image" src="{{ asset("storage/loader.gif") }}" />
+                            <div class="flex items-center">
+                                <div class="loader hidden">
+                                    <img class="loader__image" src="{{ asset("storage/loader.gif") }}" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -56,6 +58,18 @@
 @section("script")
 <script>
     // gestion formulaire
+
+    // desactiver l'autocompletion des precedents input information
+    jQuery(document).ready(function() {
+         jQuery('input').each( function() {
+
+                jQuery(this).attr('readonly', 'true').attr('onClick', "this.removeAttribute('readonly');");
+
+                jQuery(this).on('mouseleave', function() {
+                      jQuery(this).attr('readonly', 'true')
+                });
+         });
+ });
 
     const loginForm= document.getElementById("login-auth");
 

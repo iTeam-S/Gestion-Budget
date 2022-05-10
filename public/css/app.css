@@ -20,12 +20,17 @@ body {
 
 .title {
   font-family: "Alfa Slab One";
+  color: #008080;
 }
 
 .btn {
   background-color: #008080 !important;
   color: #ffffff;
   padding: 5px;
+}
+
+input:focus {
+  outline: none;
 }
 
 .kanban__element {
@@ -295,13 +300,11 @@ body {
   --bs-white-rgb: 255, 255, 255;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
-  --bs-body-color-rgb: 103, 116, 142;
   --bs-body-bg-rgb: 255, 255, 255;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
-  --bs-body-color: #67748e;
   --bs-body-bg: #fff;
 }
 
@@ -315,18 +318,6 @@ body {
   :root {
     scroll-behavior: smooth;
   }
-}
-
-body {
-  margin: 0;
-  font-size: var(--bs-body-font-size);
-  font-weight: var(--bs-body-font-weight);
-  line-height: var(--bs-body-line-height);
-  color: var(--bs-body-color);
-  text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 hr {
@@ -2615,15 +2606,11 @@ progress {
 .table {
   --bs-table-bg: transparent;
   --bs-table-accent-bg: transparent;
-  --bs-table-striped-color: #67748e;
   --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
-  --bs-table-active-color: #67748e;
   --bs-table-active-bg: rgba(0, 0, 0, 0.1);
-  --bs-table-hover-color: #67748e;
   --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
   width: 100%;
   margin-bottom: 1rem;
-  color: #67748e;
   vertical-align: top;
   border-color: #e9ecef;
 }
@@ -3494,7 +3481,6 @@ textarea.form-control-lg {
   padding: 0.5rem 0;
   margin: 0;
   font-size: 0.875rem;
-  color: #67748e;
   text-align: left;
   list-style: none;
   background-color: #fff;
@@ -4507,7 +4493,6 @@ textarea.form-control-lg {
   width: 100%;
   padding: 1rem 1rem;
   font-size: 1rem;
-  color: #67748e;
   text-align: left;
   background-color: transparent;
   border: 0;
@@ -4931,7 +4916,6 @@ textarea.form-control-lg {
   background-color: #f8f9fa;
 }
 .list-group-item-action:active {
-  color: #67748e;
   background-color: #e9ecef;
 }
 
@@ -8765,10 +8749,6 @@ textarea.form-control-lg {
 
 .text-white {
   color: #fff !important;
-}
-
-.text-body {
-  color: #67748e !important;
 }
 
 .text-muted {
@@ -19744,7 +19724,6 @@ hr.horizontal.gray-light {
 }
 .navbar .sidenav-toggler-inner .sidenav-toggler-line {
   transition: all 0.15s ease;
-  background: #67748e;
   border-radius: 0.125rem;
   position: relative;
   display: block;
@@ -21233,11 +21212,6 @@ hr.horizontal.gray-light {
 html * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  font-weight: 400;
-  line-height: 1.6;
 }
 
 h1, .h1 {

@@ -38,33 +38,6 @@
 }
 
 
-// Body
-//
-// 1. Remove the margin in all browsers.
-// 2. As a best practice, apply a default `background-color`.
-// 3. Prevent adjustments of font size after orientation changes in iOS.
-// 4. Change the default tap highlight to be completely transparent in iOS.
-
-// scss-docs-start reboot-body-rules
-body {
-  margin: 0; // 1
-  @include font-size(var(--#{$variable-prefix}body-font-size));
-  font-weight: var(--#{$variable-prefix}body-font-weight);
-  line-height: var(--#{$variable-prefix}body-line-height);
-  color: var(--#{$variable-prefix}body-color);
-  text-align: var(--#{$variable-prefix}body-text-align);
-  background-color: var(--#{$variable-prefix}body-bg); // 2
-  -webkit-text-size-adjust: 100%; // 3
-  -webkit-tap-highlight-color: rgba($black, 0); // 4
-}
-// scss-docs-end reboot-body-rules
-
-
-// Content grouping
-//
-// 1. Reset Firefox's gray color
-// 2. Set correct height and prevent the `size` attribute to make the `hr` look like an input field
-
 hr {
   margin: $hr-margin-y 0;
   color: $hr-color; // 1
