@@ -10,7 +10,8 @@
         "guzzlehttp/guzzle": "^7.4",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.15",
-        "laravel/tinker": "^2.6"
+        "laravel/tinker": "^2.6",
+        "tymon/jwt-auth": "^1.0.2"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",
