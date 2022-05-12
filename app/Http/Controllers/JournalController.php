@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {
+
+    protected $journal;
     /**
      * Constructeur du controller des journals
      *
@@ -14,6 +16,7 @@ class JournalController extends Controller
      */
     public function __construct() {
         $this->middleware('auth:api');
+        $this->journal= new Journal();
     }
 
     /**
@@ -44,7 +47,7 @@ class JournalController extends Controller
      */
     public function store(Request $request){
 
-        $new_journal= Journal::store($request);
+        $new_journal= $this->journal->store($request);
         return response()->json([ 'message' => 'journal créer', 'journal' => $new_journal ], 201);
     }
 
@@ -53,9 +56,9 @@ class JournalController extends Controller
      * instancie un journal dans la base
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(int $id, Request $request){
+    public function modifier(int $id, Request $request){
 
-        $updated_journal= Journal::update($id, $request);
+        $updated_journal= $this->journal->modifier($id, $request);
 
         return response()->json($updated_journal);
     }
@@ -70,7 +73,7 @@ class JournalController extends Controller
      */
     public function remove(int $id){
 
-        $message= Journal::remove($id);
+        $message= $this->journal->remove($id);
         return response()->json($message);
     }
 

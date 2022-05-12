@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 function get_table_columns(string $connection, string $table): array{
 
     $columns= DB::connection($connection)
-        ->select("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = :table", [
+        ->select("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = :table", [
             "table"=> $table
         ]);
 

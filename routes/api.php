@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CompteController;
+use App\Http\Controllers\JournalController;
 use App\Http\Controllers\EcritureController;
 
 
@@ -44,10 +46,10 @@ Route::group([ 'middleware' => 'api'], function ($router) {
     Route::get('/ecriture/{id}', [EcritureController::class, 'get']);
 
     //requetes post
-    Route::get('/ecriture/store', [EcritureController::class, 'store']);
+    Route::post('/ecriture/store', [EcritureController::class, 'store']);
 
     // requetes put
-    Route::put('/ecriture/update/{id}', [EcritureController::class, 'update']);
+    Route::put('/ecriture/update/{id}', [EcritureController::class, 'modifier']);
 
     // requetes delete
     Route::delete('/ecriture/remove/{id}', [EcritureController::class, 'remove']);
@@ -64,13 +66,13 @@ Route::group([ 'middleware' => 'api'], function ($router) {
     Route::get('/journal/{id}', [JournalController::class, 'get']);
 
     //requetes post
-    Route::get('/journal/store', [JournalController::class, 'store']);
+    Route::post('/journal/store', [JournalController::class, 'store']);
 
     // requetes put
-    Route::put('/journal/update/{id}', [JournalController::class, 'update']);
+    Route::put('/journal/update/{id}', [JournalController::class, 'modifier']);
 
     // requetes delete
-    Route::put('/journal/remove/{id}', [JournalController::class, 'remove']);
+    Route::delete('/journal/remove/{id}', [JournalController::class, 'remove']);
 
 
 });
@@ -87,7 +89,7 @@ Route::group([ 'middleware' => 'api'], function ($router) {
     Route::post('/compte/store', [CompteController::class, 'store']);
 
     // requetes put
-    Route::put('/compte/update/{id}', [CompteController::class, 'update']);
+    Route::put('/compte/update/{id}', [CompteController::class, 'modifier']);
 
     // requetes delete
     Route::delete('/compte/remove/{id}', [CompteController::class, 'remove']);

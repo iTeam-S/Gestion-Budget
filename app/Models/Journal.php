@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Validator;
 use App\Models\journal;
 use App\Models\Ecriture;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,9 +15,10 @@ class Journal extends Model
 {
     use HasFactory, SoftDeletes;
 
+
     protected $fillable= ["nom", "total"];
 
-    public static function actifs(){
+    public function actifs(){
         $response= [];
         $journalsInDB= DB::select("select journals.name from (select distinct j.name, j.id, w.updated_at from journals j join journals w on j.id= w.journal_id order by updated_at desc) as journals group by journals.name");
 
@@ -45,7 +48,7 @@ class Journal extends Model
      * retourne toutes les journals stockées dans la base
      * @return array
      */
-    public static function getAll():array{
+    public function getAll():array{
 
         return self::all();
     }
@@ -54,7 +57,7 @@ class Journal extends Model
      * return une journal
      * @return Journal
      */
-    public static function get(int $id):Journal{
+    public function get(int $id):Journal{
 
         $journal= self::find($id);
         return $journal;
@@ -72,7 +75,7 @@ class Journal extends Model
      * retourne la nouvelle journal
      * @return Journal
      */
-    public static function store(Request $request):Journal{
+    public function store(Request $request):Journal{
 
         $total= 0;
         $validator= Validator::make($request->all(), [
@@ -84,16 +87,18 @@ class Journal extends Model
             dd(["erreur"=> "au moins un des types des données sont invalides"]);
         }
 
-        $total= count_ecriture() == 0 ? 0: $this->ecritures()::sum("montant")->get();
+        $total= $this->count_ecriture() == 0 ? 0: $this->ecritures()->count("montant");
 
 
 
-        $journal= self::create[
+
+
+        $journal= self::create(
             array_merge(
                 $validator->validated(),
                 ["total"=> $total]
             )
-        ];
+        );
 
         return $journal;
     }
@@ -102,7 +107,7 @@ class Journal extends Model
      * mets à jour une journal
      * @return journal
      */
-    public static function update(int $id, Request $request):journal{
+    public function modifier(int $id, Request $request):journal{
 
         /*
         matcher le nom de la colonne de la requete si celle-ci correspond à
@@ -111,17 +116,23 @@ class Journal extends Model
 
         $journal= self::find($id);
         $compteur_updated= 0;
+        $columns= [];
 
         $requestKeys= collect($request->all())->keys();
 
-        $columns= get_table_columns("mysql", "journals");
+        $columnsInDB= get_table_columns("mysql", "journals");
+
+        foreach($columnsInDB as $column){
+
+            array_push($columns, $column->COLUMN_NAME);
+        }
 
         foreach($requestKeys as $key){
 
-            if(in_array($key, $columns)){
+            if(in_array($key, $columns) && $key!= "id"){
 
                 // faille- validation des données
-                $journal::update([$key=> $request->$key]);
+                $journal->update([$key=> $request->$key]);
                 $compteur_updated +=1;
             }
         }
@@ -133,7 +144,7 @@ class Journal extends Model
      * supprimer un journal
      * @return array
      */
-    public static function remove(int $id):array{
+    public function remove(int $id):array{
 
         $journal= self::find($id);
 

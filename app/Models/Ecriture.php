@@ -28,11 +28,10 @@ class Ecriture extends Model
         "journal_id",
         "type",
         "etat",
-        "created_at",
         "updated_at"
     ];
 
-    public static function plusRecents(){
+    public function plusRecents(){
         $response= [];
 
         $recentsInDB= self::orderBy("updated_at")->get();
@@ -54,7 +53,7 @@ class Ecriture extends Model
         return $response;
     }
 
-    public static function statistique(){
+    public function statistique(){
 
         $response= [];
 
@@ -84,7 +83,7 @@ class Ecriture extends Model
      * retourne toutes les ecritures stockées dans la base
      * @return array
      */
-    public static function getAll():array{
+    public function getAll():array{
 
         return self::all();
     }
@@ -93,7 +92,7 @@ class Ecriture extends Model
      * return une ecriture
      * @return Ecriture
      */
-    public static function get(int $id):Ecriture{
+    public function get(int $id):Ecriture{
 
         $ecriture= self::find($id);
         return $ecriture;
@@ -104,19 +103,18 @@ class Ecriture extends Model
      * retourne la nouvelle ecriture
      * @return Ecriture
      */
-    public static function store(Request $request):Ecriture{
+    public function store(Request $request):Ecriture{
+
+
 
         $validator= Validator::make($request->all(), [
             "montant"=> "required|numeric",
             "motif"=> "required|string",
-            "piece_jointe"=> "nullable|max:255",
+            "piece_jointe"=> "string|nullable",
             "compte_id"=> "required|integer",
             "journal_id"=> "required|integer",
             "type"=> "required|integer",
-            "etat"=> "required|etat",
-            "created_at"=> "bail|nullable|date_format:Y-m-d\ h:i:s",
-            "deleted_at"=> "bail|nullable|date_format:Y-m-d\ h:i:s"
-
+            "etat"=> "required|integer"
         ]);
 
         if($validator->fails()){
@@ -124,7 +122,7 @@ class Ecriture extends Model
             dd(["erreur"=> "au moins un des types des données sont invalides"]);
         }
 
-        $ecriture= self::create[$validator->validated()];
+        $ecriture= self::create($validator->validated());
 
         return $ecriture;
     }
@@ -133,7 +131,7 @@ class Ecriture extends Model
      * mets à jour une ecriture
      * @return Ecriture
      */
-    public static function update(int $id, Request $request):Ecriture{
+    public function modifier(int $id, Request $request):Ecriture{
 
         /*
         matcher le nom de la colonne de la requete si celle-ci correspond à
@@ -142,17 +140,25 @@ class Ecriture extends Model
 
         $ecriture= self::find($id);
         $compteur_updated= 0;
+        $columns= [];
 
         $requestKeys= collect($request->all())->keys();
 
-        $columns= get_table_columns("mysql", "ecritures");
+        $columnsInDB= get_table_columns("mysql", "ecritures");
+
+
+        foreach($columnsInDB as $column){
+
+            array_push($columns, $column->COLUMN_NAME);
+        }
 
         foreach($requestKeys as $key){
 
-            if(in_array($key, $columns)){
 
-                // faille- validation des données
-                $ecriture::update([$key=> $request->$key]);
+            if(in_array($key, $columns) && $key!= "id"){
+
+
+                $ecriture->update([$key => $request->input($key)]);
                 $compteur_updated +=1;
             }
         }
@@ -164,7 +170,7 @@ class Ecriture extends Model
      * supprimer un ecriture
      * @return array
      */
-    public static function remove(int $id):array{
+    public function remove(int $id):array{
 
         $ecriture= self::find($id);
 

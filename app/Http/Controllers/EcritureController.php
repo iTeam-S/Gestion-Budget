@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ecriture;
 use Illuminate\Http\Request;
 
 class EcritureController extends Controller
 {
-
+    protected $ecriture;
 
     /**
      * Constructeur du controller des ecritures
@@ -15,6 +16,7 @@ class EcritureController extends Controller
      */
     public function __construct() {
         $this->middleware('auth:api');
+        $this->ecriture= new Ecriture();
     }
 
     /**
@@ -45,7 +47,7 @@ class EcritureController extends Controller
      */
     public function store(Request $request){
 
-        $new_ecriture= Ecriture::store($request);
+        $new_ecriture= $this->ecriture->store($request);
         return response()->json([ 'message' => 'Ecriture créer', 'ecriture' => $new_ecriture ], 201);
     }
 
@@ -54,9 +56,9 @@ class EcritureController extends Controller
      * instancie un ecriture dans la base
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(int $id, Request $request){
+    public function modifier(int $id, Request $request){
 
-        $updated_ecriture= Ecriture::update($id, $request);
+        $updated_ecriture= $this->ecriture->modifier($id, $request);
 
         return response()->json($updated_ecriture);
     }
@@ -71,7 +73,7 @@ class EcritureController extends Controller
      */
     public function remove(int $id){
 
-        $message= Ecriture::remove($id);
+        $message= $this->ecriture->remove($id);
         return response()->json($message);
     }
 
