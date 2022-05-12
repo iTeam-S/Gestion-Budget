@@ -24,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        require_once_app_path("helpers/custom-helper.php");
+        require_once app_path("helpers/custom-helper.php");
     }
 }
