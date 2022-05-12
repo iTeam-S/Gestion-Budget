@@ -16,20 +16,19 @@ return new class extends Migration
     public function up()
     {
 
-        Schema::create('ecritures', function (Blueprint $table) {
+        Schema::connection("mysql")->create('ecritures', function (Blueprint $table) {
             // pour la table type, c'est pour savoir si l'écriture est entrant ou sortant
             /* pour la table state, c'est pour savoir si l'écriture est en attente de validation
             par les admin */
 
             $table->id();
-            $table->float('somme');
+            $table->float('montant');
             $table->text('motif');
-            // tokony asina image par default ihany attachment ty
-            $table->string('attachment')->default("storage/defaultAttachment.png");
-            $table->foreignId('account_id')->constrained();
+            $table->string('piece_jointe')->default("storage/facture.png");
+            $table->foreignId('compte_id')->constrained();
             $table->foreignId('journal_id')->constrained();
             $table->boolean('type');
-            $table->boolean('state');
+            $table->boolean('etat');
             $table->timestamps();
         });
     }
