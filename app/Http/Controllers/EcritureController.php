@@ -2,61 +2,74 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Account;
-use App\Models\Journal;
-use App\Models\Ecriture;
 use Illuminate\Http\Request;
-use App\Notifications\ValiderEcriture;
 
 class EcritureController extends Controller
 {
-    public function index(){
-
-
-        $ecritures= Ecriture::paginate(5);
-        $ecritureRecents= Ecriture::plusRecents();
-        $accounts= Account::all();
-        $journals= Journal::all();
-
-        return view("ecritures", [
-            'ecritures'=> $ecritures,
-            'ecritureRecents'=> $ecritureRecents,
-            'journals'=> $journals,
-            'accounts'=> $accounts
-        ]);
+    /**
+     * Constructeur de notre controller des ecritures
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->middleware('auth:api');
     }
 
-    public function valider(Request $request){
+    /**
+     * retourne toutes les ecritures
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAll(){
 
-        $admin= Auth::user();
-        $param= $request->input("ecriture");
+        $ecritures= Ecriture::all();
 
-        $leadId= $param["notifier"]["id"];
-        $lead= User::find($leadId);
-        $ecriture= $param["ecriture"];
+        return response()->json($ecritures);
+    }
 
-        $newEcriture= new Ecriture();
+    /**
+     * retourne un ecriture
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function get(int $id){
 
-        $newEcriture= new Ecriture([
-            "somme"=> floatval($ecriture["somme"]),
-            "motif"=> $ecriture['motif'],
-            "attachment"=> $ecriture["attachment"],
-            "account_id"=> intval($ecriture["account_id"]),
-            "journal_id"=> intval($ecriture["journal_id"]),
-            "type"=> intval($ecriture["type"]),
-            "state"=> 1,
-            "created_at"=> $ecriture["created_at"],
-            "updated_at"=> $ecriture["updated_at"],
+        $ecriture= Ecriture::find($id);
 
-        ]);
+        return response()->json($ecriture);
+    }
+
+    /**
+     * instancie un ecriture dans la base
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function store(Request $request){
+
+        $new_ecriture= ["ecriture"=> "moi"];
+        return response()->json($new_ecriture);
+    }
 
 
-        // notifier celui qui l'a indexér
+    /**
+     * instancie un ecriture dans la base
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(int $id, Request $request){
 
-        $lead->notify(new ValiderEcriture($admin, $newEcriture));
+        $updated_ecriture= ["ecriture"=> "moi"];
 
-        return response()->json(["resultat"=> "ok"]);
+        return response()->json($updated_ecriture);
+    }
+
+
+    /**
+     * supprime un ecriture dans la base
+     * En fait, ceci n'est pas vraiment la suppression definitive de l'ecriture dans la base
+     * car c'est seulement la colonne deleted_at qui est remplie. Quant à laravel, Le framework
+     * pense que c'est vraiment supprimé côté client
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function remove(int $id){
+
+        return response()->json(["response"=> "ecriture supprimé"]);
     }
 
 }

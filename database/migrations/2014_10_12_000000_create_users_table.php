@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::connection("mysql")->create('users', function (Blueprint $table) {
-            $table->id();
+            $table->integer("id")->unique();
             $table->string('nom', 50);
             $table->string('prenom', 50);
             $table->string('prenom_usuel', 50)->unique();
@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email', 50)->unique();
             $table->string('password');
             $table->rememberToken();
+            $table->primary("id");
             $table->foreignId("groupe_id")->constrained()
                 ->onUpdate("cascade")
                 ->onDelete("cascade");
