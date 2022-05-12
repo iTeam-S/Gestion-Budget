@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 
 class EcritureController extends Controller
 {
+
+
     /**
-     * Constructeur de notre controller des ecritures
+     * Constructeur du controller des ecritures
      *
      * @return void
      */
@@ -69,7 +71,7 @@ class EcritureController extends Controller
      */
     public function remove(int $id){
 
-        $message= User::remove($id);
+        $message= Ecriture::remove($id);
         return response()->json($message);
     }
 

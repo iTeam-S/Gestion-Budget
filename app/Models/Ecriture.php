@@ -79,6 +79,7 @@ class Ecriture extends Model
             group by date_format(date_column, '%M');");
     }
 
+    // CRUD
     /**
      * retourne toutes les ecritures stockées dans la base
      * @return array
