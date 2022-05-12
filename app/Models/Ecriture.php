@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Validator;
 use App\Models\Account;
 use App\Models\Journal;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ecriture extends Model
 {
@@ -22,7 +24,7 @@ class Ecriture extends Model
         "montant",
         "motif",
         "piece_jointe",
-        "account_id",
+        "compte_id",
         "journal_id",
         "type",
         "etat",
@@ -77,6 +79,99 @@ class Ecriture extends Model
             group by date_format(date_column, '%M');");
     }
 
+    /**
+     * retourne toutes les ecritures stockées dans la base
+     * @return array
+     */
+    public static function getAll():array{
+
+        return self::all();
+    }
+
+    /**
+     * return une ecriture
+     * @return Ecriture
+     */
+    public static function get(int $id):Ecriture{
+
+        $ecriture= self::find($id);
+        return $ecriture;
+    }
+
+    /**
+     * instancie une ecriture dans la base des données
+     * retourne la nouvelle ecriture
+     * @return Ecriture
+     */
+    public static function store(Request $request):Ecriture{
+
+        $validator= Validator::make($request->all(), [
+            "montant"=> "required|numeric",
+            "motif"=> "required|string",
+            "piece_jointe"=> "nullable|max:255",
+            "compte_id"=> "required|integer",
+            "journal_id"=> "required|integer",
+            "type"=> "required|integer",
+            "etat"=> "required|etat",
+            "created_at"=> "bail|nullable|date_format:Y-m-d\ h:i:s",
+            "deleted_at"=> "bail|nullable|date_format:Y-m-d\ h:i:s"
+
+        ]);
+
+        if($validator->fails()){
+
+            dd(["erreur"=> "au moins un des types des données sont invalides"]);
+        }
+
+        $ecriture= self::create[$validator->validated()];
+
+        return $ecriture;
+    }
+
+    /**
+     * mets à jour une ecriture
+     * @return Ecriture
+     */
+    public static function update(int $id, Request $request):Ecriture{
+
+        /*
+        matcher le nom de la colonne de la requete si celle-ci correspond à
+        un et une seule colonne dans la base des données
+        */
+
+        $ecriture= self::find($id);
+        $compteur_updated= 0;
+
+        $requestKeys= collect($request->all())->keys();
+
+        $columns= get_table_columns("mysql", "ecritures");
+
+        foreach($requestKeys as $key){
+
+            if(in_array($key, $columns)){
+
+                // faille- validation des données
+                $ecriture::update([$key=> $request->$key]);
+                $compteur_updated +=1;
+            }
+        }
+
+        return $compteur_updated == 0 ? dd("erreur de modification"): $ecriture;
+    }
+
+    /**
+     * supprimer un ecriture
+     * @return array
+     */
+    public static function remove(int $id):array{
+
+        $ecriture= self::find($id);
+
+        return $ecriture->delete()? ["response"=> "l'ecriture a été bien supprimé"]: dd("erreur de suppression");
+    }
+
+
+    // les relations
     public function journal(){
 
         return $this->belongsTo(Journal::class);
@@ -86,6 +181,12 @@ class Ecriture extends Model
 
         return $this->belongsTo(Account::class);
     }
+    // fin relation-----------------------------------
+
+
+
+
+
 
 
 

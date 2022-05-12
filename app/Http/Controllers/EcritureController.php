@@ -43,8 +43,8 @@ class EcritureController extends Controller
      */
     public function store(Request $request){
 
-        $new_ecriture= ["ecriture"=> "moi"];
-        return response()->json($new_ecriture);
+        $new_ecriture= Ecriture::store($request);
+        return response()->json([ 'message' => 'Ecriture créer', 'ecriture' => $new_ecriture ], 201);
     }
 
 
@@ -54,7 +54,7 @@ class EcritureController extends Controller
      */
     public function update(int $id, Request $request){
 
-        $updated_ecriture= ["ecriture"=> "moi"];
+        $updated_ecriture= Ecriture::update($id, $request);
 
         return response()->json($updated_ecriture);
     }
@@ -69,7 +69,8 @@ class EcritureController extends Controller
      */
     public function remove(int $id){
 
-        return response()->json(["response"=> "ecriture supprimé"]);
+        $message= User::remove($id);
+        return response()->json($message);
     }
 
 }
