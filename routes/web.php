@@ -27,13 +27,11 @@ use App\Http\Controllers\ChangePasswordController;
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/{uri}', function ($url) {
+    Route::get('/', function (){
+        return Redirect::to('/dashboard');
+    });
 
-        return Redirect::to('/');
-
-    })->where(['uri' => 'dashboard']);
-
-    Route::get('/', [HomeController::class, 'home']);
+    Route::get('/dashboard', [HomeController::class, 'home']);
 
     Route::get('journals/{id}', [JournalController::class, "details"])->name('journals.details');
 	Route::get('journals', [JournalController::class, "index"])->name('journals');

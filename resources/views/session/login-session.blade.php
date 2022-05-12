@@ -71,114 +71,38 @@
          });
  });
 
-    const loginForm= document.getElementById("login-auth");
 
-    function authenticate(username, password, rememberMe){
-
-
-        let url= "https://api.iteam-s.mg/api/membre/get/"+ username;
-        var result= {};
-
-        (function($){
-                var xhr= $.ajax({
-                    url: url,
-                    beforeSend: function(){
-                        $('.loader').removeClass('hidden')
-                    }
-                })
-                .done(function(user){
-                    isRegistered(user, password, rememberMe);
-                })
-                .fail(function(){
-                    result= {"exception": "is not a member"}
-
-                })
-                .always(function () {
-                    $('.loader').addClass('hidden')
-                })
-        })(jQuery)
-
-        return result
-    }
+    function authenticate(username, password){
 
 
-    function isRegistered(user, password, rememberMe){
-        let hostname= window.location.hostname;
-        let port= window.location.port;
-        let url="http://"+hostname+":"+port+"/api/users/"+user.id;
-
-
-        (function($){
-
-                var xhr= $.ajax({
-                    url: url
-                })
-                    .done(function(userInDB){
-
-                        userInDB.exception == "not registered yet" ?addUser(user): login(userInDB, password, rememberMe);
-                    })
-                    .fail(function(){
-                        return objet= {
-                            "exception": "request problem"
-                        }
-                    })
+        let url= "https://localhost:8000/api/auth/login";
+        let promise= null;
+        let init= {
+            method: "POST",
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded"
+            },
+            body: {
+                "prenom_usuel": username,
+                "password": password
             }
-        )(jQuery)
-    }
-
-
-    function addUser(user){
-        let hostname= window.location.hostname;
-        let port= window.location.port;
-        let url= "http://"+hostname+":"+port+"/api/users";
-        (function($){
-
-            var xhr= $.ajax({
-                url: url,
-                method: "POST",
-                data: {"_token": "{{ csrf_token() }}", user: user}
-            }).done(function(userInDB){
-
-                login(userInDB.name);
-
-            }).fail(function(jqXHR, textStatus){
-
-                console.log("non enregistrer");
-
-            })
         }
 
-        )(jQuery)
-    }
 
+        promise= fetch(url, init).then(function(promise){ return promise});
 
-    function login(user, password, rememberMe){
-        let hostname= window.location.hostname;
-        let port= window.location.port;
-        let url= "http://"+hostname+":"+port+"/session";
+        promise.then(function(data){
 
-        (function($){
+            console.log(data.json());
+        })
+        .catch(function(error){
 
-            console.log(rememberMe);
-            var xhr= $.ajax({
-                url: url,
-                data: {"_token": "{{ csrf_token() }}", email: user.email, password: password, remember: rememberMe},
-                method: "POST"
-            }).done(function(page){
-
-
-                window.location.replace("/dashboard");
-                window.history.pushState({}, "", "/dashboard");
-            }).fail(function(xhr, status){
-                console.log("authentication "+status);
-            }
-
-            )
-
-        })(jQuery)
+            console.log(error);
+        });
 
     }
 
+    const loginForm= document.getElementById("login-auth");
 
     loginForm.addEventListener("submit", (event)=> {
 
@@ -188,14 +112,7 @@
             let username= event.target.username.value
             let password= event.target.password.value
 
-
-            /*si l'utilisateur a coché sur se souvenir de moi alors la variable
-            rememberMe est à true, sinon c'est à false */
-
-            let rememberMeElement= document.getElementById("remember");
-            let rememberMe= rememberMeElement.checked ? true: false;
-
-            var guest= authenticate(username, password, rememberMe);
+            authenticate(username, password);
 
             // annule la submittion
             return false;
