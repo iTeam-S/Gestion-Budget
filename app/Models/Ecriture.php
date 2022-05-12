@@ -7,27 +7,28 @@ use App\Models\Journal;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ecriture extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     /**
      * retourne les 4 derniers écritures
      * @return array
      */
 
-     protected $fillable= [
-         "somme",
-         "motif",
-         "attachment",
-         "account_id",
-         "journal_id",
-         "type",
-         "state",
-         "created_at",
-         "updated_at"
-     ];
+    protected $fillable= [
+        "montant",
+        "motif",
+        "piece_jointe",
+        "account_id",
+        "journal_id",
+        "type",
+        "etat",
+        "created_at",
+        "updated_at"
+    ];
 
     public static function plusRecents(){
         $response= [];

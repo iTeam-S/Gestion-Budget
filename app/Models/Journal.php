@@ -6,10 +6,11 @@ use App\Models\Ecriture;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Journal extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     public static function actifs(){
         $response= [];
