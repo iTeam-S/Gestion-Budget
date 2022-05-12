@@ -25,7 +25,7 @@ class AuthController extends Controller {
     public function login(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
+            'prenom_usuel' => 'required|string',
             'password' => 'required|string|min:6',
         ]);
 
@@ -33,7 +33,7 @@ class AuthController extends Controller {
             return response()->json($validator->errors(), 422);
         }
 
-        if (!$token = auth()->attempt($validator->validated())) {
+        if (!$token = Auth::attempt($validator->validated())) {
             return response()->json(['error' => 'Unauthorized'], 401);
 
         }
@@ -49,10 +49,15 @@ class AuthController extends Controller {
 
     public function register(Request $request) {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|between:2,100',
-            'email' => 'required|string|email|max:100|unique:users',
-            'password' => 'required|string|confirmed|min:6',
+            'nom' => 'required|string|max:50',
+            'prenom'=> 'required|string|max:50',
+            'prenom_usuel'=> 'required|string|max:50|unique:users',
+            'user_pic'=> 'required|string|max:255',
+            'email' => 'required|string|email|max:50|unique:users',
+            'password' => 'required|string|min:6',
+            'groupe_id'=> 'required|integer'
         ]);
+
 
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);

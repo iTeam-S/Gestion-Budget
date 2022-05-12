@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->string('email', 50)->unique();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
             $table->foreignId("groupe_id")->constrained()
                 ->onUpdate("cascade")
                 ->onDelete("cascade");
