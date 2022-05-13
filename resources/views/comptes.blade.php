@@ -44,7 +44,7 @@
         function render_account(compte){
 
             const element=""+
-                "<div class='flex flex-column my-4 border h-56 w-71 mx-4 p-2 rounded'>"+
+                "<div id='compte-n-"+compte.id+"' class='flex flex-column my-4 border h-56 w-71 mx-4 p-2 rounded'>"+
                     "<div>"+compte.nom+"</div>"+
                     "<div>"+compte.description+"</div>"+
                     "<div>"+compte.code+"</div>"+
@@ -66,7 +66,7 @@
                     '<div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">'+
                         '<div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">'+
                             '<div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">'+
-                                '<h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">'+compte.nom+
+                                '<h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">compte '+compte.nom.toLowerCase()+
                                 '</h5>'+
                                 '<button type="button"'+
                                     'class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"'+
@@ -76,12 +76,12 @@
                                     '<p>Voulez-vous vraiment supprimer ce compte ?</p>'+
                                 '</div>'+
                                 '<div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">'+
-                                '<button type="button" class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-dismiss="modal">'+
-                                    'supprimer'+
-                                '</button>'+
-                                '<button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">'+
-                                    'annuler'+
-                                '</button>'+
+                                    '<button type="button" class="btn rounded-sm transition duration-150 ease-in-out" onclick="remove_account('+compte.id+')" data-bs-dismiss="modal">'+
+                                        'supprimer'+
+                                    '</button>'+
+                                    '<button type="button" class="btn rounded-sm transition-duration-150 ease-in-out" data-bs-dismiss="modal">'+
+                                        'annuler'+
+                                    '</button>'+
                             '</div>'+
                         '</div>'+
                     '</div>'+

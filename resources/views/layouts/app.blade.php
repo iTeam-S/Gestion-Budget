@@ -47,6 +47,35 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
 
+    function remove_account(id){
+
+        let promise= null;
+        const url= "http://localhost:8000/api/compte/remove/"+id;
+        const token= sessionStorage.getItem("_token");
+
+        const init= {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer "+token
+            }
+        }
+
+        promise= fetch(url, init).then(function(promise){ return promise.json()});
+
+        promise.then(function(response){
+
+            console.log(response);
+            // supprimer le div avec le compte de l'id
+            document.getElementById("compte-n-"+id).remove();
+            document.getElementById("compte-"+id).classList.add("hidden");
+        })
+        .catch(function(errror){
+
+            console.log(error);
+
+        });
+    }
     function switch_to(uri){
 
         let promise= null;
