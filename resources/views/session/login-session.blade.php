@@ -8,13 +8,13 @@
                 <div class="container">
                     <div class="grid grid-cols-2">
                         <div class="relative">
-                            <div class="title absolute bottom-0 right-0">
+                            <div class="title absolute bottom-0 right-0" >
                                 <p class="text-8xl">Gestion<br/> Budget</p>
                             </div>
                         </div>
 
-                        <div class="flex justify-end mt-3.5">
-                            <div class="flex border-2 rounded-md">
+                        <div class="flex justify-end mt-3.5" style="margin-right: 200px; margin-top:100px;">
+                            <div class="flex border-2 rounded-md" style="border-color:#008080; width:300px; align-items: center ; border-radius:20px; display: flex;justify-content: center; padding: 30px;" >
                                 <form role="form" method="POST" id="login-auth" class="p-2" action="/session" autocomplete="new-password">
                                     @csrf
                                     <label>Identifiant</label>
@@ -33,9 +33,9 @@
                                     </div>
                                     <div class="flex flex-row">
                                         <input class="border-2" type="checkbox" id="remember" value="remember" name="remember">
-                                        <label class="pl-2" for="remember">Se souvenir</label>
-                                    </div>
-                                    <div>
+                                        <label class="pl-2" for="remember">Se souvenir</label> 
+                                    </div> <br>
+                                    <div style="text-align:center;">
                                         <button type="submit" id="login-btn-submit" class="btn rounded">Se connecter</button>
                                     </div>
                                 </form>

@@ -1,8 +1,15 @@
 @extends('layouts.user_type.auth')
 
 @section('content')
-
-<h1>Dernière écriture</h1>
+            <section style="margin-left:25px;">
+                <a class="" style="color:#008080; font-size:25px; font-weight:bolder;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                    </svg>
+                <span class="nav-link-text ms-1">Ecritures</span>
+                </a> <br> <br>
+        <h1 style="text-align: center;font-weight:bolder;color:black; font-size:23px;">**Dernière écriture**</h1>
+        <hr>
     <div class="grid grid-cols-4">
         {{-- foreach last ecriture --}}
         @forelse($ecritureRecents as $ecriture)
@@ -34,10 +41,8 @@
         </div>
 
 
-
-
-
 @endsection
+</section>
 
 @section("script")
 <script>

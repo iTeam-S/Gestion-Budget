@@ -1,10 +1,17 @@
 @extends('layouts.user_type.auth')
 
 @section('content')
-<div class="mt-4">
+<div class="mt-4 relative">
     <div class="mb-4">
         <div>
-            <h1>Journals</h1>
+        <a class="" style="color:#008080; font-size:25px; font-weight:bolder;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                    </svg>
+                    <span class="nav-link-text ms-1">Tableau de bord</span>
+                </a> <br> <br>
+      
             <div class="py-3 mb-3 bg-gradient-dark border-radius-lg pe-1">
                 <div class="chart">
                     <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
@@ -17,6 +24,7 @@
             <div>Total Entrant<br/>{{ $statistiqueEcriture["totalEntrant"]}}</div>
             <div>Total Sortant<br/>{{ $statistiqueEcriture["totalSortant"]}}</div>
         </div>
+        
     </div>
 </div>
 
@@ -221,4 +229,5 @@
     }
   </script>
 @endpush
+
 

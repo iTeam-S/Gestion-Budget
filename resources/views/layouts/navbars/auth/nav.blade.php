@@ -11,9 +11,9 @@
             </div>
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-flex align-items-center">
-                    <a href="{{ url('/logout')}}" class="nav-link text-body font-weight-bold px-0">
-                        <span class="d-sm-inline d-none">Se déconnecter</span>
-                    </a>
+                <button type="button" class="btn btn-link" style="padding:6px; border-radius:15px; background-color:#008080;"><a href="{{ url('/logout')}}" class="nav-link text-body font-weight-bold px-0" style="hover: text-decoration:underline;">
+                        <span class="d-sm-inline d-none" style="color:white;">Se déconnecter</span>
+                    </a></button>
                 </li>
                 <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
