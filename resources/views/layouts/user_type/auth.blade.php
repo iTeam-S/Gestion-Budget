@@ -2,15 +2,18 @@
 
 @section('auth')
 
-    <div class="flex">
-        @include('layouts.navbars.auth.sidebar')
-        <div class="flex-auto w-80">
-            @include('layouts.navbars.auth.nav')
-            <div class="mt-4">
-                @yield('content')
+    <div class="main">
+        <div class="flex flex-row">
+            @include('layouts.navbars.auth.sidebar')
+            <div class="flex-auto w-80">
+                @include('layouts.navbars.auth.nav')
+                <div class="mt-4 overflow-x-hidden overflow-y-auto">
+                    @yield('content')
+                </div>
             </div>
         </div>
-        @include("layouts.footers.auth.footer")
     </div>
+    @include("layouts.footers.auth.footer")
+
 
 @endsection

@@ -28,6 +28,9 @@
 
 
     <div id="list-account" class="grid grid-cols-4"></div>
+
+    {{-- test data toggle --}}
+
 @endsection
 
 @section("script")
@@ -40,23 +43,54 @@
 
         function render_account(compte){
 
-            const element= "<div class='flex flex-column my-4 border h-56 w-71 mx-4 p-2 rounded'>"+
-                "<div>"+compte.nom+"</div>"+
-                "<div>"+compte.description+"</div>"+
-                "<div>"+compte.code+"</div>"+
-                "<div class='flex flex-row justify-end last-of-type:mt-auto'>"+
-                    "<div onclick='veut_modifier("+compte.id+")'>"+
-                        "<svg xmlns='http://www.w3.org/2000/svg'class='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>"+
-                            "<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' />"+
-                        "</svg>"+
+            const element=""+
+                "<div class='flex flex-column my-4 border h-56 w-71 mx-4 p-2 rounded'>"+
+                    "<div>"+compte.nom+"</div>"+
+                    "<div>"+compte.description+"</div>"+
+                    "<div>"+compte.code+"</div>"+
+                    "<div class='flex flex-row justify-end last-of-type:mt-auto'>"+
+                        "<button type='button'>"+
+                            "<svg xmlns='http://www.w3.org/2000/svg' style='width: 1rem; height: 1rem' fill='none' viewBox='0 0 24 24' stroke='currentColor'>"+
+                                "<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' />"+
+                            "</svg>"+
+                        "</button>"+
+                        '<button transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#compte-'+compte.id+'">'+
+                            "<svg xmlns='http://www.w3.org/2000/svg' style='width: 1rem; height: 1rem' fill='none' viewBox='0 0 24 24' stroke='currentColor'>"+
+                                "<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16'/>"+
+                            "</svg>"+
+                        "</button>"+
                     "</div>"+
-                    "<div onclick='veut_supprimer("+compte.id+")'>"+
-                        "<svg xmlns='http://www.w3.org/2000/svg' class='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>"+
-                            "<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16'/>"+
-                        "</svg>"+
-                    "</div>"
                 "</div>"+
-                "</div>"
+
+                '<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="compte-'+compte.id+'" tabindex="-1" aria-labelledby="COmpte e" aria-modal="true" role="dialog">'+
+                    '<div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">'+
+                        '<div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">'+
+                            '<div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">'+
+                                '<h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">'+compte.nom+
+                                '</h5>'+
+                                '<button type="button"'+
+                                    'class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"'+
+                                    'data-bs-dismiss="modal" aria-label="Close"></button>'+
+                                '</div>'+
+                                '<div class="modal-body relative p-4">'+
+                                    '<p>Voulez-vous vraiment supprimer ce compte ?</p>'+
+                                '</div>'+
+                                '<div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">'+
+                                '<button type="button" class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-dismiss="modal">'+
+                                    'supprimer'+
+                                '</button>'+
+                                '<button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">'+
+                                    'annuler'+
+                                '</button>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'
+
+
+
+
+
 
             document.getElementById("list-account").innerHTML+= element;
 

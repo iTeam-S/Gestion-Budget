@@ -10,8 +10,19 @@
 
 body{
     font-family: "MontSerrat", sans-serif;
-
+    height: 100%;
 }
+
+.main{
+    min-height: 100%;
+}
+
+.main::after {
+    content: '';
+    display: block;
+    height: 100px; // height + padding
+}
+
 
 .title{
     font-family: "Alfa Slab One";
