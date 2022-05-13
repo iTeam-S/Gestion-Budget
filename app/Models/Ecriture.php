@@ -27,8 +27,7 @@ class Ecriture extends Model
         "compte_id",
         "journal_id",
         "type",
-        "etat",
-        "updated_at"
+        "etat"
     ];
 
     public function plusRecents(){

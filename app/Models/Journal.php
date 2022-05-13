@@ -17,7 +17,7 @@ class Journal extends Model
 
 
     protected $fillable= ["nom", "total"];
-
+/*
     public function actifs(){
         $response= [];
         $journalsInDB= DB::select("select journals.name from (select distinct j.name, j.id, w.updated_at from journals j join journals w on j.id= w.journal_id order by updated_at desc) as journals group by journals.name");
@@ -38,7 +38,7 @@ class Journal extends Model
 
     public function statistiqueParMois(){
         self::journals()->groupBy(date_format("updated_at", '%M'))->get(date_format("updated_at", sum("somme")));
-    }
+    }*/
 
 
     // CRUD

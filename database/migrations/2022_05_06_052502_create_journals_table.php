@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->double('total', 20, 5);
-            $table->timestamps();
         });
     }
 

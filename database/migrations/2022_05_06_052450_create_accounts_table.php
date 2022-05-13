@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('code');
             $table->string('nom');
             $table->text('description');
-            $table->timestamps();
         });
     }
 

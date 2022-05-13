@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->text('role');
-            $table->timestamps();
         });
     }
 

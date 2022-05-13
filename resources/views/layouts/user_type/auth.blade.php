@@ -4,13 +4,13 @@
 
     <div class="flex">
         @include('layouts.navbars.auth.sidebar')
-
         <div class="flex-auto w-80">
             @include('layouts.navbars.auth.nav')
-            <div class="bg-gray-100 main-content max-height-vh-100 h-100">
+            <div class="mt-4">
                 @yield('content')
             </div>
         </div>
+        @include("layouts.footers.auth.footer")
     </div>
 
 @endsection

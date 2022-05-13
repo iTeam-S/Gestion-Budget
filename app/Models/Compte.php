@@ -13,6 +13,8 @@ class Compte extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public $timestamps = false;
+
     protected $fillable= [
         "code",
         "nom",

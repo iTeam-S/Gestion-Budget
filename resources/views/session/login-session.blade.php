@@ -88,8 +88,7 @@
 
         promise.then(function(html){
 
-            window.history.pushState({},"", "http://localhost:8000/dashboard/?token="+token);
-            document.body.innerHTML= html;
+            window.location.href= "http://localhost:8000/dashboard/?token="+token;
 
 
         })

@@ -23273,6 +23273,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -23293,13 +23297,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: auto;
   margin-right: auto;
 }
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-.my-3 {
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 .mt-4 {
   margin-top: 1rem;
@@ -23315,9 +23314,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .mb-0 {
   margin-bottom: 0px;
-}
-.mb-2 {
-  margin-bottom: 0.5rem;
 }
 .mt-2 {
   margin-top: 0.5rem;
@@ -23337,6 +23333,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mt-5 {
   margin-top: 1.25rem;
 }
+.mt-32 {
+  margin-top: 8rem;
+}
 .flex {
   display: flex;
 }
@@ -23345,6 +23344,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .hidden {
   display: none;
+}
+.h-56 {
+  height: 14rem;
+}
+.h-8 {
+  height: 2rem;
 }
 .h-14 {
   height: 3.5rem;
@@ -23358,20 +23363,23 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-32 {
   width: 8rem;
 }
-.w-auto {
-  width: auto;
+.w-72 {
+  width: 18rem;
+}
+.w-8 {
+  width: 2rem;
+}
+.w-80 {
+  width: 20rem;
+}
+.w-20 {
+  width: 5rem;
 }
 .w-6 {
   width: 1.5rem;
 }
 .w-5 {
   width: 1.25rem;
-}
-.w-20 {
-  width: 5rem;
-}
-.w-80 {
-  width: 20rem;
 }
 .flex-auto {
   flex: 1 1 auto;
@@ -23400,11 +23408,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .rounded-sm {
   border-radius: 0.125rem;
 }
-.rounded-md {
-  border-radius: 0.375rem;
-}
 .rounded {
   border-radius: 0.25rem;
+}
+.rounded-md {
+  border-radius: 0.375rem;
 }
 .border {
   border-width: 1px;
@@ -23412,19 +23420,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-2 {
   border-width: 2px;
 }
-.border-0 {
-  border-width: 0px;
-}
 .bg-transparent {
   background-color: transparent;
 }
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-.bg-gray-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 .p-1 {
   padding: 0.25rem;
@@ -23450,10 +23451,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
-}
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 .px-0 {
   padding-left: 0px;
@@ -23525,6 +23522,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.last-of-type\:mt-auto:last-of-type {
+  margin-top: auto;
 }
 .hover\:bg-teal:hover {
   --tw-bg-opacity: 1;
