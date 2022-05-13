@@ -2069,16 +2069,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.$ = window.jQuery = (jquery__WEBPACK_IMPORTED_MODULE_0___default());
 
-window.isMember = function (username) {};
-
-window.login = function (event) {
-  event.preventDefault();
-  username = document.getElementById("username").val();
-  console.log(window.isMember(username)); // annuler la submittion
-
-  return false;
-};
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

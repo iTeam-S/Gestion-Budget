@@ -1,0 +1,11 @@
+@mixin input_highlighter{
+    @keyframes inputHighlighter {
+        from {
+            background:$color-primary;
+        }
+        to {
+            width:0;
+            background:transparent;
+        }
+    }
+}

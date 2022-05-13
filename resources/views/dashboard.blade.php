@@ -4,7 +4,6 @@
 <div class="mt-4">
     <div class="mb-4">
         <div>
-            <h1>Journals</h1>
             <div class="py-3 mb-3 bg-gradient-dark border-radius-lg pe-1">
                 <div class="chart">
                     <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
@@ -12,17 +11,35 @@
             </div>
         </div>
         <div class="grid grid-cols-4">
-            <div>Capital<br/>Capital</div>
-            <div>Total ecriture<br/>Total ecriture</div>
-            <div>Total Entrant<br/>Total journal</div>
+            <div class="p-1">
+                <div class="carte carte--statistique">
+                    <h3>Capital</h3>
+                    <div id="capital"></div>
+                </div>
+            </div>
+
+            <div class="p-1">
+                <div class="carte carte--statistique">
+                    <h3>Nombre ecritures</h3>
+                    <div id="nombre_ecriture"></div>
+                </div>
+            </div>
+            <div class="p-1">
+                <div class="carte carte--statistique">
+                    <h3>Nombre journals</h3>
+                    <div id="nombre_journal"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 @endsection
+
+
 @push('dashboard')
   <script>
 
+/*
     function ecritureParMois(){
 
         var response= [];
@@ -50,7 +67,9 @@
 
         return response;
 
-    }
+    }*/
+
+
 
     function get_stat(){
 
@@ -61,16 +80,18 @@
         const init= {
             method: "GET",
             headers: {
-                "Content-type": "application/x-www-form-urlencoded"
+                "Content-type": "application/x-www-form-urlencoded",
                 "Authorization": "Bearer "+token
             }
         }
 
         promise= fetch(url, init).then(function(promise){ return promise.json()});
 
-        promise.then(function(response){
+        promise.then(function(statistique){
 
-            console.log(response);
+            document.getElementById("capital").innerHTML= statistique.capital;
+            document.getElementById("nombre_ecriture").innerHTML= statistique.nombre_ecriture;
+            document.getElementById("nombre_journal").innerHTML= statistique.nombre_journal;
         })
         .catch(function(error){
 
@@ -79,11 +100,16 @@
 
     }
 
-
-    window.onload = function() {
-
+    document.addEventListener("DOMContentLoaded", function(event) {
 
         get_stat();
+
+    });
+
+
+/*
+
+    window.onload = function() {
 
         var ctx = document.getElementById("chart-bars").getContext("2d");
 
@@ -146,7 +172,7 @@
         });
 
 
-    }
+    }*/
   </script>
 @endpush
 

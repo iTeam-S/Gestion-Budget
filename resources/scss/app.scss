@@ -1,13 +1,27 @@
 
 
-// systèmes 7-1
+/*systèmes 7-1*/
+
+//utils
 @import "utils/variable";
+
+
+//base
 @import "base/base";
+
+
+//components
 @import "components/kanban";
 @import "components/loader";
+@import "components/carte";
 @import "components/dragNdrop";
+@import "components/material-input";
+
+
+//pages
 @import "pages/login";
 @import "pages/ecritures";
+
 
 // scss du template
 @import "soft-ui-dashboard/bootstrap/functions";

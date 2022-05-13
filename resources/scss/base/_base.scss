@@ -19,10 +19,20 @@ body{
 }
 
 .btn{
+
     background-color: $color-primary !important;
-    color: $color-tertiary;
+    color: $color-light;
     padding: 5px;
 }
+
+.btn-secondary{
+
+    background-color: $color-light;
+    border-color: $color-primary;
+    color: $color-primary;
+}
+
+
 
 
 input:focus{

@@ -33,7 +33,6 @@
     <script src="../assets/js/plugins/fullcalendar.min.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 
 
     @stack('dashboard')
@@ -45,10 +44,38 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
-    </script>
 
-    <script>
+    function switch_to(uri){
 
+        let promise= null;
+        const url= "http://localhost:8000/"+uri;
+        const token= sessionStorage.getItem("_token");
+
+        const init= {
+            method: "GET",
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer "+token
+            }
+        }
+
+        promise= fetch(url, init).then(function(promise){ return promise.text()});
+
+        promise.then(function(page){
+
+            document.body.innerHTML= page;
+        })
+        .catch(function(error){
+
+            console.log(error);
+        });
+    }
+
+</script>
+
+
+
+{{--}}
 function validerEcriture(ecriture){
 
 
@@ -82,14 +109,9 @@ function validerEcriture(ecriture){
         })
     })(jQuery)
 
-}
+}*/--}}
 
-function annulerEcriture(ecriture){
 
-    console.log(ecriture);
-}
-
-</script>
 
   @yield("script")
 </body>

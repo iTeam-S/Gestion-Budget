@@ -3,9 +3,13 @@ module.exports = {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
-      ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+    ],
+    theme: {
+        extend: {
+            colors:{
+                'teal': '#008080',
+            }
+        }
+    },
+    plugins: [],
 }

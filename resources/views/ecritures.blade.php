@@ -4,7 +4,7 @@
 
 <h1>Dernière écriture</h1>
     <div class="grid grid-cols-4">
-        {{-- foreach last ecriture --}}
+        {{-- foreach last ecriture
         @forelse($ecritureRecents as $ecriture)
             <div>
                     <h3>journal: {{ $ecriture->journal }}</h3>
@@ -20,17 +20,18 @@
     </div>
     <div class="grid grid-cols-2 mx-4">
         <div>
+            {{--}}
             @forelse($ecritures as $ecriture)
                 @include("components.kanban", ["ecriture"=> $ecriture])
             @empty
                 <div>vide</div>
-            @endforelse
+            @endforelse--}}
         </div>
     </div>
 
 
         <div id="formulaire" class="flex items-center justify-center" style=" height: 600px; width: 800px; background: #dee2e6">
-            @include("components.formulaire.ecriture",  ["journals"=> $journals, "accounts"=> $accounts])
+           {{--}} @include("components.formulaire.ecriture",  ["journals"=> $journals, "accounts"=> $accounts])--}}
         </div>
 
 

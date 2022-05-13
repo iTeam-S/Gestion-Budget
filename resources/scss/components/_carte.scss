@@ -1,0 +1,12 @@
+.carte{
+    //rounded-md
+    //border
+    border-radius: 0.375rem; // ~ rounded-md tailwindcss
+    border: 1px solid #dee2e6;
+
+    &--statistique{
+        height:80px;
+    }
+}
+
+
