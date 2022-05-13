@@ -19,7 +19,7 @@
                                     @csrf
                                     <label>Identifiant</label>
                                     <div class="mb-3">
-                                        <input type="text" class="border-2 h-14 rounded-md" name="username" id="username" placeholder="prenom usuel"/>
+                                        <input type="text" class="border-2 h-14 rounded-md" name="prenom_usuel" id="prenom_usuel" placeholder="prenom usuel"/>
                                         @error('username')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
@@ -61,39 +61,72 @@
 
     // desactiver l'autocompletion des precedents input information
     jQuery(document).ready(function() {
-         jQuery('input').each( function() {
+        jQuery('input').each( function() {
 
                 jQuery(this).attr('readonly', 'true').attr('onClick', "this.removeAttribute('readonly');");
 
                 jQuery(this).on('mouseleave', function() {
-                      jQuery(this).attr('readonly', 'true')
+                    jQuery(this).attr('readonly', 'true')
                 });
-         });
- });
+        });
+});
 
-
-    function authenticate(username, password){
-
-
-        let url= "https://localhost:8000/api/auth/login";
+    function to_dashboard(){
         let promise= null;
-        let init= {
+        const url= "http://localhost:8000/dashboard";
+        const token= sessionStorage.getItem("_token");
+
+        const init= {
+            method: "GET",
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer "+token
+            }
+        }
+
+        console.log("Bearer "+token);
+        promise= fetch(url, init).then(function(promise){ return promise.text()});
+
+        promise.then(function(html){
+
+            window.history.pushState({},"", "http://localhost:8000/dashboard/?token="+token);
+            document.body.innerHTML= html;
+
+
+        })
+        .catch(function(error){
+
+            console.log(error);
+        })
+    }
+
+    function authenticate(prenom_usuel, password){
+
+        let promise= null;
+        let body= new URLSearchParams();
+        body.append("prenom_usuel", prenom_usuel);
+        body.append("password", password);
+        const url= "http://localhost:8000/api/auth/login";
+
+        const init= {
             method: "POST",
             headers: {
                 "Content-type": "application/x-www-form-urlencoded"
             },
-            body: {
-                "prenom_usuel": username,
-                "password": password
-            }
+            body: body
         }
 
 
-        promise= fetch(url, init).then(function(promise){ return promise});
+        promise= fetch(url, init).then(function(promise){ return promise.json()});
 
-        promise.then(function(data){
+        promise.then(function(response){
 
-            console.log(data.json());
+            sessionStorage.setItem("_token", response.access_token);
+
+            console.log(sessionStorage.getItem("_token"));
+
+            to_dashboard();
+
         })
         .catch(function(error){
 
@@ -109,10 +142,10 @@
         if(!event.preventDefault()) {
 
 
-            let username= event.target.username.value
-            let password= event.target.password.value
+            let prenom_usuel= event.target.prenom_usuel.value.toString().trim();
+            let password= event.target.password.value.toString().trim();
 
-            authenticate(username, password);
+            authenticate(prenom_usuel, password);
 
             // annule la submittion
             return false;

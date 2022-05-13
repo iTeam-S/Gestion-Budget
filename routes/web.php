@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
         return Redirect::to('/dashboard');
     });
 
-    Route::get('/dashboard', [HomeController::class, 'home']);
+    Route::get('/dashboard', [HomeController::class, 'home'])->name("dashboard");
 
     Route::get('journals/{id}', [JournalController::class, "details"])->name('journals.details');
 	Route::get('journals', [JournalController::class, "index"])->name('journals');

@@ -39,60 +39,60 @@ Route::group([ 'middleware' => 'api', 'prefix' => 'auth' ], function ($router) {
 
 
 // Concernant les ecritures
-Route::group([ 'middleware' => 'api'], function ($router) {
+Route::group([ 'middleware' => 'api', 'prefix'=> 'ecriture'], function ($router) {
 
     //requetes get
-    Route::get('/ecritures', [EcritureController::class, 'getAll']);
-    Route::get('/ecriture/{id}', [EcritureController::class, 'get']);
+    Route::get('/', [EcritureController::class, 'getAll']);
+    Route::get('/{id}', [EcritureController::class, 'get']);
 
     //requetes post
-    Route::post('/ecriture/store', [EcritureController::class, 'store']);
+    Route::post('/store', [EcritureController::class, 'store']);
 
     // requetes put
-    Route::put('/ecriture/update/{id}', [EcritureController::class, 'modifier']);
+    Route::put('/update/{id}', [EcritureController::class, 'modifier']);
 
     // requetes delete
-    Route::delete('/ecriture/remove/{id}', [EcritureController::class, 'remove']);
+    Route::delete('/remove/{id}', [EcritureController::class, 'remove']);
 
 
 });
 
 
 // Concernant les journals
-Route::group([ 'middleware' => 'api'], function ($router) {
+Route::group([ 'middleware' => 'api', 'prefix'=> 'journal'], function ($router) {
 
     //requetes get
-    Route::get('/journals', [JournalController::class, 'getAll']);
-    Route::get('/journal/{id}', [JournalController::class, 'get']);
+    Route::get('/', [JournalController::class, 'getAll']);
+    Route::get('/{id}', [JournalController::class, 'get']);
 
     //requetes post
-    Route::post('/journal/store', [JournalController::class, 'store']);
+    Route::post('/store', [JournalController::class, 'store']);
 
     // requetes put
-    Route::put('/journal/update/{id}', [JournalController::class, 'modifier']);
+    Route::put('/update/{id}', [JournalController::class, 'modifier']);
 
     // requetes delete
-    Route::delete('/journal/remove/{id}', [JournalController::class, 'remove']);
+    Route::delete('/remove/{id}', [JournalController::class, 'remove']);
 
 
 });
 
 
 // Concernant les comptes
-Route::group([ 'middleware' => 'api'], function ($router) {
+Route::group([ 'middleware' => 'api', 'prefix'=> 'compte'], function ($router) {
 
     //requetes get
-    Route::get('/comptes', [CompteController::class, 'getAll']);
-    Route::get('/compte/{id}', [CompteController::class, 'get']);
+    Route::get('/', [CompteController::class, 'getAll']);
+    Route::get('/{id}', [CompteController::class, 'get']);
 
     //requetes post
-    Route::post('/compte/store', [CompteController::class, 'store']);
+    Route::post('/store', [CompteController::class, 'store']);
 
     // requetes put
-    Route::put('/compte/update/{id}', [CompteController::class, 'modifier']);
+    Route::put('/update/{id}', [CompteController::class, 'modifier']);
 
     // requetes delete
-    Route::delete('/compte/remove/{id}', [CompteController::class, 'remove']);
+    Route::delete('/remove/{id}', [CompteController::class, 'remove']);
 
 
 });

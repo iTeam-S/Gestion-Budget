@@ -12,18 +12,6 @@ class HomeController extends Controller
     public function home()
     {
 
-        $journals= Journal::paginate(5);
-        $journalsActif= Journal::actifs();
-        $totalJournal= Journal::count("id");
-        $statistiqueEcriture= Ecriture::statistique();
-
-
-        return view('dashboard', [
-            "journals"=> $journals,
-            "journalsActif"=> $journalsActif,
-            "totalJournal"=> $totalJournal,
-            "statistiqueEcriture"=> $statistiqueEcriture,
-
-        ]);
+        return view('welcome');
     }
 }
