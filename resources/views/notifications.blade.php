@@ -9,6 +9,19 @@
                     <span class="nav-link-text ms-1">Notifications</span>
                 </a>
                 <div class="kanban">
+    <div style="margin-top:20px; padding:20px; background:#dee2e6;">
+        <h3>Nom: </h3>
+        <h3>Compte: </h3>
+        <h3>Journal: </h3>
+        <h3>Type: </h3>
+        <h3>Motifs: </h3> <br>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary me-md-2 rounded-lg" type="button">Valider</button>
+            <button class="btn btn-primary rounded-lg" type="button">Supprimer</button>
+            </div>
+    </div>
+
 
 @foreach($unreadNotifications as $notification)
     @if(Auth::user()->group()->get(["name"])[0]->name == "administrateur")

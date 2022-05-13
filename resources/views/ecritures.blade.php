@@ -10,15 +10,15 @@
                 </a> <br> <br>
         <h1 style="text-align: center;font-weight:bolder;color:black; font-size:23px;">**Dernière écriture**</h1>
         <hr>
-    <div class="grid grid-cols-4">
+    <div class="grid grid-cols-4" style=" margin:10px; padding;10px; background: #dee2e6">
         {{-- foreach last ecriture --}}
         @forelse($ecritureRecents as $ecriture)
             <div>
-                    <h3>journal: {{ $ecriture->journal }}</h3>
-                    <div>date: {{ $ecriture->updated_at }}</div>
-                    <p>motif: {{ $ecriture->motif }}</p>
-                    <div>somme: {{ $ecriture->somme }}</div>
-                    <div>compte: {{ $ecriture->account }}</div>
+                    <h3>Journal: {{ $ecriture->journal }}</h3>
+                    <div>Date: {{ $ecriture->updated_at }}</div>
+                    <p>Motif: {{ $ecriture->motif }}</p>
+                    <div>Somme: {{ $ecriture->somme }}</div>
+                    <div>Compte: {{ $ecriture->account }}</div>
             </div>
         @empty
             <div>Vide</div>
@@ -36,7 +36,7 @@
     </div>
 
 
-        <div id="formulaire" class="flex items-center justify-center" style=" height: 600px; width: 800px; background: #dee2e6">
+        <div id="formulaire" class="flex items-center justify-center" style=" height: 600px; width: 800px; ">
             @include("components.formulaire.ecriture",  ["journals"=> $journals, "accounts"=> $accounts])
         </div>
 
