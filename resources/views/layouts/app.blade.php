@@ -47,35 +47,7 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
 
-    function remove_account(id){
 
-        let promise= null;
-        const url= "http://localhost:8000/api/compte/remove/"+id;
-        const token= sessionStorage.getItem("_token");
-
-        const init= {
-            method: "DELETE",
-            headers: {
-                "Content-type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer "+token
-            }
-        }
-
-        promise= fetch(url, init).then(function(promise){ return promise.json()});
-
-        promise.then(function(response){
-
-            console.log(response);
-            // supprimer le div avec le compte de l'id
-            document.getElementById("compte-n-"+id).remove();
-            document.getElementById("compte-"+id).classList.add("hidden");
-        })
-        .catch(function(errror){
-
-            console.log(error);
-
-        });
-    }
     function switch_to(uri){
 
         let promise= null;
@@ -104,46 +76,6 @@
     }
 
 </script>
-
-
-
-{{--}}
-function validerEcriture(ecriture){
-
-
-    // renvoyer requete ajax post pour valider enregistrer l'écriture et envoyé la notification
-    // chez la personne qui a indexé la notification
-
-    (function($){
-
-        var hostname= window.location.hostname;
-        var port= window.location.port;
-
-        url= "http://"+hostname+":"+port+"/ecritures/valider";
-
-        $.ajax({
-            url: url,
-            method: "POST",
-            beforeSend: function(){
-                $('.loader').removeClass('hidden')
-            },
-            data:{
-                "_token": "{{ csrf_token() }}",
-                ecriture: ecriture
-            }
-        })
-        .done(function(){
-        })
-        .always(function () {
-
-            $('.loader').addClass('hidden')
-
-        })
-    })(jQuery)
-
-}*/--}}
-
-
 
   @yield("script")
 </body>
