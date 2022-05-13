@@ -12,10 +12,9 @@
             </div>
         </div>
         <div class="grid grid-cols-4">
-            <div>Capital<br/>{{ $statistiqueEcriture["capital"]}}</div>
-            <div>Total ecriture<br/>{{ $statistiqueEcriture["totalEcriture"]}}</div>
-            <div>Total Entrant<br/>{{ $statistiqueEcriture["totalEntrant"]}}</div>
-            <div>Total Sortant<br/>{{ $statistiqueEcriture["totalSortant"]}}</div>
+            <div>Capital<br/>Capital</div>
+            <div>Total ecriture<br/>Total ecriture</div>
+            <div>Total Entrant<br/>Total journal</div>
         </div>
     </div>
 </div>
@@ -53,68 +52,100 @@
 
     }
 
+    function get_stat(){
+
+        let promise= null;
+        const url= "http://localhost:8000/api/dashboard";
+        const token= sessionStorage.getItem("_token");
+
+        const init= {
+            method: "GET",
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded"
+                "Authorization": "Bearer "+token
+            }
+        }
+
+        promise= fetch(url, init).then(function(promise){ return promise.json()});
+
+        promise.then(function(response){
+
+            console.log(response);
+        })
+        .catch(function(error){
+
+            console.log(error);
+        });
+
+    }
+
 
     window.onload = function() {
 
-      var ctx = document.getElementById("chart-bars").getContext("2d");
 
-      let donnees= ecritureParMois();
+        get_stat();
 
-      new Chart(ctx, {
-        type: "bar",
-        data: {
-        labels: donnees[0],
-          datasets: [{
-            label: "Total journals",
-            data: donnees[1],
-            tension: 0.4,
-            borderRadius: 4,
-            backgroundColor: "#fff",
-            maxBarThickness: 6
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: true,
-            }
-          },
-          interaction: {
-            intersect: true,
-            mode: 'index',
-          },
-          scales: {
-            y: {
-              grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
-                drawTicks: false,
-              },
-              ticks: {
-                suggestedMin: 0,
-                suggestedMax: 500,
-                beginAtZero: true,
-                padding: 15,
-                color: "#fff"
-              },
+        var ctx = document.getElementById("chart-bars").getContext("2d");
+
+        let donnees= ecritureParMois();
+
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: donnees[0],
+                datasets: [{
+                    label: "Total journals",
+                    data: donnees[1],
+                    tension: 0.4,
+                    borderRadius: 4,
+                    backgroundColor: "#fff",
+                    maxBarThickness: 6
+                }]
             },
-            x: {
-              grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
-                drawTicks: false
-              },
-              ticks: {
-                display: false
-              },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                    display: true,
+                    }
+                },
+                interaction: {
+                    intersect: true,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false,
+                        },
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 500,
+                            beginAtZero: true,
+                            padding: 15,
+                            color: "#fff"
+                        },
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false
+                        },
+                        ticks: {
+                            display: false
+                        },
+                    },
+                },
             },
-          },
-        },
-      });
+        });
+
+
     }
   </script>
 @endpush

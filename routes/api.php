@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\JournalController;
 use App\Http\Controllers\EcritureController;
+use App\Http\Controllers\DashboardController;
 
 
 /*
@@ -93,6 +94,21 @@ Route::group([ 'middleware' => 'api', 'prefix'=> 'compte'], function ($router) {
 
     // requetes delete
     Route::delete('/remove/{id}', [CompteController::class, 'remove']);
+
+});
+
+
+// Concernant le dashboard
+Route::group([ 'middleware' => 'api', 'prefix'=> 'dashboard'], function ($router) {
+
+    //requetes get
+    Route::get('/', [DashboardController::class, 'render']);
+
+    //requetes post
+
+    // requetes put
+
+    // requetes delete
 
 
 });

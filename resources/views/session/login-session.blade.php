@@ -84,7 +84,6 @@
             }
         }
 
-        console.log("Bearer "+token);
         promise= fetch(url, init).then(function(promise){ return promise.text()});
 
         promise.then(function(html){
@@ -122,8 +121,6 @@
         promise.then(function(response){
 
             sessionStorage.setItem("_token", response.access_token);
-
-            console.log(sessionStorage.getItem("_token"));
 
             to_dashboard();
 
