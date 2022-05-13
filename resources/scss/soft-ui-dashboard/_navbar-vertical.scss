@@ -143,7 +143,6 @@
           .lavalamp-object {
             width: calc(100% - 1rem) !important;
             background: theme-color("primary");
-            color: color-yiq($primary);
             margin-right: 0.5rem;
             margin-left: 0.5rem;
             padding-left: 1rem;
@@ -309,7 +308,6 @@
     background-color: $white;
 
     .icon {
-      @include gradient-directional(nth($primary, 1) 0%, nth($primary, -1) 100%, $deg: 310deg);
 
       svg {
         .color-background,

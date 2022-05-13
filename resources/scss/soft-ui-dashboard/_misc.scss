@@ -41,9 +41,6 @@
   -webkit-backdrop-filter: $blur-backdrop-filter;
   backdrop-filter: $blur-backdrop-filter;
 
-  &.blur-gradient-primary {
-    @include gradient-directional(rgba($primary-gradient, .95) 0%, rgba($primary-gradient-state, .95) 100%, $deg: 310deg);
-  }
 }
 
 // Transition on hover
@@ -68,7 +65,6 @@
   }
 
   &.gradient-animation {
-    background: $gradient-animation-background;
     background-size: $gradient-animation-bg-size !important;
     animation: $device-wrapper-animation;
   }

@@ -216,17 +216,7 @@ sub { bottom: -.25em; }
 sup { top: -.5em; }
 
 
-// Links
 
-a {
-  color: $link-color;
-  text-decoration: $link-decoration;
-
-  &:hover {
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
-  }
-}
 
 // And undo these styles for placeholder links/named anchors (without href).
 // It would be more straightforward to just use a[href] in previous block, but that

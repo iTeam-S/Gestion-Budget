@@ -1,7 +1,7 @@
 
-<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+<aside class="flex-auto w-20">
     <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
+    <div class="">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link {{ (Request::is('dashboard') ? 'active' : '') }}" onclick="switch_to('dashboard')">

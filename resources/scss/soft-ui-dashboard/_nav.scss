@@ -30,13 +30,7 @@
         &.active{
           color: $white;
         }
-      }
-      .moving-tab {
-        .nav-link.active {
-          background: $primary-gradient;
-          color: $primary-gradient;
-        }
-      }
+    }
     }
     &.nav-pills-info {
       background: $white;

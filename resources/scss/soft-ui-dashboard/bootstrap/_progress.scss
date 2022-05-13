@@ -26,7 +26,6 @@
   color: $progress-bar-color;
   text-align: center;
   white-space: nowrap;
-  background-color: $progress-bar-bg;
   @include transition($progress-bar-transition);
 }
 

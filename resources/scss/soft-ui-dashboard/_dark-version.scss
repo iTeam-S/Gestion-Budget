@@ -10,17 +10,6 @@
 
     &.bg-transparent {
       background: transparent !important;
-
-      .navbar-nav {
-        .nav-link {
-          color: $white !important;
-        }
-      }
-      .nav {
-        .nav-link {
-          color: $white !important;
-        }
-      }
     }
 
     &.bg-white {
@@ -108,9 +97,6 @@
       .breadcrumb {
         .breadcrumb-item,
         h6 {
-          & a {
-            color: $dark !important;
-          }
           color: $dark !important;
         }
         .breadcrumb-item.active:before {
@@ -162,10 +148,6 @@
     &.bg-white {
       background-color: $dark-version-card-bg-color !important;
       box-shadow: $dark-version-card-box-shadow;
-    }
-
-    .nav-link[data-scroll]:hover {
-      color: $h-color !important;
     }
   }
 

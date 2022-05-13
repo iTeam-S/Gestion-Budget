@@ -2,8 +2,6 @@
 @extends('layouts.user_type.auth')
 
 @section('content')
-
-
     <div id="create-account">
         <form>
             <div class="grid grid-cols-4">
@@ -29,12 +27,10 @@
 @endsection
 
 @section("script")
-
     <script>
-
         function get_accounts(){
             let promise= null;
-            const url= "http://localhost:8000/api/accounts";
+            const url= "http://localhost:8000/api/compte";
             const token= sessionStorage.getItem("_token");
 
             const init= {
@@ -49,19 +45,23 @@
 
             promise.then(function(data){
 
-                console.log(data);
+                for(compte of data){
+
+                    console.log(compte);
+                }
+
             })
             .catch(function(error){
 
                 console.log(error);
-            })
+            });
         }
 
-        document.addEventListener("DOMContentLoaded", function(event){
+        document.addEventListener("DOMContentLoaded", function(event) {
 
-            console.log("mande");
             get_accounts();
-        });
-    </script>
-@endsection
 
+        });
+
+
+    </script>

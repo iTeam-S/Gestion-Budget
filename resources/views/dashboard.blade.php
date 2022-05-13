@@ -37,7 +37,7 @@
 
 
 @push('dashboard')
-  <script>
+<script>
 
 /*
     function ecritureParMois(){
@@ -99,6 +99,7 @@
         });
 
     }
+
 
     document.addEventListener("DOMContentLoaded", function(event) {
 

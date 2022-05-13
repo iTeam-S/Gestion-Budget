@@ -18,14 +18,6 @@
     .breadcrumb-item {
         font-weight: 600;
 
-        a {
-            color: $breadcrumb-dark-color;
-
-            &:hover {
-                color: $breadcrumb-dark-hover-color;
-            }
-        }
-
         + .breadcrumb-item {
             &::before {
                 color: $breadcrumb-dark-divider-color;

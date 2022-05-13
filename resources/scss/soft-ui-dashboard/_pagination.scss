@@ -41,18 +41,4 @@
 }
 
 
-// Colors
-.pagination {
-  @each $name, $value in $theme-gradient-colors {
-    &.pagination-#{$name} {
-      .page-item.active > .page-link {
-        &,
-        &:focus,
-        &:hover {
-          @include gradient-directional(nth($value, 1) 0%, nth($value, -1) 100%, $deg: 310deg);
-          border: none;
-        }
-      }
-    }
-  }
-}
+

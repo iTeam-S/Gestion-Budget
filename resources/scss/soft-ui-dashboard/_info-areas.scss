@@ -120,14 +120,6 @@
 
 // Icon SVG fill color change
 
-svg.text-primary {
-  .color-foreground {
-    fill: $primary-gradient;
-  }
-  .color-background {
-    fill: $primary-gradient-state;
-  }
-}
 svg.text-secondary {
   .color-foreground {
     fill: $secondary-gradient;
