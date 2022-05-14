@@ -1,6 +1,7 @@
 @extends('layouts.user_type.auth')
 
 @section('content')
+
     <div class="mt-4">
         <div class="mb-4">
             <div>
@@ -33,123 +34,11 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 
 @push('dashboard')
-
-<script>
-
-/*
-    function ecritureParMois(){
-
-        var response= [];
-        var mois= [];
-        var somme= [];
-
-        (function($){
-
-            let hostname= window.location.hostname;
-            let port= window.location.port;
-
-            $.get("http://"+hostname+":"+port+"/api/ecritures/parmois", function(data){
-
-                data.forEach(function(item){
-                    let items= {x: item.mois, y: item.total};
-                    mois.push(items.x);
-                    somme.push(items.y);
-                })
-            })
-
-        })(jQuery)
-
-        response.push(mois);
-        response.push(somme);
-
-        return response;
-
-    }
-*/
-
-
-
-    document.addEventListener("DOMContentLoaded", function(event) {
-
-        /* soit disant oe misy variable globale qui va contenir le soit disant lien de requete
-        vu que c'est une application à page unique, l'uri ne va pas change alors on va essayer
-        de creer une sorte de système d'uri dans le coté javascript */
-        get_stat();
-
-    });
-
-
-/*
-    window.onload = function() {
-
-        var ctx = document.getElementById("chart-bars").getContext("2d");
-
-        let donnees= ecritureParMois();
-
-        new Chart(ctx, {
-            type: "bar",
-            data: {
-                labels: donnees[0],
-                datasets: [{
-                    label: "Total journals",
-                    data: donnees[1],
-                    tension: 0.4,
-                    borderRadius: 4,
-                    backgroundColor: "#fff",
-                    maxBarThickness: 6
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                    display: true,
-                    }
-                },
-                interaction: {
-                    intersect: true,
-                    mode: 'index',
-                },
-                scales: {
-                    y: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                        },
-                        ticks: {
-                            suggestedMin: 0,
-                            suggestedMax: 500,
-                            beginAtZero: true,
-                            padding: 15,
-                            color: "#fff"
-                        },
-                    },
-                    x: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false
-                        },
-                        ticks: {
-                            display: false
-                        },
-                    },
-                },
-            },
-        });
-
-
-    }
-*/
-
-</script>
+    <script src="{{ url(asset("assets/js/functions/dashboard.js")) }}"></script>
 @endpush
 

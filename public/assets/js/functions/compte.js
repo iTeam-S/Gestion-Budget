@@ -1,3 +1,5 @@
+/*
+
 function render_account(compte){
 
     const element=""+
@@ -291,3 +293,53 @@ function remove_account(id){
 
     });
 }
+
+*/
+document.addEventListener("DOMContentLoaded", function(event){
+
+    let promise= null;
+    const url= "http://localhost:8000/comptes";
+    const token= sessionStorage.getItem("_token");
+
+    const init= {
+        method: "GET",
+        headers: {
+            "Content-type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer "+token
+        }
+    }
+
+    promise= fetch(url, init).then(function(promise){ return promise.text();});
+
+    promise.then(function(response){
+
+        console.log(response);
+        document.body.innerHTML= response;
+    })
+    .catch(function(error){
+
+        console.log(error);
+    });
+
+
+    get_accounts();
+
+
+    create_account= document.getElementById("create-account");
+
+    create_account.addEventListener("submit", (event)=> {
+
+        if(!event.preventDefault()) {
+
+            const nom_compte= event.target.nom_compte.value.toString().trim();
+            const description_compte= event.target.description_compte.value.toString().trim();
+            const code_compte= event.target.code_compte.value;
+
+            store_account(nom_compte, description_compte, code_compte);
+            // annule la submittion
+
+            return false;
+        }
+    })
+
+});

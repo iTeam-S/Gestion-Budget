@@ -27,35 +27,8 @@
     </div>
 
     <div id="list-account" class="grid grid-cols-4"></div>
-
 @endsection
 
 @section("script")
-    <script>
-
-
-        document.addEventListener("DOMContentLoaded", function(event) {
-
-            get_accounts();
-
-
-            create_account= document.getElementById("create-account");
-
-            create_account.addEventListener("submit", (event)=> {
-
-                if(!event.preventDefault()) {
-
-                    const nom_compte= event.target.nom_compte.value.toString().trim();
-                    const description_compte= event.target.description_compte.value.toString().trim();
-                    const code_compte= event.target.code_compte.value;
-
-                    store_account(nom_compte, description_compte, code_compte);
-                    // annule la submittion
-
-                    return false;
-                }
-            })
-
-        });
-
-    </script>
+    <script scr="{{ url(asset("assets/js/functions/compte.js")) }}"></script>
+@endsection

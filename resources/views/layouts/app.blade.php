@@ -66,8 +66,7 @@
 
         promise.then(function(page){
 
-            window.history.pushState({},"", "http://localhost:8000/comptes/?token="+token);
-            document.body.innerHTML= page;
+            window.location.href= "http://localhost:8000/"+uri;
         })
         .catch(function(error){
 

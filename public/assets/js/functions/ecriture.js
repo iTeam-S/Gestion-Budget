@@ -255,3 +255,8 @@
 
         });
     }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+        get_stat();
+    });

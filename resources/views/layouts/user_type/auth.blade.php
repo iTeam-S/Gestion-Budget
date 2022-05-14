@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('auth')
-
     <div class="main">
         <div class="flex flex-row">
             @include('layouts.navbars.auth.sidebar')

@@ -33,4 +33,27 @@
 
 }
 
+window.onload = function(){
+
+    let promise= null;
+    const url= "http://localhost:8000/dashboard";
+    const token= sessionStorage.getItem("_token");
+
+    const init= {
+        method: "GET",
+        headers: {
+            "Content-type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer "+token
+        }
+    }
+
+    promise= fetch(url, init).then(function(promise){ return promise.text();});
+
+    promise.then(function(response){
+
+        document.body.innerHTML= response;
+    });
+
+
+};
 
