@@ -31,14 +31,6 @@ class SessionsController extends Controller
         {
             session()->regenerate(); // ~ session_start() en native
 
-            // nom
-            // groupe
-
-
-
-
-
-
             return redirect('dashboard')->with(['success'=>'You are logged in.']);
         }
         else{
@@ -47,11 +39,10 @@ class SessionsController extends Controller
         }
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
-
         Auth::logout();
-
+        $request->session()->flush();
         return redirect('/login')->with(['success'=>'You\'ve been logged out.']);
     }
 }

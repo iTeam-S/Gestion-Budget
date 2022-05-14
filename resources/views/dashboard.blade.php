@@ -1,42 +1,43 @@
 @extends('layouts.user_type.auth')
 
 @section('content')
-<div class="mt-4">
-    <div class="mb-4">
-        <div>
-            <div class="py-3 mb-3 bg-gradient-dark border-radius-lg pe-1">
-                <div class="chart">
-                    <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
+    <div class="mt-4">
+        <div class="mb-4">
+            <div>
+                <div class="py-3 mb-3 bg-gradient-dark border-radius-lg pe-1">
+                    <div class="chart">
+                        <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="grid grid-cols-4">
-            <div class="p-1">
-                <div class="carte carte--statistique">
-                    <h3>Capital</h3>
-                    <div id="capital"></div>
+            <div class="grid grid-cols-4">
+                <div class="p-1">
+                    <div class="carte carte--statistique">
+                        <h3>Capital</h3>
+                        <div id="capital"></div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="p-1">
-                <div class="carte carte--statistique">
-                    <h3>Nombre ecritures</h3>
-                    <div id="nombre_ecriture"></div>
+                <div class="p-1">
+                    <div class="carte carte--statistique">
+                        <h3>Nombre ecritures</h3>
+                        <div id="nombre_ecriture"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="p-1">
-                <div class="carte carte--statistique">
-                    <h3>Nombre journals</h3>
-                    <div id="nombre_journal"></div>
+                <div class="p-1">
+                    <div class="carte carte--statistique">
+                        <h3>Nombre journals</h3>
+                        <div id="nombre_journal"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 
 @push('dashboard')
+
 <script>
 
 /*
@@ -67,49 +68,22 @@
 
         return response;
 
-    }*/
-
-
-
-    function get_stat(){
-
-        let promise= null;
-        const url= "http://localhost:8000/api/dashboard";
-        const token= sessionStorage.getItem("_token");
-
-        const init= {
-            method: "GET",
-            headers: {
-                "Content-type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer "+token
-            }
-        }
-
-        promise= fetch(url, init).then(function(promise){ return promise.json()});
-
-        promise.then(function(statistique){
-
-            document.getElementById("capital").innerHTML= statistique.capital;
-            document.getElementById("nombre_ecriture").innerHTML= statistique.nombre_ecriture;
-            document.getElementById("nombre_journal").innerHTML= statistique.nombre_journal;
-        })
-        .catch(function(error){
-
-            console.log(error);
-        });
-
     }
+*/
+
 
 
     document.addEventListener("DOMContentLoaded", function(event) {
 
+        /* soit disant oe misy variable globale qui va contenir le soit disant lien de requete
+        vu que c'est une application à page unique, l'uri ne va pas change alors on va essayer
+        de creer une sorte de système d'uri dans le coté javascript */
         get_stat();
 
     });
 
 
 /*
-
     window.onload = function() {
 
         var ctx = document.getElementById("chart-bars").getContext("2d");
@@ -173,7 +147,9 @@
         });
 
 
-    }*/
-  </script>
+    }
+*/
+
+</script>
 @endpush
 

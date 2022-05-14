@@ -15,19 +15,14 @@ use App\Http\Controllers\routes\JournalController;
 use App\Http\Controllers\routes\EcritureController;
 use App\Http\Controllers\routes\NotificationController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
-Route::group(['middleware' => 'ensure_token'], function () {
+Route::group(['middleware' => 'guest'], function (){
+    Route::get('/login', [SessionsController::class, 'create']);
+    Route::post('/session', [SessionsController::class, 'store']);
+});
+
+Route::group(['middleware' => 'ensure_token'], function(){
 
     Route::get('/', function (){return Redirect::to('/dashboard');});
     Route::get('/dashboard', [HomeController::class, 'home'])->name("dashboard");
@@ -44,14 +39,3 @@ Route::group(['middleware' => 'ensure_token'], function () {
 	Route::get('notifications', [NotificationController::class, "index"])->name('notifications');
 });
 
-
-
-Route::group(['middleware' => 'guest'], function () {
-    Route::get('/login', [SessionsController::class, 'create']);
-    Route::post('/session', [SessionsController::class, 'store']);
-
-});
-
-Route::get('/login', function () {
-    return view('session/login-session');
-})->name('login');
