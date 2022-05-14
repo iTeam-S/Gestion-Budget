@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Middleware\EnsureToken;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Password;
@@ -26,13 +27,11 @@ use App\Http\Controllers\routes\NotificationController;
 */
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'ensure_token'], function () {
 
-    Route::get('/', function (){
-        return Redirect::to('/dashboard');
-    });
-
+    Route::get('/', function (){return Redirect::to('/dashboard');});
     Route::get('/dashboard', [HomeController::class, 'home'])->name("dashboard");
+    Route::get('/logout', [SessionsController::class, 'destroy']);
 
     Route::get('journals/{id}', [JournalController::class, "details"])->name('journals.details');
 	Route::get('journals', [JournalController::class, "index"])->name('journals');
@@ -43,8 +42,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('comptes', [CompteController::class, "index"])->name('comptes');
 
 	Route::get('notifications', [NotificationController::class, "index"])->name('notifications');
-
-    Route::get('/logout', [SessionsController::class, 'destroy']);
 });
 
 

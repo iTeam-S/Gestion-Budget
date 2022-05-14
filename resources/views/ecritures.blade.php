@@ -11,11 +11,17 @@
 
     function render_ecriture(ecriture){
 
+        const type_ecriture= ecriture.type? "entrant": "sortant";
+        const etat_ecriture= ecriture.etat? "validé": "indexé";
         const element=""+
             "<div id='ecriture-"+ecriture.id+"' class='flex flex-column my-4 border h-56 w-71 mx-4 p-2 rounded'>"+
-                "<div>"+ecriture.nom+"</div>"+
-                "<div>"+ecriture.description+"</div>"+
-                "<div>"+ecriture.code+"</div>"+
+                "<div>"+ecriture.montant+"</div>"+
+                "<div>"+ecriture.motif+"</div>"+
+                "<div>"+ecriture.piece_jointe+"</div>"+
+                "<div>"+ecriture.compte_id+"</div>"+
+                "<div>"+ecriture.journal_id+"</div>"+
+                "<div>"+type_ecriture+"</div>"+
+                "<div>"+etat_ecriture+"</div>"+
                 "<div class='flex flex-row justify-end last-of-type:mt-auto'>"+
                     "<button type='button' class='transition duration-150 ease-in-out' data-bs-toggle='modal' data-bs-target='#modal-edit-ecriture-"+ecriture.id+"'>"+
                         "<svg xmlns='http://www.w3.org/2000/svg' style='width: 1rem; height: 1rem' fill='none' viewBox='0 0 24 24' stroke='currentColor'>"+
@@ -30,11 +36,11 @@
                 "</div>"+
             "</div>"+
 
-            '<div class="modal hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="modal-edit-ecriture-'+ecriture.id+'" tabindex="-1" aria-labelledby="suppr-ecriture '+ecriture.nom.toLowerCase()+'" aria-modal="true" role="dialog">'+
+            '<div class="modal hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="modal-edit-ecriture-'+ecriture.id+'" tabindex="-1" aria-labelledby="suppr-ecriture '+ecriture.id+'" aria-modal="true" role="dialog">'+
                 '<div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">'+
                     '<div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">'+
                         '<div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">'+
-                            '<h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">ecriture '+ecriture.nom.toLowerCase()+'</h5>'+
+                            '<h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">ecriture '+ecriture.id+'</h5>'+
                             '<button type="button"'+
                                 'class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"'+
                                 'data-bs-dismiss="modal" aria-label="Close">'+
@@ -44,17 +50,17 @@
                             '<form id="modify-ecriture" onsubmit="return update_ecriture('+ecriture.id+')">'+
                                 '<div class="mx-2">'+
                                     '<label>Renommer</label>'+
-                                    '<input type="text" disabled class="border rounded-sm" name="nom" value="'+ecriture.nom+'"/>'+
+                                    '<input type="text" disabled class="border rounded-sm" name="nom" value="'+ecriture.id+'"/>'+
                                     '<input type="text" class="border rounded-sm" name="nom" id="new_nom_ecriture" placeholder="nouveau nom"/>'+
                                 '</div>'+
 
                                 '<div class="mx-2">'+
-                                    '<input type="text" disabled class="border rounded-sm" name="description" value="'+ecriture.description+'"/>'+
+                                    '<input type="text" disabled class="border rounded-sm" name="description" value="'+ecriture.motif+'"/>'+
                                     '<input type="text" class="border rounded-sm" name="description" id="new_description_ecriture" placeholder="nouveau description"/>'+
                                 '</div>'+
 
                                 '<div class="mx-2">'+
-                                    '<input type="text" disabled class="border rounded-sm" name="description" value="'+ecriture.code+'"/>'+
+                                    '<input type="text" disabled class="border rounded-sm" name="description" value="'+ecriture.piece_jointe+'"/>'+
                                     '<input type="text" class="border rounded-sm" name="description" id="new_code_ecriture" placeholder="nouveau code"/>'+
                                 '</div>'+
 
@@ -72,11 +78,11 @@
                 '</div>'+
             '</div>'+
 
-            '<div class="modal hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="modal-remove-ecriture-'+ecriture.id+'" tabindex="-1" aria-labelledby="suppr-ecriture '+ecriture.nom.toLowerCase()+'" aria-modal="true" role="dialog">'+
+            '<div class="modal hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="modal-remove-ecriture-'+ecriture.id+'" tabindex="-1" aria-labelledby="suppr-ecriture '+ecriture.id+'" aria-modal="true" role="dialog">'+
                 '<div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">'+
                     '<div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">'+
                         '<div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">'+
-                            '<h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">ecriture '+ecriture.nom.toLowerCase()+'</h5>'+
+                            '<h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">ecriture '+ecriture.id+'</h5>'+
                             '<button type="button"'+
                                 'class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"'+
                                 'data-bs-dismiss="modal" aria-label="Close">'+
@@ -100,14 +106,13 @@
         document.getElementById("list-ecritures").innerHTML+= element;
     }
 
-    function render_adding_fields(item){
+    function render_adding_ecriture(){
         const element= ''+
-        "<div class='flex flex-column items-center my-4 border h-56 w-71 mx-4 p-2 rounded'>"+
-            "<button>ajouter ecriture</button>"+
+        "<div class='flex flex-column justify-center items-center my-4 border h-56 w-71 mx-4 p-2 rounded'>"+
+            "<button class=\"btn\">ajouter une ecriture</button>"+
         "</div>";
 
-
-        render_ecriture(element);
+        document.getElementById("list-ecritures").innerHTML+= element;
     }
 
 
@@ -116,7 +121,7 @@
         const url= "http://localhost:8000/api/ecriture";
         const token= sessionStorage.getItem("_token");
 
-        const init= {
+        const init={
             method: "GET",
             headers: {
                 "Content-type": "application/x-www-form-urlencoded",
@@ -128,15 +133,17 @@
 
         promise.then(function(data){
 
-            for(ecriture of data){
-                render_ecriture(ecriture);
+            if(data.length !== 0){
+                for(ecriture of data){
+
+                    render_ecriture(ecriture);
+                }
             }
+
             if(data.length < 6){
 
-                render_adding_fields("ecriture");
+                render_adding_ecriture();
             }
-
-
         })
         .catch(function(error){
 

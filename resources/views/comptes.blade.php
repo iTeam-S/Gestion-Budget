@@ -66,19 +66,16 @@
                             '<div class="modal-body relative p-4">'+
                                 '<form id="modify-account" onsubmit="return update_account('+compte.id+')">'+
                                     '<div class="mx-2">'+
-                                        '<label>Renommer</label>'+
-                                        '<input type="text" disabled class="border rounded-sm" name="nom" value="'+compte.nom+'"/>'+
-                                        '<input type="text" class="border rounded-sm" name="nom" id="new_nom_compte" placeholder="nouveau nom"/>'+
+                                        '<label>Créer un compte</label>'+
+                                        '<input type="text" class="border rounded-sm" name="nom" id="nom" placeholder="nom"/>'+
                                     '</div>'+
 
                                     '<div class="mx-2">'+
-                                        '<input type="text" disabled class="border rounded-sm" name="description" value="'+compte.description+'"/>'+
-                                        '<input type="text" class="border rounded-sm" name="description" id="new_description_compte" placeholder="nouveau description"/>'+
+                                        '<input type="text" class="border rounded-sm" name="description" id="description" placeholder="description"/>'+
                                     '</div>'+
 
                                     '<div class="mx-2">'+
-                                        '<input type="text" disabled class="border rounded-sm" name="description" value="'+compte.code+'"/>'+
-                                        '<input type="text" class="border rounded-sm" name="description" id="new_code_compte" placeholder="nouveau code"/>'+
+                                        '<input type="text" class="border rounded-sm" name="code" id="code" placeholder="code"/>'+
                                     '</div>'+
 
                                     '<div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">'+
@@ -123,6 +120,53 @@
             document.getElementById("list-account").innerHTML+= element;
         }
 
+        function render_adding_account(){
+            const element= ''+
+            "<div class='flex flex-column justify-center items-center my-4 border h-56 w-71 mx-4 p-2 rounded'>"+
+                "<button class='btn' data-bs-toggle='modal' data-bs-target='#modal-remove-compte'>ajouter un compte</button>"+
+            "</div>"+
+            '<div class="modal hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="modal-create-compte" tabindex="-1" aria-labelledby="create-compte '+compte.nom.toLowerCase()+'" aria-modal="true" role="dialog">'+
+                    '<div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">'+
+                        '<div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">'+
+                            '<div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">'+
+                                '<h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">compte</h5>'+
+                                '<button type="button"'+
+                                    'class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"'+
+                                    'data-bs-dismiss="modal" aria-label="Close">'+
+                                '</button>'+
+                            '</div>'+
+                            '<div class="modal-body relative p-4">'+
+                                '<form id="modal-create-account" onsubmit="return store_by_modal()">'+
+                                    '<div class="mx-2">'+
+                                        '<label>Créer un compte</label>'+
+                                        '<input type="text" class="border rounded-sm" name="nom" id="nom" placeholder="nouveau nom"/>'+
+                                    '</div>'+
+
+                                    '<div class="mx-2">'+
+                                        '<input type="text" class="border rounded-sm" name="description" id="description" placeholder="nouveau description"/>'+
+                                    '</div>'+
+
+                                    '<div class="mx-2">'+
+                                        '<input type="text" class="border rounded-sm" name="description" id="code" placeholder="nouveau code"/>'+
+                                    '</div>'+
+
+                                    '<div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">'+
+                                        '<button type="submit" class="btn rounded-sm transition duration-150 ease-in-out" data-bs-dismiss="modal">'+
+                                            'valider'+
+                                        '</button>'+
+                                        '<button type="button" class="btn rounded-sm transition-duration-150 ease-in-out" data-bs-dismiss="modal">'+
+                                            'annuler'+
+                                        '</button>'+
+                                    '</div>'+
+                                '</form>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>';
+
+            document.getElementById("list-account").innerHTML+= element;
+        }
+
         function get_accounts(){
             let promise= null;
             const url= "http://localhost:8000/api/compte";
@@ -140,15 +184,30 @@
 
             promise.then(function(data){
 
+                if(data.length !== 0){
                 for(compte of data){
+
                     render_account(compte);
                 }
+            }
+
+            if(data.length < 6){
+
+                render_adding_account();
+            }
 
             })
             .catch(function(error){
 
                 console.log(error);
             });
+        }
+
+        const store_by_modal= ()=> {
+
+
+            console.log("ajouté");
+
         }
 
         function store_account(nom, description, code){
