@@ -33,7 +33,7 @@
 
 }
 
-window.onload = function(){
+document.addEventListener("DOMContentLoaded", function(event){
 
     let promise= null;
     const url= "http://localhost:8000/dashboard";
@@ -55,5 +55,5 @@ window.onload = function(){
     });
 
 
-};
+});
 

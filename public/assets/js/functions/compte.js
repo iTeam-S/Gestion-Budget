@@ -1,4 +1,4 @@
-/*
+
 
 function render_account(compte){
 
@@ -294,12 +294,14 @@ function remove_account(id){
     });
 }
 
-*/
+
 document.addEventListener("DOMContentLoaded", function(event){
 
     let promise= null;
     const url= "http://localhost:8000/comptes";
     const token= sessionStorage.getItem("_token");
+
+    if(!token){window.location.href= "http://localhost:8000/login"}else{console.log(token)};
 
     const init= {
         method: "GET",
