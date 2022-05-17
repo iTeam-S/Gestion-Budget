@@ -17,14 +17,17 @@ use App\Http\Controllers\routes\NotificationController;
 
 
 
+Route::get('/', function(){ return view("index"); });
+
+
 Route::group(['middleware' => 'guest'], function (){
     Route::get('/login', [SessionsController::class, 'create']);
     Route::post('/session', [SessionsController::class, 'store']);
+
 });
 
 Route::group(['middleware' => 'ensure_token'], function(){
 
-    Route::get('/', function (){return Redirect::to('/dashboard');});
     Route::get('/dashboard', [HomeController::class, 'home'])->name("dashboard");
     Route::get('/logout', [SessionsController::class, 'destroy']);
 
