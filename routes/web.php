@@ -17,11 +17,15 @@ use App\Http\Controllers\routes\NotificationController;
 
 
 
-Route::get('/', function(){ return view("index"); });
+/* prend en charge la redirection des pages dont les uri sont definies côtés react
+même lors du rechargement coté-serveur */
+Route::view('/{path?}', 'index');
+
+Route::get('/', function(){ return view("index"); })->name("login");
 
 
 Route::group(['middleware' => 'guest'], function (){
-    Route::get('/login', [SessionsController::class, 'create']);
+    //Route::get('/login', [SessionsController::class, 'create']);
     Route::post('/session', [SessionsController::class, 'store']);
 
 });

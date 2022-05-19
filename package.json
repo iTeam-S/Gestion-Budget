@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "flowbite": "^1.4.5",
+        "react-router-dom": "^6.3.0",
         "tinymce": "^6.0.2"
     }
 }
