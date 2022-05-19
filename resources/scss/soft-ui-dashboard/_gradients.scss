@@ -4,11 +4,6 @@
   }
 }
 
-@each $prop, $value in $theme-colors {
-  .bg-gradient-faded-#{$prop} {
-    background-image: radial-gradient(370px circle at 80% 50%,rgba($value, .6) 0,darken($value, 10%) 100%)
-  }
-}
 
 
 @each $prop, $value in $theme-colors {

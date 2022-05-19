@@ -1,16 +1,21 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import { useNavigate } from "react-router-dom"
 
 
 const Login = ({token, setToken}) => {
-    const navigate = useNavigate();
-    if(token != "") navigate("/dashboard");
-    console.log(token);
+    const redirect = useNavigate();
+
+    // se redireger vers le dashboard si l'utilisateur est déjà authentifié
+    useEffect(() => {
+
+        if(token != ""){
+            redirect("/dashboard");
+        }
+    }, []);
+
 
     const [prenomUsuel, setPrenomUsuel] = useState("");
     const [password, setPassword] = useState("");
-
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -39,14 +44,16 @@ const Login = ({token, setToken}) => {
 
         promise.then(function(response){
             sessionStorage.setItem("_token", response.access_token);
-            setToken(sessionStorage.getItem("_token"));
-            navigate("/dashboard");
+            redirect("/dashboard");
 
         })
         .catch(function(error){
 
             console.log(error);
         });
+
+        setToken(sessionStorage.getItem("_token"));
+
 
     }
 

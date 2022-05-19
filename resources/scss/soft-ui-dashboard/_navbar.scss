@@ -111,7 +111,6 @@
     .navbar-toggler-bar {
       &.bar1 {
         transform: $navbar-toggler-bar-1-transform;
-        transform-origin: $navbar-toggler-bar-1-transform-origin;
         margin-top: $navbar-toggler-bar-1-margin-top;
       }
 
@@ -121,7 +120,6 @@
 
       &.bar3 {
         transform: $navbar-toggler-bar-3-transform;
-        transform-origin: $navbar-toggler-bar-3-transform-origin;
         margin-top: $navbar-toggler-bar-3-margin-top;
       }
     }

@@ -1,7 +1,6 @@
 .form-check:not(.form-switch) .form-check-input {
   &[type="checkbox"],
   &[type="radio"] {
-    border: 1px solid darken($gray-200, 10%);
     margin-top: $form-text-margin-top;
     position: relative;
 

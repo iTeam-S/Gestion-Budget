@@ -24,18 +24,7 @@
       // Extend each breakpoint which is smaller or equal to the current breakpoint
       $extend-breakpoint: true;
 
-      @each $name, $width in $grid-breakpoints {
-        @if ($extend-breakpoint) {
-          .container#{breakpoint-infix($name, $grid-breakpoints)} {
-            @extend %responsive-container-#{$breakpoint};
-          }
 
-          // Once the current breakpoint is reached, stop extending
-          @if ($breakpoint == $name) {
-            $extend-breakpoint: false;
-          }
-        }
-      }
     }
   }
 }

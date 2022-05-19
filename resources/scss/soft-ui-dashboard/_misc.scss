@@ -1,19 +1,7 @@
 // Blur effect
 
 .blur {
-  box-shadow: $blur-box-shadow;
-  -webkit-backdrop-filter: $blur-backdrop-filter;
-  backdrop-filter: $blur-backdrop-filter;
-  background-color: $card-background-blur !important;
 
-  &.saturation-less {
-    -webkit-backdrop-filter: $blur-backdrop-filter-less;
-    backdrop-filter: $blur-backdrop-filter-less;
-  }
-
-  &.blur-rounded {
-    border-radius: $blur-border-radius-rounded;
-  }
 
   &.blur-light {
     background-color: $blur-light-background;
@@ -23,46 +11,18 @@
   }
 }
 
-.shadow-blur {
-  box-shadow: $shadow-blur-box-shadow !important;
-}
-
 .shadow-card {
   box-shadow: $card-box-shadow !important;
 }
 
 .navbar-blur {
-  -webkit-backdrop-filter: $blur-backdrop-filter;
-  backdrop-filter: $blur-backdrop-filter;
+
   background-color: rgba($white, .58) !important;
 }
 
-.blur-section {
-  -webkit-backdrop-filter: $blur-backdrop-filter;
-  backdrop-filter: $blur-backdrop-filter;
-
-}
 
 // Transition on hover
 * {
-  &.move-on-hover {
-    -webkit-transition: $move-transition;
-    transition: $move-transition;
-    overflow: $move-overflow;
-    -webkit-transform-origin: $move-transform-origin;
-    transform-origin: $move-transform-origin;
-    transform-origin: $move-transform-origin;
-    -webkit-transform: $move-transform;
-    transform: $move-transform;
-    -webkit-backface-visibility: $move-backface-visibility;
-    backface-visibility: $move-backface-visibility;
-    will-change: $move-will-change;
-
-    &:hover {
-      -webkit-transform: $move-hover-transform;
-      transform: $move-hover-transform;
-    }
-  }
 
   &.gradient-animation {
     background-size: $gradient-animation-bg-size !important;

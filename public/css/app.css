@@ -483,14 +483,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .m-3 {
   margin: 0.75rem;
 }
-.m-2 {
-  margin: 0.5rem;
-}
 .m-4 {
   margin: 1rem;
-}
-.m-5 {
-  margin: 1.25rem;
 }
 .m-6 {
   margin: 1.5rem;
@@ -514,6 +508,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .ml-3 {
   margin-left: 0.75rem;
@@ -572,8 +570,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mt-1 {
   margin-top: 0.25rem;
 }
-.inline-block {
-  display: inline-block;
+.mr-0 {
+  margin-right: 0px;
+}
+.block {
+  display: block;
 }
 .flex {
   display: flex;
@@ -602,14 +603,17 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-14 {
   height: 3.5rem;
 }
+.h-56 {
+  height: 14rem;
+}
 .h-\[200px\] {
   height: 200px;
 }
-.h-\[400px\] {
-  height: 400px;
-}
 .h-10 {
   height: 2.5rem;
+}
+.h-full {
+  height: 100%;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -638,11 +642,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-\[200px\] {
   width: 200px;
 }
-.w-\[400px\] {
-  width: 400px;
-}
-.w-\[300px\] {
-  width: 300px;
+.w-\[250px\] {
+  width: 250px;
 }
 .max-w-xl {
   max-width: 36rem;
@@ -670,6 +671,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
@@ -932,8 +936,17 @@ Ensure the default browser behavior of the `hidden` attribute.
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+.first-of-type\:mr-4:first-of-type {
+  margin-right: 1rem;
+}
+.first-of-type\:mr-0:first-of-type {
+  margin-right: 0px;
+}
 .last-of-type\:mt-auto:last-of-type {
   margin-top: auto;
+}
+.last-of-type\:mr-4:last-of-type {
+  margin-right: 1rem;
 }
 .hover\:bg-teal:hover {
   --tw-bg-opacity: 1;
@@ -1000,6 +1013,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     flex: 1 1 0%;
   }
 
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .sm\:items-center {
     align-items: center;
   }
@@ -1021,11 +1038,55 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-top: 0px;
   }
 }
+@media (min-width: 768px) {
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:flex-auto {
+    flex: 1 1 auto;
+  }
+
+  .md\:flex-none {
+    flex: none;
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+}
 @media (min-width: 1024px) {
+
+  .lg\:flex {
+    display: flex;
+  }
+
+  .lg\:flex-auto {
+    flex: 1 1 auto;
+  }
+
+  .lg\:flex-none {
+    flex: none;
+  }
+
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+}
+@media (min-width: 1280px) {
+
+  .xl\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

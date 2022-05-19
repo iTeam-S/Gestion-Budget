@@ -4,8 +4,4 @@
   }
 }
 
-@each $name, $value in $width-dim{
-  .width-#{$name} {
-    width: $value !important;
-  }
-}
+

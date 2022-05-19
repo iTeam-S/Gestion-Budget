@@ -1,12 +1,24 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import CompteList from "../components/CompteList";
 
+
+/* gestion jwt */
+
+
+
+/**********************************/
 const Compte = ({token}) => {
 
-    /* gestion jwt */
-        const navigate = useNavigate();
-        if(token == "") navigate("/login");
-    /**********************************/
+    const redirect = useNavigate();
+
+    useEffect(() => {
+        if(token == ""){
+            redirect("/login");
+        }
+
+    }, []);
+
 
 
     const [nom, setNom] = useState("");
@@ -31,7 +43,9 @@ const Compte = ({token}) => {
             body: body
         }
 
-        const promise= fetch(url, init).then(function(promise){ return promise});
+
+
+        const promise= fetch(url, init).then(function(promise){ return promise.json()});
 
         promise.then(function(response){
 
@@ -66,11 +80,11 @@ const Compte = ({token}) => {
 
 
     return(
-        <div className="flex flex-row m-6">
-            <div className="flex-auto border">
+        <div className="lg:flex md:flex-row m-6">
+            <div className="lg:flex-auto border">
                 <CompteList/>
             </div>
-            <div className="flex-none ml-4 w-[300px] border rounded justify-center">
+            <div className="lg:flex-none ml-4 w-[250px] border rounded justify-center">
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor="nom">Nom</label><br/>
