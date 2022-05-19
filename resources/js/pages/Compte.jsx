@@ -13,7 +13,7 @@ const Compte = ({token}) => {
     const redirect = useNavigate();
 
     useEffect(() => {
-        if(token == ""){
+        if(token == null){
             redirect("/login");
         }
 
@@ -24,6 +24,8 @@ const Compte = ({token}) => {
     const [nom, setNom] = useState("");
     const [code, setCode] = useState("");
     const [description, setDescription] = useState("");
+
+    console.log(token);
 
     const storeCompte = () => {
 
@@ -78,31 +80,34 @@ const Compte = ({token}) => {
 
 
 
-
     return(
         <div className="lg:flex md:flex-row m-6">
-            <div className="lg:flex-auto border">
+            <div className="lg:flex-auto">
                 <CompteList/>
             </div>
-            <div className="lg:flex-none ml-4 w-[250px] border rounded justify-center">
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label htmlFor="nom">Nom</label><br/>
-                        <input type="text" id="nom" className="border h-10 rounded" value={nom} placeholder="..." onChange={(event) => setNom(event.target.value)}/>
-                    </div>
+            <div className="lg:flex-none ml-4">
+                <div className="flex border shadow-md rounded">
+                    <form className="p-2"  onSubmit={handleSubmit}>
+                        <label>Nom</label>
+                        <div className="mb-3">
+                            <input type="text" id="nom" className="border h-10 rounded" value={nom} placeholder="nom" onChange={(event) => setNom(event.target.value)}/>
+                        </div>
 
-                    <div>
-                        <label htmlFor="code">code</label><br/>
-                        <input type="text" id="code" className="border h-10 rounded" value={code} placeholder="..." onChange={(event) => setCode(event.target.value)}/>
-                    </div>
+                        <label>Code</label>
+                        <div className="mb-3">
+                            <input type="password" placeholder="code" value={code} className="border rounded h-10" onChange={(event) => setCode(event.target.value)} />
+                        </div>
 
-                    <div>
-                        <label htmlFor="desc">Description</label><br/>
-                        <input type="text" id="desc" className="border h-10 rounded" value={description} placeholder="..." onChange={(event) => setDescription(event.target.value)}/>
-                    </div>
+                        <label>Description</label>
+                        <div className="mb-3">
+                            <input type="password" placeholder="description" value={description} className="border rounded h-10" onChange={(event) => setDescription(event.target.value)} />
+                        </div>
 
-                    <button className="btn" type="submit">Ajouter</button>
-                </form>
+                        <div>
+                            <button type="submit" id="login-btn-submit" className="rounded btn">ajouter</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     )

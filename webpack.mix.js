@@ -8,5 +8,5 @@ mix.js('resources/js/index.js', 'public/js')
     .postCss("resources/css/app.css", "public/css", [
         require("tailwindcss")
       ])
-    .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/scss/app.scss', 'public/css')
 

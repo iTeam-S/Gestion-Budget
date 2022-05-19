@@ -11,7 +11,8 @@ import { identity } from "lodash";
 const App = () => {
 
 
-    const [token, setToken] = useState();
+    const historyToken = localStorage.getItem("_token") || "";
+    const [token, setToken] = useState(historyToken);
 
 
     return(
