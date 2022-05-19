@@ -7,7 +7,7 @@ const Sidebar = () => {
             <aside className="flex-none">
                 <nav className="flex flex-column items-center justify-center border shadow-md rounded w-[200px] h-[200px] m-4">
                         <div className="my-2">
-                            <NavLink to="dashboard" activeClassName="bg-teal" className={({ isActive }) => (
+                            <NavLink to="dashboard" className={({ isActive }) => (
                                     isActive ? "bg-teal text-white rounded p-px flex flex-row" : "flex -row"
                                 )}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import ChartJs from "../components/ChartJs";
 
 const Dashboard = ({token}) => {
     const navigate = useNavigate();
@@ -6,7 +7,10 @@ const Dashboard = ({token}) => {
 
 
     return (
-        <div>Dashboard</div>
+        <>
+            <div>Dashboard</div>
+            <ChartJs/>
+        </>
     )
 }
 
