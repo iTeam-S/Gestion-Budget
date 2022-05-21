@@ -1,6 +1,6 @@
-import CompteItem from "./CompteItem";
-import getCompteData from "../datas/ComptesData";
-import AddItem from "./AddItem";
+import CompteItem from "../item/CompteItem";
+import getCompteData from "../../datas/ComptesData";
+import AddItem from "../item/AddItem";
 const CompteList = () => {
 
     return(

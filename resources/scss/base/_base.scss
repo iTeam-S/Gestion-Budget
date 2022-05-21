@@ -1,11 +1,7 @@
-@font-face {
-    font-family: "MontSerrat";
-    src: url("../../fonts/Montserrat/static/Montserrat-Regular.ttf");
-}
-
-@font-face {
-    font-family: "Alfa Slab One";
-    src: url("../../fonts/AlfaSlabOne-Regular.ttf");
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body{
@@ -25,12 +21,12 @@ body{
 
 
 .title{
-    color: $color-primary;
+    color: $teal;
 }
 
 .btn{
 
-    background-color: $color-primary !important;
+    background-color: $teal !important;
     color: $color-light;
     padding: 5px;
 }
@@ -38,8 +34,8 @@ body{
 .btn-secondary{
 
     background-color: $color-light;
-    border-color: $color-primary;
-    color: $color-primary;
+    border-color: $teal;
+    color: $teal;
 }
 
 

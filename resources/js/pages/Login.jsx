@@ -2,15 +2,23 @@ import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Anime from 'react-anime';
 
-const Login = ({ token, setToken }) => {
+const Login = () => {
+
     const redirect = useNavigate();
+
+    const token = localStorage.getItem("_token");
+
 
     // se redireger vers le dashboard si l'utilisateur est déjà authentifié
     useEffect(() => {
 
-        if(token != ""){
+        if(token !== null){
+
             redirect("/dashboard");
+            
         }
+
+
     }, []);
 
 
@@ -39,20 +47,24 @@ const Login = ({ token, setToken }) => {
 
         const promise = fetch(url, init)
             .then(function (promise) {
+
                 return promise.json();
+
             });
 
         promise.then(function (response) {
-            sessionStorage.setItem("_token", response.access_token);
+
+            localStorage.setItem("_token", response.access_token);
+
             redirect("/dashboard");
 
         })
-            .catch(function (error) {
+        .catch(function (error) {
 
-                console.log(error);
-            });
+            console.log(error);
+            
+        });
 
-        setToken(sessionStorage.getItem("_token"));
 
 
     }

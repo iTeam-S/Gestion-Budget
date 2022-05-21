@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import CompteList from "../components/list/CompteList";
+import JournalList from "../components/list/JournalList";
 
 
 /* gestion jwt */
@@ -8,21 +8,17 @@ import CompteList from "../components/list/CompteList";
 
 
 /**********************************/
-const Compte = () => {
+const Journal = () => {
 
     const [nom, setNom] = useState("");
-    const [code, setCode] = useState("");
-    const [description, setDescription] = useState("");
 
-    const storeCompte = () => {
+    const storeJournal = () => {
 
         const token = localStorage.getItem("_token");
-        const url = "http://localhost:8000/api/compte/store";
+        const url = "http://localhost:8000/api/journal/store";
 
         const body = new URLSearchParams();
         body.append("nom", nom);
-        body.append("description", description);
-        body.append("code", code)
 
         const init= {
             method: "POST",
@@ -45,8 +41,6 @@ const Compte = () => {
             //Réinitialisation des state
 
             setNom("");
-            setCode("");
-            setDescription("");
 
         })
         .catch(function(error){
@@ -61,14 +55,14 @@ const Compte = () => {
 
         event.preventDefault();
 
-        storeCompte();
+        storeJournal();
     }
 
 
     return(
         <div className="lg:flex md:flex-row m-6">
             <div className="lg:flex-auto">
-                <CompteList/>
+                <JournalList/>
             </div>
             <div className="lg:flex-none ml-4">
                 <div className="flex border shadow-md rounded">
@@ -77,17 +71,6 @@ const Compte = () => {
                         <div className="mb-3">
                             <input type="text" id="nom" className="border h-10 rounded" value={nom} placeholder="nom" onChange={(event) => setNom(event.target.value)}/>
                         </div>
-
-                        <label>Code</label>
-                        <div className="mb-3">
-                            <input type="number" placeholder="code" value={code} className="border rounded h-10" onChange={(event) => setCode(event.target.value)} />
-                        </div>
-
-                        <label>Description</label>
-                        <div className="mb-3">
-                            <input type="text" placeholder="description" value={description} className="border rounded h-10" onChange={(event) => setDescription(event.target.value)} />
-                        </div>
-
                         <div>
                             <button type="submit" id="login-btn-submit" className="rounded btn">ajouter</button>
                         </div>
@@ -99,4 +82,4 @@ const Compte = () => {
 }
 
 
-export default Compte;
+export default Journal;

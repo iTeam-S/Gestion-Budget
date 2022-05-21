@@ -1,26 +1,38 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 
 
-class Layout extends React.Component{
+const Layout = () => {
 
-    render(){
-        return(
-            <React.Fragment>
-                    <div className="flex">
-                        <Sidebar/>
-                        <div className="flex-auto">
-                            <Navbar/>
-                            <div className="mt-4 overflow-x-hidden overflow-y-auto">
-                                <Outlet/>
-                            </div>
+    const redirect = useNavigate();
+
+    const token = localStorage.getItem("_token") ;
+
+    useEffect(() => {
+        
+        if(token === null) redirect("/login");
+
+        console.log(token);
+
+
+    }, []);
+
+    return(
+        <React.Fragment>
+                <div className="flex">
+                    <Sidebar/>
+                    <div className="flex-auto">
+                        <Navbar/>
+                        <div className="mt-4 overflow-x-hidden overflow-y-auto">
+                            <Outlet/>
                         </div>
                     </div>
-            </React.Fragment>
-        )
-    }
+                </div>
+        </React.Fragment>
+    )
 }
+
 
 export default Layout;

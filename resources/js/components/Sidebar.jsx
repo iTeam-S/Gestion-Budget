@@ -18,7 +18,7 @@ const Sidebar = () => {
                             </NavLink>
                         </div>
                         <div className="my-2">
-                            <NavLink to="journals" className={({ isActive }) => (
+                            <NavLink to="journal" className={({ isActive }) => (
                                     isActive ? "bg-teal text-white rounded p-px flex flex-row" : "flex -row"
                                 )}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -28,7 +28,7 @@ const Sidebar = () => {
                             </NavLink>
                         </div>
                         <div className="my-2">
-                            <NavLink to="ecritures" className={({ isActive }) => (
+                            <NavLink to="ecriture" className={({ isActive }) => (
                                     isActive ? "bg-teal text-white rounded p-px flex flex-row" : "flex -row"
                                 )}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -38,7 +38,7 @@ const Sidebar = () => {
                             </NavLink>
                         </div>
                         <div className="my-2">
-                            <NavLink to="comptes" className={({ isActive }) => (
+                            <NavLink to="compte" className={({ isActive }) => (
                                     isActive ? "bg-teal text-white rounded p-px flex flex-row" : "flex -row"
                                 )}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
