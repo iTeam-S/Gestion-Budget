@@ -1,6 +1,7 @@
 import {useState, useRef} from "react";
 import Chevron from "../Chevron";
 
+
 function EcritureItem({title, content}){
   
     const [active, setActive] = useState("");
@@ -8,6 +9,8 @@ function EcritureItem({title, content}){
     const [rotate, setRotate] = useState("accordion__icon");
     
     const contenu = useRef(null);
+
+    
     
     const toggleAccordion = () => {
 
@@ -23,7 +26,7 @@ function EcritureItem({title, content}){
             <button className= {`accordion ${active} border-b border-teal cursor-pointer 
             p-[18px] flex items-center outline-none transition-[background-color] 
             duration-[600ms] ease-in-out`} onClick={toggleAccordion}>
-                <p className="accordion__title font-semibold text-sm">{title}</p>
+                <p className="accordion__title text-sm">{title}</p>
                 <Chevron className={`${rotate}`} width={10} height={10} fill="#777" />
             </button>
     

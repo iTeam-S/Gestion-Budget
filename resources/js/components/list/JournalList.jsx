@@ -9,7 +9,9 @@ function JournalList(){
                 <JournalItem />
                 <JournalItem />
                 <JournalItem />
-                <AddItem />
+                <JournalItem />
+                <JournalItem />
+                <JournalItem />
             </div>
         </div>
     )

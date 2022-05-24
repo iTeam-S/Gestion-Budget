@@ -9,7 +9,9 @@ const CompteList = () => {
                 <CompteItem />
                 <CompteItem />
                 <CompteItem />
-                <AddItem />
+                <CompteItem />
+                <CompteItem />
+                <CompteItem />
             </div>
         </div>
     )
