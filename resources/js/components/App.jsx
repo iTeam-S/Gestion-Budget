@@ -8,6 +8,7 @@ import Dashboard from "../pages/Dashboard";
 import Compte from "../pages/Compte";
 import Journal from "../pages/Journal";
 import Ecriture from "../pages/Ecriture";
+import Error from "./Error/";
 
 
 const App = () => {
@@ -22,7 +23,7 @@ const App = () => {
               <Route index path="ecriture" element={<Ecriture/>} />
           </Route>
           <Route path="login" element={<Login/>} />
-          <Route path="*" element="login" />
+          <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
       )

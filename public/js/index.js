@@ -6664,15 +6664,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _layouts_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../layouts/Layout */ "./resources/js/layouts/Layout.jsx");
 /* harmony import */ var _pages_Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/Login */ "./resources/js/pages/Login.jsx");
 /* harmony import */ var _pages_Dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/Dashboard */ "./resources/js/pages/Dashboard.jsx");
 /* harmony import */ var _pages_Compte__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../pages/Compte */ "./resources/js/pages/Compte.jsx");
 /* harmony import */ var _pages_Journal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../pages/Journal */ "./resources/js/pages/Journal.jsx");
 /* harmony import */ var _pages_Ecriture__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../pages/Ecriture */ "./resources/js/pages/Ecriture.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Error___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Error/ */ "./resources/js/components/Error/index.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -6685,34 +6687,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Routes, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.BrowserRouter, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Routes, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
         path: "/",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_layouts_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {}),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_layouts_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {}),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           index: true,
           path: "dashboard",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Dashboard__WEBPACK_IMPORTED_MODULE_3__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pages_Dashboard__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           index: true,
           path: "compte",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Compte__WEBPACK_IMPORTED_MODULE_4__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pages_Compte__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           index: true,
           path: "journal",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Journal__WEBPACK_IMPORTED_MODULE_5__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pages_Journal__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           index: true,
           path: "ecriture",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Ecriture__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pages_Ecriture__WEBPACK_IMPORTED_MODULE_6__["default"], {})
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
         path: "login",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Login__WEBPACK_IMPORTED_MODULE_2__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pages_Login__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
         path: "*",
-        element: "login"
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Error___WEBPACK_IMPORTED_MODULE_7__["default"], {})
       })]
     })
   });
@@ -6968,6 +6970,286 @@ function DragAndDrop(_ref) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DragAndDrop);
+
+/***/ }),
+
+/***/ "./resources/js/components/Error/index.jsx":
+/*!*************************************************!*\
+  !*** ./resources/js/components/Error/index.jsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var Error = function Error(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", _objectSpread(_objectSpread({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 800 600"
+  }, props), {}, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("defs", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("clipPath", {
+        id: "a",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          d: "M380.857 346.164c-1.247 4.651-4.668 8.421-9.196 10.06-9.332 3.377-26.2 7.817-42.301 3.5s-28.485-16.599-34.877-24.192c-3.101-3.684-4.177-8.66-2.93-13.311l7.453-27.798a6.948 6.948 0 0 1 6.088-5.13c6.755-.61 20.546-.608 41.785 5.087s33.181 12.591 38.725 16.498a6.948 6.948 0 0 1 2.705 7.488l-7.452 27.798z"
+        })
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("g", {
+      fill: "none",
+      stroke: "#0E0620",
+      strokeWidth: 3,
+      strokeMiterlimit: 10,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 572.859,
+        cy: 108.803,
+        r: 90.788
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 548.891,
+        cy: 62.319,
+        r: 13.074
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 591.743,
+        cy: 158.918,
+        r: 7.989
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        strokeLinecap: "round",
+        d: "M476.562 101.461c-30.404 2.164-49.691 4.221-49.691 8.007 0 6.853 63.166 12.408 141.085 12.408s141.085-5.555 141.085-12.408c0-3.378-15.347-4.988-40.243-7.225"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        opacity: 0.5,
+        strokeLinecap: "round",
+        d: "M483.985 127.43c23.462 1.531 52.515 2.436 83.972 2.436 36.069 0 68.978-1.19 93.922-3.149"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("g", {
+      fill: "none",
+      stroke: "#0E0620",
+      strokeWidth: 3,
+      strokeLinecap: "round",
+      strokeMiterlimit: 10,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        d: "M518.07 245.375v21.206M508.129 255.978h19.881M154.55 231.391v21.207M144.609 241.995h19.881M320.135 132.746v21.206M310.194 143.349h19.881M200.67 483.11v21.206M210.611 493.713H190.73"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("g", {
+      fill: "none",
+      stroke: "#0E0620",
+      strokeWidth: 3,
+      strokeLinecap: "round",
+      strokeMiterlimit: 10,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        d: "M432.173 380.52v11.31M426.871 386.175h10.603M489.555 299.765v8.359M485.636 303.945h7.837M231.468 291.009v8.36M227.55 295.189h7.837M244.032 547.539v8.359M247.95 551.719h-7.837M186.359 406.967v8.359M190.277 411.146h-7.837M480.296 406.967v8.359M484.215 411.146h-7.837"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("g", {
+      fill: "none",
+      stroke: "#0E0620",
+      strokeWidth: 3,
+      strokeLinecap: "round",
+      strokeMiterlimit: 10,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 588.977,
+        cy: 255.978,
+        r: 7.952
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 450.066,
+        cy: 320.259,
+        r: 7.952
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 168.303,
+        cy: 353.753,
+        r: 7.952
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 429.522,
+        cy: 201.185,
+        r: 7.952
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 200.67,
+        cy: 176.313,
+        r: 7.952
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 133.343,
+        cy: 477.014,
+        r: 7.952
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 283.521,
+        cy: 568.033,
+        r: 7.952
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 413.618,
+        cy: 482.387,
+        r: 7.952
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("g", {
+      fill: "#0E0620",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 549.879,
+        cy: 296.402,
+        r: 2.651
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 253.29,
+        cy: 229.24,
+        r: 2.651
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 434.824,
+        cy: 263.931,
+        r: 2.651
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 183.708,
+        cy: 544.176,
+        r: 2.651
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 382.515,
+        cy: 530.923,
+        r: 2.651
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 130.693,
+        cy: 305.608,
+        r: 2.651
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+        cx: 480.296,
+        cy: 477.014,
+        r: 2.651
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("g", {
+      clipPath: "url(cordClip)",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        fill: "none",
+        stroke: "#0E0620",
+        strokeWidth: 3,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeMiterlimit: 10,
+        d: "M273.813 410.969s-54.527 39.501-115.34 38.218c-2.28-.048-4.926-.241-7.841-.548-68.038-7.178-134.288-43.963-167.33-103.87-.908-1.646-1.793-3.3-2.654-4.964-18.395-35.511-37.259-83.385-32.075-118.817"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        fill: "#FFF",
+        stroke: "#0E0620",
+        strokeWidth: 3,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeMiterlimit: 10,
+        d: "m338.164 454.689-64.726-17.353c-11.086-2.972-17.664-14.369-14.692-25.455l15.694-58.537c3.889-14.504 18.799-23.11 33.303-19.221l52.349 14.035c14.504 3.889 23.11 18.799 19.221 33.303l-15.694 58.537c-2.972 11.085-14.368 17.663-25.455 14.691z"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("g", {
+        fill: "#FFF",
+        stroke: "#0E0620",
+        strokeWidth: 3,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeMiterlimit: 10,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          d: "m323.396 236.625-28.111 117.128"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("circle", {
+          cx: 323.666,
+          cy: 235.617,
+          r: 6.375
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("g", {
+        fill: "#FFF",
+        stroke: "#0E0620",
+        strokeWidth: 3,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeMiterlimit: 10,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          d: "M360.633 363.039c1.352 1.061 4.91 5.056 5.824 6.634l27.874 47.634c3.855 6.649 1.59 15.164-5.059 19.02h0c-6.649 3.855-15.164 1.59-19.02-5.059l-5.603-9.663"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          d: "M388.762 434.677c5.234-3.039 7.731-8.966 6.678-14.594a15.804 15.804 0 0 1 5.837 5.793c4.411 7.596 1.829 17.33-5.767 21.741-7.596 4.411-17.33 1.829-21.741-5.767-1.754-3.021-2.817-5.818-2.484-9.046 4.34 4.551 11.802 5.169 17.477 1.873z"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("g", {
+        fill: "#FFF",
+        stroke: "#0E0620",
+        strokeWidth: 3,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeMiterlimit: 10,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          d: "M301.301 347.66c-1.702.242-5.91 1.627-7.492 2.536l-47.965 27.301c-6.664 3.829-8.963 12.335-5.134 18.999h0c3.829 6.664 12.335 8.963 18.999 5.134l9.685-5.564"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          d: "M241.978 395.324c-3.012-5.25-2.209-11.631 1.518-15.977a15.821 15.821 0 0 0-7.952 2.096c-7.619 4.371-10.253 14.09-5.883 21.71 4.371 7.619 14.09 10.253 21.709 5.883 3.03-1.738 5.35-3.628 6.676-6.59-6.033 1.768-12.803-1.429-16.068-7.122z"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("g", {
+        stroke: "#0E0620",
+        strokeWidth: 3,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeMiterlimit: 10,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          fill: "#FFF",
+          d: "M353.351 365.387a58.685 58.685 0 0 1-24.48-1.278 58.678 58.678 0 0 1-21.836-11.14c-17.004 4.207-31.269 17.289-36.128 35.411l-1.374 5.123c-7.112 26.525 8.617 53.791 35.13 60.899h0c26.513 7.108 53.771-8.632 60.883-35.158l1.374-5.123c4.858-18.122-.949-36.585-13.569-48.734z"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          fill: "none",
+          d: "M269.678 394.912h0c26.3 20.643 59.654 29.585 93.106 25.724l2.419-.114"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("g", {
+        stroke: "#0E0620",
+        strokeWidth: 3,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeMiterlimit: 10,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          fill: "#FFF",
+          d: "m312.957 456.734-14.315 53.395c-1.896 7.07 2.299 14.338 9.37 16.234h0c7.07 1.896 14.338-2.299 16.234-9.37l17.838-66.534c-8.633 5.427-18.558 6.928-29.127 6.275z"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          fill: "none",
+          d: "m304.883 486.849 25.604 6.864"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          fill: "#FFF",
+          d: "M296.315 452.273 282 505.667c-1.896 7.07-9.164 11.265-16.234 9.37h0c-7.07-1.896-11.265-9.164-9.37-16.234l17.838-66.534c4.759 9.017 12.602 15.281 22.081 20.004z"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          fill: "none",
+          d: "m262.638 475.522 25.603 6.865"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ellipse", {
+        transform: "rotate(-74.989 341.31 315.204)",
+        fill: "#FFF",
+        stroke: "#0E0620",
+        strokeWidth: 3,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeMiterlimit: 10,
+        cx: 341.295,
+        cy: 315.211,
+        rx: 61.961,
+        ry: 60.305
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        fill: "none",
+        stroke: "#0E0620",
+        strokeWidth: 3,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeMiterlimit: 10,
+        d: "M330.868 261.338c-7.929 1.72-15.381 5.246-21.799 10.246"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        fill: "#FFF",
+        stroke: "#0E0620",
+        strokeWidth: 3,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeMiterlimit: 10,
+        d: "M380.857 346.164c-1.247 4.651-4.668 8.421-9.196 10.06-9.332 3.377-26.2 7.817-42.301 3.5s-28.485-16.599-34.877-24.192c-3.101-3.684-4.177-8.66-2.93-13.311l7.453-27.798a6.948 6.948 0 0 1 6.088-5.13c6.755-.61 20.546-.608 41.785 5.087s33.181 12.591 38.725 16.498a6.948 6.948 0 0 1 2.705 7.488l-7.452 27.798z"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("g", {
+        clipPath: "url(#a)",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          fill: "none",
+          stroke: "#0E0620",
+          strokeWidth: 3,
+          strokeMiterlimit: 10,
+          d: "m278.436 375.599 104.567-111.523-18.61-12.458-99.586 113.31z"
+        })
+      })]
+    })]
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Error);
 
 /***/ }),
 
