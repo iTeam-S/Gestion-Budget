@@ -5,7 +5,7 @@ const Sidebar = () => {
     return (
         <React.Fragment>
             <aside className="flex-none">
-                <nav className="flex flex-column items-center justify-center border shadow-md rounded w-[200px] h-[200px] m-4">
+                <nav className="border shadow-md rounded p-2 m-4">
                         <div className="my-2">
                             <NavLink to="dashboard" className={({ isActive }) => (
                                     isActive ? "bg-teal text-white rounded p-px flex flex-row" : "flex -row"
@@ -57,6 +57,9 @@ const Sidebar = () => {
                                 </svg>
                                 <span className="nav-link-text ms-1">Nouvelles</span>
                             </NavLink>
+                        </div>
+                        <div className="my-2">
+                            iTeam-$ community
                         </div>
                 </nav>
             </aside>

@@ -66,7 +66,7 @@ const Compte = () => {
 
 
     return(
-        <div className="lg:flex md:flex-row m-6">
+        <div className="border-2 lg:flex md:flex-row m-6">
             <div className="lg:flex-auto">
                 <CompteList/>
             </div>

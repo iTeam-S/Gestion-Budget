@@ -1,7 +1,7 @@
 const CompteItem = ({code, nom, description}) => {
 
     return(
-        <div className='shadow-md border h-40 rounded m-4 mr-0 last-of-type:mr-4'>
+        <div className='shadow-sm border h-40 rounded mx-2 mb-4 mr-0 last-of-type:mr-2'>
             <div className="text-center m-4">Nom compte</div>
             <div>Description compte</div>
             <div>code compte</div>

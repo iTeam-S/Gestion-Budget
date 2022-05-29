@@ -10,7 +10,7 @@ const getCompteData = () => {
         method: "GET",
         headers: {
             "Content-type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer "+token
+            "Authorization": "Bearer "+ token
         }
     }
 

@@ -7090,7 +7090,7 @@ var Sidebar = function Sidebar() {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("aside", {
       className: "flex-none",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("nav", {
-        className: "flex flex-column items-center justify-center border shadow-md rounded w-[200px] h-[200px] m-4",
+        className: "border shadow-md rounded p-2 m-4",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "my-2",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.NavLink, {
@@ -7221,6 +7221,9 @@ var Sidebar = function Sidebar() {
               children: "Nouvelles"
             })]
           })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "my-2",
+          children: "iTeam-$ community"
         })]
       })
     })
@@ -7297,7 +7300,7 @@ var CompteItem = function CompteItem(_ref) {
       nom = _ref.nom,
       description = _ref.description;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    className: "shadow-md border h-40 rounded m-4 mr-0 last-of-type:mr-4",
+    className: "shadow-sm border h-40 rounded mx-2 mb-4 mr-0 last-of-type:mr-2",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "text-center m-4",
       children: "Nom compte"
@@ -7826,7 +7829,7 @@ var Compte = function Compte() {
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "lg:flex md:flex-row m-6",
+    className: "border-2 lg:flex md:flex-row m-6",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "lg:flex-auto",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_list_CompteList__WEBPACK_IMPORTED_MODULE_1__["default"], {})
