@@ -21999,6 +21999,9 @@ Ensure the default browser behavior of the `hidden` attribute.
     max-width: 1536px;
   }
 }
+.visible {
+  visibility: visible;
+}
 .fixed {
   position: fixed;
 }
@@ -22119,6 +22122,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-40 {
   height: 10rem;
 }
+.h-full {
+  height: 100%;
+}
+.h-screen {
+  height: 100vh;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -22133,6 +22142,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-6 {
   width: 1.5rem;
+}
+.w-\[calc\(100vw\+0px\)\/2\] {
+  width: calc(100vw + 0px) / 2;
+}
+.w-\[calc\(100vw\/2\)\] {
+  width: calc(100vw / 2);
+}
+.w-screen {
+  width: 100vw;
 }
 .max-w-xl {
   max-width: 36rem;
@@ -22163,6 +22181,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .flex-row {
   flex-direction: row;
+}
+.place-content-center {
+  place-content: center;
 }
 .items-center {
   align-items: center;
@@ -22485,6 +22506,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     display: none;
   }
 
+  .sm\:w-\[calc\(100vw\/2\)\] {
+    width: calc(100vw / 2);
+  }
+
   .sm\:flex-1 {
     flex: 1 1 0%;
   }
@@ -22516,6 +22541,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 @media (min-width: 768px) {
 
+  .md\:grid {
+    display: grid;
+  }
+
+  .md\:w-\[calc\(100vw\/2\)\] {
+    width: calc(100vw / 2);
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -22524,6 +22561,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:flex {
     display: flex;
+  }
+
+  .lg\:w-full {
+    width: 100%;
+  }
+
+  .lg\:w-\[calc\(100vw\/2\)\] {
+    width: calc(100vw / 2);
   }
 
   .lg\:flex-auto {
