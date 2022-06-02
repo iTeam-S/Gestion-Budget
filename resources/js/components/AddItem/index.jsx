@@ -3,7 +3,7 @@ import Anime from 'react-anime';
 const AddItem = ({type}) => {
 
     return(
-        <div className='bg-teal flex items-center justify-center shadow-md h-40 rounded m-4 mr-0'>
+        <div className='bg-teal flex items-center justify-center shadow-md rounded mx-2 mr-0'>
             <Anime
             easing='easeOutElastic(1, .4)'
             loop={true}

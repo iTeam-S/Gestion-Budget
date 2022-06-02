@@ -5,7 +5,7 @@ function List(){
 
     return(
         <div>
-            <div className="grid sm:grid-cols-2 xl:grid-cols-3">
+            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-2">
                 <Item />
                 <Item />
                 <Item />

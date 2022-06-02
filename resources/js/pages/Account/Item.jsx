@@ -1,7 +1,7 @@
 const Item = ({code, nom, description}) => {
 
     return(
-        <div className='border h-40 rounded mx-2 mb-4 mr-0 last-of-type:mr-2'>
+        <div className='border h-40 rounded mx-2 mr-0 last-of-type:mr-2'>
             <div className="text-center m-4">Nom compte</div>
             <div>Description compte</div>
             <div>code compte</div>

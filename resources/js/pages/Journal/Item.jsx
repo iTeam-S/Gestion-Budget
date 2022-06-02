@@ -1,7 +1,7 @@
 const Item = ({nom, total}) => {
 
     return(
-        <div className='shadow-md border h-40 rounded m-4 mr-0 last-of-type:mr-4'>
+        <div className='border h-40 rounded mx-2 mr-0 last-of-type:mr-2'>
             <div className="text-center m-4">Nom Journal</div>
             <div>Total Journal</div>
             <div className='flex flex-row justify-end last-of-type:mt-auto'>

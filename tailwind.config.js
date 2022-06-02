@@ -11,7 +11,7 @@ module.exports = {
         extend: {
             colors:{
                 'teal': '#008080',
-            }
+            },
         }
     },
     plugins: [],

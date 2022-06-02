@@ -1,98 +1,86 @@
-import React, { useState, useEffect, useContext } from "react"
-import { useNavigate } from "react-router-dom"
+import React, { useEffect, useContext } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import Anime from 'react-anime';
 import { TokenContext } from "../../utils/context";
+import Form from "./Form";
+import Presentations, { reveal } from "./Presentations";
+import styled from "styled-components";
 
 const Login = () => {
 
     const redirect = useNavigate();
-    const { setToken, _token } = useContext(TokenContext);
+    const { _token, setToken } = useContext(TokenContext);
 
     // se redireger vers le dashboard si l'utilisateur est déjà authentifié
     useEffect(() => {
-        if(_token !== null) redirect("/dashboard");
-    }, []);
+        // si le token est expirée
+        if(_token !== null) redirect("/dashboard")
 
+        // configurer l'animation des items on scroll
+        window.addEventListener("scroll", reveal);
 
-    const [prenomUsuel, setPrenomUsuel] = useState("");
-    const [password, setPassword] = useState("");
+        }, []);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        authenticate()
-    }
-
-    const authenticate = () => {
-
-        const body = new URLSearchParams();
-        body.append("prenom_usuel", prenomUsuel);
-        body.append("password", password);
-        const url = "http://localhost:8000/api/auth/login";
-
-        const init = {
-            method: "POST",
-            headers: {
-                "Content-type": "application/x-www-form-urlencoded"
-            },
-            body: body
-        }
-
-        const promise = fetch(url, init)
-            .then(function (promise) {
-
-                return promise.json();
-
-            });
-
-        promise.then(function (response) {
-
-            setToken(response.access_token);
-
-            redirect("/dashboard");
-
-        })
-        .catch(function (error) {
-
-            console.log(error);
-            
-        });
-
-
-
-    }
+    const SocialNetwork = styled(Link)`
+    background-color: red;
+    `;
 
     return (
         <>
-            <Anime
-                easing='easeOutElastic(1, .4)'
-                loop={true}
-                duration={1000}
-                translateY='1rem'>
-                <div className="relative">
-                    <div className="title">
-                        <p className="text-8xl">Gestion Budget</p>
+            <div className="h-screen w-screen overflow-hidden grid items-center relative before:content['*']
+            before:absolute
+            before:bg-[url('http://localhost:8000/storage/images/login-background-up.svg')] 
+            before:bg-[length:100vw]
+            before:opacity-50
+            before:top-0
+            before:left-0
+            before:w-screen
+            before:h-screen
+            before:z-0">
+                <div className="flex flex-row opacity-100 z-10">
+                    <div className="flex-auto">
+                        <Anime
+                            easing='linear'
+                            loop={true}
+                            duration={2000}
+                            translateY="3rem"
+                            direction="alternate">
+                                <div className="title font-['Anton']">
+                                    <p className="text-8xl text-center">Gestion Budget</p>
+                                </div>
+                        </Anime>
+                        <div class="w-[500px] m-auto" style={{transform: "translateY(150px)"}}>
+                            <h1 className="mx-4">iTeam-$ Community</h1>
+                        <SocialNetwork to="#">facebook</SocialNetwork>
+                        <SocialNetwork to="#">linkedin</SocialNetwork>
+                        <SocialNetwork to="#">github</SocialNetwork>
+
+                        </div>
+                    </div>
+
+                    <div className="flex-none justify-end mx-2 md:mx-4">
+                        <div className="flex border shadow-md rounded mr-8">
+                            <Form setToken={setToken}/>
+                        </div>
                     </div>
                 </div>
-            </Anime>
-            <div className="flex justify-end mt-3.5">
-                <div className="flex border shadow-md rounded mr-8">
-                    <form role="form" className="p-2" autoComplete="new-password" onSubmit={handleSubmit}>
-                        <label>Identifiant</label>
-                        <div className="mb-3">
-                            <input type="text" className="border rounded h-10" placeholder="prenom usuel" onChange={(event) => setPrenomUsuel(event.target.value)} />
-                        </div>
-
-                        <label>Mot de passe</label>
-                        <div className="mb-3">
-                            <input type="password" placeholder="secrete" className="border rounded h-10" onChange={(event) => setPassword(event.target.value)} />
-                        </div>
-
-                        <div>
-                            <button type="submit" id="login-btn-submit" className="rounded btn">Se connecter</button>
-                        </div>
-                    </form>
-                </div>
             </div>
+
+            <div className="w-screen relative before:content['*']
+            before:absolute
+            before:bg-[url('http://localhost:8000/storage/images/login-background-down.svg')] 
+            before:bg-[length:100vw]
+            before:opacity-50
+            before:top-0
+            before:left-0
+            before:w-screen
+            before:h-screen
+            before:z-0">
+                {
+                    <Presentations/>
+                }
+            </div>
+            
         </>
     )
 }

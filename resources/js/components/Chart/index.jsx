@@ -7,11 +7,11 @@ const Graph = () => {
 
     return(
         <>
-        <div className="bg-teal m-4 rounded">
+        <div className="bg-[#fff] m-4 rounded">
             <Line
                 data={{
-                    labels: ['Red', 'Blue', 'Yellow', "Green",
-                    "Purple", 'Orange'],
+                    labels: ['Janvier', 'Fevrier', 'Mars', "Avril",
+                    "Mai", 'Juin'],
                     datasets: [
                         {
                             label: "entrants",
@@ -26,7 +26,7 @@ const Graph = () => {
                             ],
                             fill: true,
                             lineTension: 0.4,
-                            backgroundColor: "rgba(0, 0, 0, 0.8)"
+                            backgroundColor: "#008080"
                         },
                         {
                             label: "sortants",
@@ -41,7 +41,7 @@ const Graph = () => {
                             ],
                             fill: true,
                             lineTension: 0.4,
-                            backgroundColor: "#fff"
+                            backgroundColor: "rgba(0, 0, 0, 0.8)"
                         }
                     ],
 
@@ -66,11 +66,11 @@ const Graph = () => {
             />
         </div>
 
-        <div className="bg-teal m-4 rounded">
+        <div className="bg-[#fff] m-4 rounded">
         <Bar
             data={{
-                labels: ['Red', 'Blue', 'Yellow', "Green",
-                "Purple", 'Orange'],
+                labels: ['Janvier', 'Fevrier', 'Mars', "Avril",
+                "Mai", 'Juin'],
                 datasets: [
                     {
                         label: "entrants",
@@ -85,7 +85,7 @@ const Graph = () => {
                         ],
                         fill: true,
                         lineTension: 0.4,
-                        backgroundColor: "rgba(0, 0, 0, 0.8)"
+                        backgroundColor: "#008080"
                     },
                     {
                         label: "sortants",
@@ -100,7 +100,7 @@ const Graph = () => {
                         ],
                         fill: true,
                         lineTension: 0.4,
-                        backgroundColor: "#fff"
+                        backgroundColor: "rgba(0, 0, 0, 0.8)"
                     }
                 ],
 
