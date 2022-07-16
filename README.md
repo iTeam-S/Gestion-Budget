@@ -2,13 +2,22 @@
 
 *Installation*
 
-`composer update` installation des modules nécessaires
+Dans le dossier `config/` supprimer le fichier `jwt.php`.Sous terminal, faite un `composer update` pour installer les modules nécessaires.
 
-Créer un fichier `.env` à partir du fichier `.env.example` et faire la configuration de la base des données dans le fichier de variable d'environnement.
+Afin de mettre en place la base du système d'authentification jwt en laravel, lancer les commandes suivants:
+
+`php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"`
+
+`php artisan jwt:secret`
+
+Et une fois terminé, créer un fichier `.env` à partir du fichier `.env.example` et faire la configuration de la base des données dans le fichier de variable d'environnement.
 
 `php artisan migrate` construction de la structure de la base
 
+`php artisan key:generate`
+
 `php artisan serve` ou `php artisan serve --port=XXXX` lancement
+
 
 **Les routes de l'API**
 
